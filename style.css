@@ -1,0 +1,469 @@
+/* --RESET-- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*  reset styles */
+  all: unset;
+  /*  no bounce */
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  /*  background with soft change */
+  background-color: rgb(175, 174, 174);
+  transition: background-color 0.3s linear;
+  will-change: background-color;
+  overflow: hidden;
+}
+
+/*------------------------------------------- */
+/*--TYPE-- */
+p,
+button {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+p {
+  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+
+  line-height: 135%;
+  max-width: 28em;
+  text-align: center;
+}
+.question {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#head,
+h1,
+h2,
+h3 {
+  color: #000000;
+  mix-blend-mode: multiply;
+  /* font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal; */
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  margin: none;
+
+  /* font-size: 3rem; */
+}
+.blurb {
+}
+.meta > p {
+  color: #00000090;
+  font-size: 0.8rem;
+  line-height: 135%;
+  font-family: "Roboto Mono", monospace;
+}
+
+/*------------------------------------------- */
+/*--GENERAL-- */
+
+.projectMedia {
+  max-width: 40vw;
+  /* margin: 20px; */
+  /* box-sizing: border-box; */
+  /* position: relative; */
+}
+.button {
+  background-color: #ffffff60;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  cursor: help;
+  transition: 0.3s;
+  width: 200px;
+}
+#navMenu .button:hover {
+  border-radius: 20px;
+}
+
+#logo {
+  max-width: 50px;
+}
+
+#intoImg {
+  max-width: 20vw;
+}
+hr {
+  border: 1px dashed rgba(148, 148, 148, 0.543);
+}
+/*------------------------------------------- */
+/*--LAYOUT-- */
+.wrapper {
+  max-width: 1800px;
+  margin: auto;
+}
+
+#table {
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  transition: background-color 0.3s linear;
+  will-change: background-color;
+  justify-content: space-around;
+}
+
+#navMenu {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+#foodSection {
+  height: 100vh;
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
+}
+
+#contentSection {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mainSections {
+  flex: 1;
+  display: flex;
+}
+
+.relativeContainer {
+  position: relative;
+}
+
+.absoluteItem {
+  position: absolute;
+  display: flex;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.centered {
+  justify-content: center;
+}
+
+/*------------------------------------------- */
+/*--MODAL-- */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  width: 800px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  top: 10%;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex > p {
+  flex: 1;
+  text-align: left;
+}
+
+.modal > article {
+  gap: 30px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+.hidden {
+  display: none;
+}
+
+/*------------------------------------------- */
+/* --FoodSection: GENERAL-- */
+
+#shapesContainer {
+  isolation: isolate;
+}
+
+.outline {
+  border: 2px solid black;
+}
+
+.shape {
+  transition: transform 2s ease-in-out;
+  mix-blend-mode: soft-light;
+  z-index: 10;
+  height: 30vw;
+  width: 30vw;
+  scale: 100%;
+  cursor: crosshair;
+}
+
+.shape:hover {
+  transform: rotate(44deg) scale(134%);
+}
+
+.shape.clicked {
+  transition: 3s;
+  background-color: hsla(0, 0%, 100%, 0) !important;
+  scale: 0% !important;
+}
+
+#plate {
+  width: 40vw;
+  height: 40vw;
+  margin: 30px;
+  z-index: 1;
+
+  border-radius: 50%;
+
+  background-color: rgba(219, 219, 219, 0.233);
+  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
+    0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
+}
+
+/*  --------------*/
+/* --FoodSection: INDIVIDUAL-- */
+
+.parallelogram {
+  top: 70px;
+  left: 15px;
+
+  aspect-ratio: 1/2;
+  transform: skew(20deg) rotate(20deg);
+}
+.circle {
+  top: 70px;
+  left: 15px;
+
+  aspect-ratio: 1/5;
+  transform: skew(20deg) rotate(20deg);
+  border-radius: 50%;
+}
+
+.flower {
+  top: 170px;
+  left: 15px;
+
+  aspect-ratio: 2/1;
+  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
+  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
+    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
+    radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
+}
+
+.hexagon {
+  top: 0px;
+  left: 35px;
+
+  aspect-ratio: 1 / cos(30deg);
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+}
+
+.starburst {
+  top: 0px;
+  left: 35px;
+
+  aspect-ratio: 1;
+
+  clip-path: polygon(
+    100% 50%,
+    79.74% 53.92%,
+    98.3% 62.94%,
+    77.72% 61.48%,
+    93.3% 75%,
+    73.8% 68.26%,
+    85.36% 85.36%,
+    68.26% 73.8%,
+    75% 93.3%,
+    61.48% 77.72%,
+    62.94% 98.3%,
+    53.92% 79.74%,
+    50% 100%,
+    46.08% 79.74%,
+    37.06% 98.3%,
+    38.52% 77.72%,
+    25% 93.3%,
+    31.74% 73.8%,
+    14.64% 85.36%,
+    26.2% 68.26%,
+    6.7% 75%,
+    22.28% 61.48%,
+    1.7% 62.94%,
+    20.26% 53.92%,
+    0% 50%,
+    20.26% 46.08%,
+    1.7% 37.06%,
+    22.28% 38.52%,
+    6.7% 25%,
+    26.2% 31.74%,
+    14.64% 14.64%,
+    31.74% 26.2%,
+    25% 6.7%,
+    38.52% 22.28%,
+    37.06% 1.7%,
+    46.08% 20.26%,
+    50% 0%,
+    53.92% 20.26%,
+    62.94% 1.7%,
+    61.48% 22.28%,
+    75% 6.7%,
+    68.26% 26.2%,
+    85.36% 14.64%,
+    73.8% 31.74%,
+    93.3% 25%,
+    77.72% 38.52%,
+    98.3% 37.06%,
+    79.74% 46.08%
+  );
+}
+.scalloped-box {
+  top: 0px;
+  left: 35px;
+
+  --r: 30px; /* radius of circles */
+  aspect-ratio: 1;
+
+  padding: calc(1.5 * var(--r));
+  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
+      calc(100% - 2 * var(--r)),
+    radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
+      calc(2 * var(--r)) round;
+}
+
+/*  -----------------------------------------*/
+/*--EXTRA-- */
+#reloadBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+#shuffleBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+#chefBtn {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+.scrollBar {
+  scrollbar-color: rgb(255, 255, 255) #ffffff00;
+}
+
+/*  --------------*/
+/* RESPONSIVE */
+@media (min-width: 1800px) {
+  #plate {
+    width: 800px;
+    height: 800px;
+  }
+  .projectMedia {
+    max-width: 800px;
+  }
+}
+@media (max-width: 1300px) {
+  #navMenu {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+@media (max-width: 800px) {
+  body {
+    overflow: visible;
+  }
+
+  #table {
+    flex-direction: column;
+    padding: 10px;
+    overflow: visible;
+    height: fit-content;
+
+    /* height: auto; */
+  }
+
+  #foodSection {
+    position: relative;
+  }
+  #contentSection {
+    position: relative;
+    /* overflow: hidden; */
+  }
+
+  #plate {
+    width: 85vw;
+    height: 85vw;
+  }
+  .projectMedia {
+    max-width: 95vw;
+  }
+  #content {
+    gap: 30px;
+  }
+  #navMenu {
+    position: fixed;
+  }
+  .modal {
+    width: 90vw;
+    gap: 20px;
+  }
+  .modal > article {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

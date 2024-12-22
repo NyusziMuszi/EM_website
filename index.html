@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scrollBar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eszter's Taster Menu</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Get some tasty bites of what kind of work I make"
+    />
+
+    <meta name="author" content="Eszter Muray" />
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <main id="table">
+        <div class="relativeContainer">
+          <nav id="navMenu">
+            <button id="reloadBtn" class="button">Get a new meal</button>
+            <button id="shuffleBtn" class="button">Shuffle your plate</button>
+            <button id="chefBtn" class="button">Talk to the chef</button>
+          </nav>
+        </div>
+
+        <section id="foodSection" class="mainSections">
+          <div id="shapesContainer" class="relativeContainer">
+            <nav id="0" class="shape absoluteItem parallelogram"></nav>
+            <nav id="1" class="shape absoluteItem circle"></nav>
+            <nav id="2" class="shape absoluteItem flower"></nav>
+            <nav id="3" class="shape absoluteItem hexagon"></nav>
+            <nav id="4" class="shape absoluteItem starburst"></nav>
+            <nav id="5" class="shape absoluteItem scalloped-box"></nav>
+
+            <div id="plate"></div>
+          </div>
+        </section>
+
+        <section id="contentSection" class="mainSections">
+          <article id="content" class="centered">
+            <h2 id="head">Hello and welcome.</h2>
+
+            <p id="body">
+              Come, try my tasty taster menu of work. You can find out more
+              about me here, and find some of my other work here.
+            </p>
+            <img src="img/logo.png" id="logo" />
+          </article>
+          <!-- <img id="logo" src="img/Logo.png" alt="Eszter Muray logo" /> -->
+
+          <!-- work -->
+        </section>
+        <section id="chef" class="modal hidden">
+          <!-- <button class="btn-close button">Back</button> -->
+
+          <article class="flex">
+            <!-- <p class="question">Who are you?</p> -->
+            <p class="answer">
+              Hi, I am Eszter, I am a member of Animorph co-operative, and have
+              been working as a designer for the last 12 year. I currently
+              specialise in UX and UI for extended reality, but my interest and
+              experience encompass: branding, print, and spatial projects. You
+              can find my CV
+              <a
+                href="https://drive.google.com/file/d/1cL6WVU6_HqZoxCy-iQYv60BOEmadrvJV/view"
+                title="Eszter Muray CV"
+                >here</a
+              >. A lot of my recent work is on our
+              <a href="https://animorph.coop/" title="animorph">site.</a>
+            </p>
+          </article>
+          <!-- <hr /> -->
+
+          <!-- <article class="flex">
+            <p class="question">Why do you want to join FAC?</p>
+            <p class="answer">
+              I have been long interested both in FAC and programming. I dabbled
+              in Processing and Arduino at Uni, but never to a really solid level. At work I occassionally code macros in js, make node based Blender models and animations, as well as Unity
+              shaders and amends to Unity gameplay in C#. I would like to get
+              actually good at coding so I can use it as a medium in my personal
+              and professional work. Making this website made me really keen to understand how to actually handle data, and build efficently, rather than somewhat randomly. 
+              I would ideally like to become a creative
+              technologist, so that I can leverage my skills in design still.
+            </p>
+          </article>
+          <hr /> -->
+
+          <!-- <article class="flex">
+            <p class="question">What could you bring to FAC?</p>
+            <p class="answer">
+              I would be more than happy to share some UX and typography knowhow. I could also sow some fringe ideas around coops, webart, and obscure dutch digital design trends as needed.
+            </p>
+          </article> -->
+          <img src="img/EszterMuray-intro.jpg" id="intoImg" />
+        </section>
+
+        <div class="overlay hidden"></div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
