@@ -72,7 +72,7 @@ function matchColor(hueLimit) {
 
   body.style.backgroundColor = colorBg;
   header.style.color = colorHead;
-  scrollBar.style.scrollbarColor = red;
+  scrollBar.style.scrollbarColor = "red";
 
   // `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha} )`;
 }
@@ -140,6 +140,10 @@ function removeContent() {
   }
 }
 
+// function hideBtn() {
+//   shuffleBtn.style.display = "none";
+// }
+
 //////// FUNCTION: Modal /////
 function closeModal() {
   chef.style.display = "none";
@@ -164,6 +168,12 @@ for (let i = 0; i < shapes.length; i++) {
     }, "1000");
     loadContent(findID(shapes[i]));
     matchColor(getRandomNumber(0, 150));
+    // console.log(i);
+    // if (i == 0) {
+    //   shuffleBtn.style.display = "none";
+    // } else {
+    //   shuffleBtn.style.display = "block";
+    // }
   });
 }
 
@@ -363,3 +373,23 @@ const work = [
 // preload_image("img/Eszter-Muray-All-my-rivers-2.JPG");
 // preload_image("img/Eszter-Muray-All-my-rivers-3.JPG");
 // preload_image("img/Eszter-Muray-All-my-rivers-4.JPG");
+
+
+function Work(id, title, meta, eye) {
+  this.id = id;
+  this.title = title;
+  this.meta = meta:{
+    
+  };
+  this.eyeColor = eye;
+
+  : "5",
+    title: "Animorph",
+    meta: {
+      date: "2021-ongoing",
+      engagement: "Member",
+      client: "Animorph co-op",
+    },
+    blurb: "Brand, website and outreach gifts",
+    imgURL: 
+}
