@@ -1,6 +1,66 @@
 "use strict";
 
-//// SELECTORS /////
+////  CONSTRUCTOR /////
+
+class Work {
+  constructor(
+    id,
+    title,
+    date,
+    engagement,
+    client,
+    blurb,
+    folderName,
+    imgURL,
+    shape
+  ) {
+    this.id = id;
+    this.title = title;
+    this.meta = { date: date, engagement: engagement, client: client };
+
+    this.blurb = blurb;
+    this.folderName = folderName;
+    this.imgURL = imgURL;
+    this.shape = shape;
+  }
+}
+
+class Shape {
+  constructor(id) {
+    this.id = id;
+  }
+  testtest() {
+    const test2 = document.getElementById(this.id);
+    test2.addEventListener("click", (event) => {
+      console.log(event);
+    });
+  }
+}
+// randomScale() {
+//   return (this.scale = `${getRandomNumber(70, 100)}%`);
+// }
+// randomPosition() {
+//   [`${getRandomNumber(0, 100)}px`, `${getRandomNumber(0, 200)}px`];
+//   return this.position;
+// }
+// setScale() {
+//   this.scale = `${getRandomNumber(70, 100)}%`;
+//   this.style.scale = scale;
+// }
+
+// setPosition() {
+//   const shapes = document.getElementsByClassName("shape");
+//   for (let i = 0; i < shapes.length; i++) {
+//     const position = getRandomPosition();
+//     shapes[i].style.left = position[0];
+//     shapes[i].style.top = position[1];
+//   }
+// }
+
+const Paralelogramma = new Shape("hexagon");
+Paralelogramma.testtest();
+
+//// SELECTOR /////
 
 const contentSection = document.getElementById("contentSection");
 const foodSection = document.getElementById("foodSection");
@@ -19,7 +79,7 @@ const chefBtn = document.getElementById("chefBtn");
 const modal = document.getElementById("chef");
 const overlay = document.querySelector(".overlay");
 
-//// FUNCTIONS /////
+//// FUNCTION /////
 
 //////// FUNCTION: Generating random values /////
 
@@ -140,10 +200,6 @@ function removeContent() {
   }
 }
 
-// function hideBtn() {
-//   shuffleBtn.style.display = "none";
-// }
-
 //////// FUNCTION: Modal /////
 function closeModal() {
   chef.style.display = "none";
@@ -156,20 +212,22 @@ function closeModal() {
 //     matchColor(getRandomNumber(0, 150));
 //   }
 // });
+let counter = 0;
 
 for (let i = 0; i < shapes.length; i++) {
   shapes[i].addEventListener("click", function () {
-    animateShape(shapes[i]);
-    // removeShape(shapes[i]);
-    findID(shapes[i]);
-    removeContent();
-    setTimeout(() => {
-      removeShape(shapes[i]);
-    }, "1000");
-    loadContent(findID(shapes[i]));
-    matchColor(getRandomNumber(0, 150));
-    // console.log(i);
-    // if (i == 0) {
+    // animateShape(shapes[i]);
+    // // removeShape(shapes[i]);
+    // findID(shapes[i]);
+    // removeContent();
+    // setTimeout(() => {
+    //   removeShape(shapes[i]);
+    // }, "1000");
+    // loadContent(findID(shapes[i]));
+    // matchColor(getRandomNumber(0, 150));
+    // counter++;
+    // console.log(counter);
+    // if (counter >= shapes.length) {
     //   shuffleBtn.style.display = "none";
     // } else {
     //   shuffleBtn.style.display = "block";
@@ -205,191 +263,131 @@ chefBtn.addEventListener("click", function () {
 
 //// DATABASE /////
 
-const work = [
-  {
-    id: "0",
-    title: "Insula Lutherana and the Lutheran Museum",
-    meta: {
-      date: "2013-2015",
-      engagement: "Freelance",
-      client: "Adam Potzner, Lutheran Museum",
-    },
-    blurb:
-      "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves, as well as rebranding the Lutheran Museum in the heart of Budapest.",
-    imgURL: [
-      "img/insula/insula_1.jpg",
-      "img/insula/insula_2.jpg",
-      "img/insula/insula_3.jpg",
-      "img/insula/insula_4.jpg",
-      "img/insula/insula_5.jpg",
-      "img/insula/insula_6.jpg",
-      "img/insula/insula_8.jpg",
-      "img/insula/insula_9.jpg",
-    ],
-  },
-  {
-    id: "1",
-    title: "Plexopolis",
-    meta: {
-      date: "2017",
-      engagement: "designer at Uniform",
-      client: "UCL",
-    },
-    blurb:
-      "Creating an engaging and affordable game for high school students on the topic of urban planning.",
+const Insula = new Work(
+  "0",
+  "Insula Lutherana and the Lutheran Museum",
+  "2013-2015",
+  "Freelance",
+  "me",
+  "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves, as well as rebranding the Lutheran Museum in the heart of Budapest.",
+  "insula",
+  [
+    "img/insula/insula_1.jpg",
+    "img/insula/insula_2.jpg",
+    "img/insula/insula_3.jpg",
+    "img/insula/insula_4.jpg",
+    "img/insula/insula_5.jpg",
+    "img/insula/insula_6.jpg",
+    "img/insula/insula_8.jpg",
+    "img/insula/insula_9.jpg",
+  ],
+  "paralelogramma"
+);
 
-    imgURL: [
-      "img/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+const Plex = new Work(
+  "1",
+  "Plexopolis",
+  "2017",
+  "Designer at Uniform",
+  "UCL",
+  "Creating an engaging and affordable game for high school students on the topic of urban planning.",
+  "insula",
+  [
+    "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+    "img/plexopolis/Uniform-plexopolis-0.jpg",
+    "img/plexopolis/Uniform-plexopolis-2.jpg",
+    "img/plexopolis/Uniform-plexopolis-11.jpg",
+    "img/plexopolis/Uniform-plexopolis-13.jpg",
+    "img/plexopolis/Uniform-plexopolis-15.jpg",
+  ],
+  "hexagon"
+);
 
-      "img/Uniform-plexopolis-0.jpg",
-      "img/Uniform-plexopolis-2.jpg",
+const River = new Work(
+  "2",
+  "All my rivers",
+  "2020",
+  "Artist in Residence",
+  "Regensburg",
+  "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. “All my rivers” is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
+  "river",
+  [
+    "img/rivers/Eszter-Muray-All-my-rivers-1.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-2.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-3.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-4.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-5.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-6.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-7.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-8.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-9.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-10.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-11.jpg",
+    "img/rivers/Eszter-Muray-All-my-rivers-12.jpg",
+  ],
+  "hexagon"
+);
+const Veszprem = new Work(
+  "3",
+  "Petofi Szinhaz",
+  "2021",
+  "Freelance",
+  "Potzner Adam, Veszpremi Petofi Szinhaz",
+  "Concept and design for the Petofi theatre's refurbishment.",
+  "veszprem",
+  [
+    "img/veszprem/web_hd_220912_em--0811.jpeg",
+    "img/veszprem/Screenshot 2024-08-09 at 11.23.07 am.jpg",
+    "img/veszprem/Screenshot 2024-08-09 at 11.23.18 am.jpg",
+    "img/veszprem/Screenshot 2024-08-09 at 11.23.30 am.jpg",
+    "img/veszprem/Screenshot 2024-08-09 at 11.24.16 am.jpg",
+    "img/veszprem/Screenshot 2024-08-09 at 11.24.26 am.jpg",
+  ],
+  "hexagon"
+);
 
-      "img/Uniform-plexopolis-11.jpg",
+const Cine = new Work(
+  "4",
+  "Cinemachines",
+  "2019",
+  "ArtEZ University",
+  "-",
+  "Games for children using projectors.",
+  "cine",
+  [
+    "img/cinemachines/DSC_9139.JPG",
+    "img/cinemachines/IMG_0334.jpg",
+    "img/cinemachines/IMG_0442.jpg",
+    "img/cinemachines/IMG_0540.jpg",
+    "img/cinemachines/IMG_0543.jpg",
+    "img/cinemachines/IMG_0546.jpg",
+  ],
+  "hexagon"
+);
+const Animorph = new Work(
+  "4",
+  "Animorph",
+  "2021-now",
+  "Freelance and then in house",
+  "Animorph co-op",
+  "Brand, website and outreach gifts.",
+  "animorph",
+  [
+    "img/animorph/ani-1.jpg",
+    "img/animorph/ani-2.jpg",
+    "img/animorph/ani-3.jpg",
+    "img/animorph/ani-4.jpg",
+    "img/animorph/ani-5.jpg",
+    "img/animorph/kaleido/ani-2b.jpg",
+    "img/animorph/kaleido/ani-13.jpg",
+    "img/animorph/kaleido/ani-14.jpg",
 
-      "img/Uniform-plexopolis-13.jpg",
-      "img/Uniform-plexopolis-15.jpg",
-    ],
-  },
-  {
-    id: "2",
-    title: "All my rivers",
-    meta: {
-      date: "2020",
-      engagement: "Artist in Residence",
-      client: "Regensburg",
-    },
-    blurb:
-      "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. “All my rivers” is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
-    imgURL: [
-      "img/Eszter-Muray-All-my-rivers-1.jpg",
-      "img/Eszter-Muray-All-my-rivers-2.jpg",
-      "img/Eszter-Muray-All-my-rivers-3.jpg",
-      "img/Eszter-Muray-All-my-rivers-4.jpg",
-      "img/Eszter-Muray-All-my-rivers-5.jpg",
-      "img/Eszter-Muray-All-my-rivers-6.jpg",
-      "img/Eszter-Muray-All-my-rivers-7.jpg",
-      "img/Eszter-Muray-All-my-rivers-8.jpg",
-      "img/Eszter-Muray-All-my-rivers-9.jpg",
-      "img/Eszter-Muray-All-my-rivers-10.jpg",
-      "img/Eszter-Muray-All-my-rivers-11.jpg",
-      "img/Eszter-Muray-All-my-rivers-12.jpg",
-    ],
-  },
-  {
-    id: "3",
-    title: "Petofi Szinhaz",
-    meta: {
-      date: "2021",
-      engagement: "Freelance",
-      client: "Potzner Adam, Veszpremi Petofi Szinhaz",
-    },
-    blurb: "Concept and design for the Petofi theatre's refurbishment.",
-    imgURL: [
-      "img/veszprem/web_hd_220912_em--0811.jpeg",
-      "img/veszprem/Screenshot 2024-08-09 at 11.23.07 am.jpg",
-      "img/veszprem/Screenshot 2024-08-09 at 11.23.18 am.jpg",
-      "img/veszprem/Screenshot 2024-08-09 at 11.23.30 am.jpg",
-      "img/veszprem/Screenshot 2024-08-09 at 11.24.16 am.jpg",
-      "img/veszprem/Screenshot 2024-08-09 at 11.24.26 am.jpg",
-    ],
-  },
-  {
-    id: "4",
-    title: "Cinemachines",
-    meta: {
-      date: "2019",
-      engagement: "ArtEZ University",
-      client: "-",
-    },
-    blurb: "Games for children using projectors.",
-    imgURL: [
-      "img/cinemachines/DSC_9139.JPG",
-      "img/cinemachines/IMG_0334.jpg",
-      "img/cinemachines/IMG_0442.jpg",
-      "img/cinemachines/IMG_0540.jpg",
-      "img/cinemachines/IMG_0543.jpg",
-      "img/cinemachines/IMG_0546.jpg",
-    ],
-  },
-  {
-    id: "5",
-    title: "Animorph",
-    meta: {
-      date: "2021-ongoing",
-      engagement: "Member",
-      client: "Animorph co-op",
-    },
-    blurb: "Brand, website and outreach gifts",
-    imgURL: [
-      "img/animorph/ani-1.jpg",
-      "img/animorph/ani-2.jpg",
-      "img/animorph/ani-3.jpg",
-      "img/animorph/ani-4.jpg",
-      "img/animorph/ani-5.jpg",
-      "img/animorph/kaleido/ani-2b.jpg",
-      "img/animorph/kaleido/ani-13.jpg",
-      "img/animorph/kaleido/ani-14.jpg",
+    "img/animorph/gifts/ani-7.jpg",
+    "img/animorph/gifts/ani-10.jpg",
 
-      "img/animorph/gifts/ani-7.jpg",
-      "img/animorph/gifts/ani-10.jpg",
+    "img/animorph/gifts/ani-43.jpeg",
+  ],
+  "hexagon"
+);
 
-      "img/animorph/gifts/ani-43.jpeg",
-    ],
-  },
-];
-
-// {
-//     title: "",
-//     blurb1: "",
-//     imgName1: "",
-//     imgName2: "",
-//     imgName3: "",
-//   }
-
-// class Project {
-//   constructor(title, meta, intro, imgs) {
-//     this.values = [r, g, b];
-//   }
-//   get red() {
-//     return this.values[0];
-//   }
-//   set red(value) {
-//     this.values[0] = value;
-//   }
-// }
-
-// const work2 = [
-//   new Project(255, 0, 0),
-//   new Project(255, 0, 0),
-//   new Project(255, 0, 0),
-// ];
-
-// function preload_image(im_url) {
-//   let img = new Image();
-//   img.src = im_url;
-// }
-
-// preload_image("img/Eszter-Muray-All-my-rivers-1.JPG");
-// preload_image("img/Eszter-Muray-All-my-rivers-2.JPG");
-// preload_image("img/Eszter-Muray-All-my-rivers-3.JPG");
-// preload_image("img/Eszter-Muray-All-my-rivers-4.JPG");
-
-
-function Work(id, title, meta, eye) {
-  this.id = id;
-  this.title = title;
-  this.meta = meta:{
-    
-  };
-  this.eyeColor = eye;
-
-  : "5",
-    title: "Animorph",
-    meta: {
-      date: "2021-ongoing",
-      engagement: "Member",
-      client: "Animorph co-op",
-    },
-    blurb: "Brand, website and outreach gifts",
-    imgURL: 
-}
+const work = [Insula, Plex, River, Veszprem, Cine, Animorph];

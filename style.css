@@ -277,14 +277,14 @@ hr {
 /*  --------------*/
 /* --FoodSection: INDIVIDUAL-- */
 
-.parallelogram {
+#parallelogram {
   top: 70px;
   left: 15px;
 
   aspect-ratio: 1/2;
   transform: skew(20deg) rotate(20deg);
 }
-.circle {
+#circle {
   top: 70px;
   left: 15px;
 
@@ -293,7 +293,7 @@ hr {
   border-radius: 50%;
 }
 
-.flower {
+#flower {
   top: 170px;
   left: 15px;
 
@@ -304,7 +304,7 @@ hr {
     radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
 }
 
-.hexagon {
+#hexagon {
   top: 0px;
   left: 35px;
 
@@ -312,7 +312,7 @@ hr {
   clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
 }
 
-.starburst {
+#starburst {
   top: 0px;
   left: 35px;
 
@@ -369,7 +369,7 @@ hr {
     79.74% 46.08%
   );
 }
-.scalloped-box {
+#scalloped-box {
   top: 0px;
   left: 35px;
 
