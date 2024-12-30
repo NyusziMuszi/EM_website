@@ -6,10 +6,7 @@
     <title>Eszter's Taster Menu</title>
 
     <link rel="stylesheet" href="style.css" />
-    <meta
-      name="description"
-      content="Get some tasty bites of what kind of work I make"
-    />
+    <meta name="description" content="Get a taste of my work." />
 
     <meta name="author" content="Eszter Muray" />
     <!-- favicon -->
@@ -31,20 +28,31 @@
       <main id="table">
         <div class="relativeContainer">
           <nav id="navMenu">
-            <button id="reloadBtn" class="button">Get a new meal</button>
             <button id="shuffleBtn" class="button">Shuffle your plate</button>
             <button id="chefBtn" class="button">Talk to the chef</button>
+            <div class="slidecontainer">
+              <input
+                type="range"
+                min="30"
+                max="300"
+                value="50"
+                class="slider"
+                id="hueRange"
+              />
+            </div>
           </nav>
         </div>
 
         <section id="foodSection" class="mainSections">
           <div id="shapesContainer" class="relativeContainer">
-            <nav id="0" class="shape absoluteItem parallelogram"></nav>
-            <nav id="1" class="shape absoluteItem circle"></nav>
-            <nav id="2" class="shape absoluteItem flower"></nav>
-            <nav id="3" class="shape absoluteItem hexagon"></nav>
-            <nav id="4" class="shape absoluteItem starburst"></nav>
-            <nav id="5" class="shape absoluteItem scalloped-box"></nav>
+            <nav id="flower" class="shape absoluteItem"></nav>
+            <nav id="hex" class="shape absoluteItem"></nav>
+            <nav id="star" class="shape absoluteItem"></nav>
+            <nav id="scallop" class="shape absoluteItem"></nav>
+            <nav id="parallelogram" class="shape absoluteItem"></nav>
+            <nav id="circle" class="shape absoluteItem"></nav>
+            <button id="reloadBtn" class="button">Get a new meal</button>
+            <button id="startBtn" class="button">Click to start</button>
 
             <div id="plate"></div>
           </div>
@@ -52,30 +60,33 @@
 
         <section id="contentSection" class="mainSections">
           <article id="content" class="centered">
-            <h2 id="head">Hello and welcome.</h2>
+            <h2 class="head">Hello and welcome.</h2>
 
-            <p id="body">
+            <p class="body">
               Come, try my tasty taster menu of work. You can find out more
               about me
               <a
                 href="https://drive.google.com/file/d/1cL6WVU6_HqZoxCy-iQYv60BOEmadrvJV/view"
                 title="Eszter Muray CV"
+                target="_blank"
                 >here</a
               >
               and find some of my other work
-              <a href="https://www.animorph.coop" title="Animorph">here</a>
+              <a
+                href="https://www.animorph.coop"
+                title="Animorph"
+                target="_blank"
+                >here.</a
+              >
             </p>
             <img src="img/_logos/logo.png" id="logo" />
           </article>
-          <!-- <img id="logo" src="img/Logo.png" alt="Eszter Muray logo" /> -->
-
-          <!-- work -->
         </section>
-        <section id="chef" class="modal hidden">
-          <!-- <button class="btn-close button">Back</button> -->
+        <!-- <section id="chef" class="centered hidden">
+        <button class="btn-close button">Back</button> 
 
           <article class="flex">
-            <!-- <p class="question">Who are you?</p> -->
+            <p class="question">Who are you?</p>
             <p class="answer">
               Hi, I am Eszter, I am a member of Animorph co-operative, and have
               been working as a designer for the last 12 year. I currently
@@ -90,32 +101,34 @@
               <a href="https://animorph.coop/" title="animorph">site.</a>
             </p>
           </article>
-          <!-- <hr /> -->
+          <hr />
 
-          <!-- <article class="flex">
+          <article class="flex">
             <p class="question">Why do you want to join FAC?</p>
             <p class="answer">
               I have been long interested both in FAC and programming. I dabbled
-              in Processing and Arduino at Uni, but never to a really solid level. At work I occassionally code macros in js, make node based Blender models and animations, as well as Unity
-              shaders and amends to Unity gameplay in C#. I would like to get
-              actually good at coding so I can use it as a medium in my personal
-              and professional work. Making this website made me really keen to understand how to actually handle data, and build efficently, rather than somewhat randomly. 
-              I would ideally like to become a creative
-              technologist, so that I can leverage my skills in design still.
+              in Processing and Arduino at Uni, but never to a really solid
+              level. At work I occassionally code macros in js, make node based
+              Blender models and animations, as well as Unity shaders and amends
+              to Unity gameplay in C#. I would like to get actually good at
+              coding so I can use it as a medium in my personal and professional
+              work. Making this website made me really keen to understand how to
+              actually handle data, and build efficently, rather than somewhat
+              randomly. I would ideally like to become a creative technologist,
+              so that I can leverage my skills in design still.
             </p>
           </article>
-          <hr /> -->
-
-          <!-- <article class="flex">
+          <hr />
+          <article class="flex">
             <p class="question">What could you bring to FAC?</p>
             <p class="answer">
-              I would be more than happy to share some UX and typography knowhow. I could also sow some fringe ideas around coops, webart, and obscure dutch digital design trends as needed.
+              I would be more than happy to share some UX and typography
+              knowhow. I could also sow some fringe ideas around coops, webart,
+              and obscure dutch digital design trends as needed.
             </p>
-          </article> -->
+          </article>
           <img src="img/_logos/EszterMuray-intro.jpg" id="intoImg" />
-        </section>
-
-        <div class="overlay hidden"></div>
+        </section> -->
       </main>
     </div>
     <script src="script.js"></script>

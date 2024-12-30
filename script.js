@@ -1,10 +1,56 @@
 "use strict";
 
+//// SELECTOR /////
+
+///none interactive
+const contentSection = document.getElementById("contentSection");
+const foodSection = document.getElementById("foodSection");
+const table = document.getElementById("table");
+const body = document.querySelector("body");
+const scrollBar = document.querySelector(".scrollBar");
+const contentContainer = document.getElementById("content");
+const about = document.getElementById("chef");
+
+///shapes
+const shapes = document.getElementsByClassName("shape");
+
+///button
+const reloadBtn = document.getElementById("reloadBtn");
+const shuffleBtn = document.getElementById("shuffleBtn");
+const chefBtn = document.getElementById("chefBtn");
+const slider = document.getElementById("hueRange");
+
+///modal
+
+////  Initialising arrays /////
+
+////  load hues /////
+
+const shift = slider.oninput;
+
+const sessionHues = [];
+const seed = getRandomNumber(0, 360 - shift);
+
+for (let i = 0; i < 6; i++) {
+  sessionHues.push(getRandomNumber(seed, seed + shift));
+}
+sessionHues.sort(function (a, b) {
+  return a - b;
+});
+console.log("initial", sessionHues);
+
+for (let i = 0; i < 6; i++) {
+  if (i % 2 == 0) {
+    sessionHues[i] /= 10;
+  }
+}
+
+console.log("second", sessionHues);
+
 ////  CONSTRUCTOR /////
 
-class Work {
+class Project {
   constructor(
-    id,
     title,
     date,
     engagement,
@@ -14,10 +60,8 @@ class Work {
     imgURL,
     shape
   ) {
-    this.id = id;
     this.title = title;
     this.meta = { date: date, engagement: engagement, client: client };
-
     this.blurb = blurb;
     this.folderName = folderName;
     this.imgURL = imgURL;
@@ -27,168 +71,124 @@ class Work {
 
 class Shape {
   constructor(id) {
-    this.id = id;
+    this.shapeSelect = document.getElementById(id);
+    this.shapeName = id;
+
+    this.beenViewed = false;
+
+    // this.loadContent();
+    this.randomScale();
+    this.randomPosition();
+    this.randomColor();
   }
-  testtest() {
-    const test2 = document.getElementById(this.id);
-    test2.addEventListener("click", (event) => {
-      console.log(event);
-    });
+
+  randomScale() {
+    const scale = `${getRandomNumber(70, 100)}%`;
+    this.shapeSelect.style.scale = scale;
   }
+
+  randomPosition() {
+    const position = [
+      `${getRandomNumber(0, 100)}px`,
+      `${getRandomNumber(0, 200)}px`,
+    ];
+    this.shapeSelect.style.left = position[0];
+    this.shapeSelect.style.top = position[1];
+  }
+
+  randomColor() {
+    const [hue, saturation, lightness, alpha] = getRandomHslaColor();
+    for (let i = 0; i < projects.length; i++) {
+      //match with the projects
+      if (this.shapeName == projects[i].shape) {
+        this.shapeSelect.style.backgroundColor = `hsla(${sessionHues[i]}, ${saturation}%, ${lightness}%, ${alpha} )`;
+      }
+    }
+  }
+
+  // matchColor() {
+  //   const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
+  //   const colorBg = `hsla(${hue}, ${saturation - 30}%, ${
+  //     lightness + 30
+  //   }%, ${alpha} )`;
+  //   body.style.backgroundColor = colorBg;
+  // }
+
+  // loadContent() {
+  //   document.getElementById(this.id).addEventListener("click", (e) => {
+  //     //set boolean to true
+  //     this.beenViewed = true;
+  //     for (let i = 0; i < projects.length; i++) {
+  //       //match with the projects
+  //       if (this.id == projects[i].shape) {
+  //         //construct DOM for project
+  //         //load in images
+  //         const imageURLS = [];
+  //         projects[i].imgURL.forEach((url) => {
+  //           imageURLS.push(
+  //             `<img class="projectMedia" src="${url}" alt="Eszter Muray ${projects[i].title}" />`
+  //           );
+  //         });
+
+  //         let div = document.createElement("article");
+
+  //         div.id = "content";
+
+  //         div.innerHTML = `<h2 class="head">${projects[i].title}</h2>
+  //          <article class="meta">
+  //           <p class="date">${projects[i].meta.date}</p>
+  //           <p class="engagement">${projects[i].meta.engagement}</p>
+  //           <p class="client">For ${projects[i].meta.client}</p>
+  //          </article>
+  //          <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
+  //         contentSection.appendChild(div);
+
+  //         matchColor();
+  //       }
+  //     }
+  //   });
+  // }
 }
-// randomScale() {
-//   return (this.scale = `${getRandomNumber(70, 100)}%`);
-// }
-// randomPosition() {
-//   [`${getRandomNumber(0, 100)}px`, `${getRandomNumber(0, 200)}px`];
-//   return this.position;
-// }
-// setScale() {
-//   this.scale = `${getRandomNumber(70, 100)}%`;
-//   this.style.scale = scale;
-// }
-
-// setPosition() {
-//   const shapes = document.getElementsByClassName("shape");
-//   for (let i = 0; i < shapes.length; i++) {
-//     const position = getRandomPosition();
-//     shapes[i].style.left = position[0];
-//     shapes[i].style.top = position[1];
-//   }
-// }
-
-const Paralelogramma = new Shape("hexagon");
-Paralelogramma.testtest();
-
-//// SELECTOR /////
-
-const contentSection = document.getElementById("contentSection");
-const foodSection = document.getElementById("foodSection");
-const table = document.getElementById("table");
-const body = document.querySelector("body");
-const scrollBar = document.querySelector(".scrollBar");
-
-const header = document.getElementById("head");
-const contentContainer = document.getElementById("content");
-
-const shapes = document.getElementsByClassName("shape");
-
-const reloadBtn = document.getElementById("reloadBtn");
-const shuffleBtn = document.getElementById("shuffleBtn");
-const chefBtn = document.getElementById("chefBtn");
-const modal = document.getElementById("chef");
-const overlay = document.querySelector(".overlay");
 
 //// FUNCTION /////
 
-//////// FUNCTION: Generating random values /////
+///generating random values
 
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
-function getRandomHslaColor(hueLimit) {
-  const getRandomNumberAlpha = (min, max) =>
-    (Math.random() * (max - min) + min).toFixed(1);
+
+///generate random color
+
+function getRandomHslaColor() {
   const { hue, saturation, lightness, alpha } = {
-    hue: getRandomNumber(0, 250),
+    hue: getRandomNumber(0, 360),
     saturation: getRandomNumber(25, 80),
     lightness: getRandomNumber(30, 70),
-    alpha: getRandomNumberAlpha(1, 1),
+    alpha: 1,
   };
   return [hue, saturation, lightness, alpha];
 }
 
-function getRandomPosition() {
-  const position = [
-    `${getRandomNumber(0, 100)}px`,
-    `${getRandomNumber(0, 200)}px`,
-  ];
-  return position;
-}
+///Setting random values
 
-function getRandomScale() {
-  const scale = `${getRandomNumber(70, 100)}%`;
-  return scale;
-}
-
-//////// FUNCTION: Setting random values /////
-function setColor(hueLimit) {
-  const shapes = document.getElementsByClassName("shape");
-  for (let i = 0; i < shapes.length; i++) {
-    const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
-    shapes[i].style.backgroundColor = `hsla(${
-      hue + hueLimit
-    }, ${saturation}%, ${lightness}%, ${alpha} )`;
-  }
-}
 function matchColor(hueLimit) {
   const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
   const colorBg = `hsla(${hue}, ${saturation - 30}%, ${
     lightness + 30
   }%, ${alpha} )`;
+  body.style.backgroundColor = colorBg;
+
   const colorHead = `hsla(${hue}, ${saturation - 30}%, ${
     lightness - 30
   }%, ${alpha} )`;
-
-  body.style.backgroundColor = colorBg;
   header.style.color = colorHead;
-  scrollBar.style.scrollbarColor = "red";
-
-  // `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha} )`;
-}
-
-function setScale() {
-  const shapes = document.getElementsByClassName("shape");
-  for (let i = 0; i < shapes.length; i++) {
-    const scale = getRandomScale();
-    shapes[i].style.scale = scale;
-  }
-}
-
-function setPosition() {
-  const shapes = document.getElementsByClassName("shape");
-  for (let i = 0; i < shapes.length; i++) {
-    const position = getRandomPosition();
-    shapes[i].style.left = position[0];
-    shapes[i].style.top = position[1];
-  }
 }
 
 //////// FUNCTION: Shapes /////
 
 function removeShape(e) {
   e.style.display = "none";
-}
-function animateShape(e) {
-  e.classList.add("clicked");
-}
-
-//////// FUNCTION: Content /////
-
-function findID(e) {
-  return e.id;
-}
-
-function loadContent(shapeId) {
-  const imageURLS = [];
-  work[shapeId].imgURL.forEach((url) => {
-    imageURLS.push(
-      `<img class="projectMedia" src="${url}" alt="Eszter Muray ${work[shapeId].title}" />`
-    );
-  });
-
-  let div = document.createElement("article");
-
-  div.id = "content";
-
-  div.innerHTML = `<h2 id="head">${work[shapeId].title}</h2>
-<article class="meta">
- <p class="date">${work[shapeId].meta.date}</p>
- <p class="engagement">${work[shapeId].meta.engagement}</p>
- <p class="client">For ${work[shapeId].meta.client}</p>
-</article>
-    <p class="blurb">${work[shapeId].blurb}</p>${imageURLS.join(" ")}`;
-  contentSection.appendChild(div);
 }
 
 function removeContent() {
@@ -200,30 +200,16 @@ function removeContent() {
   }
 }
 
-//////// FUNCTION: Modal /////
-function closeModal() {
-  chef.style.display = "none";
-}
-
 //// EVENT LISTENERS /////
 
-// table.addEventListener("click", function (e) {
-//   if (e.target.classList.contains("shape")) {
-//     matchColor(getRandomNumber(0, 150));
-//   }
-// });
 let counter = 0;
 
 for (let i = 0; i < shapes.length; i++) {
   shapes[i].addEventListener("click", function () {
-    // animateShape(shapes[i]);
-    // // removeShape(shapes[i]);
-    // findID(shapes[i]);
-    // removeContent();
-    // setTimeout(() => {
-    //   removeShape(shapes[i]);
-    // }, "1000");
-    // loadContent(findID(shapes[i]));
+    removeContent();
+    setTimeout(() => {
+      removeShape(shapes[i]);
+    }, "1000");
     // matchColor(getRandomNumber(0, 150));
     // counter++;
     // console.log(counter);
@@ -235,15 +221,8 @@ for (let i = 0; i < shapes.length; i++) {
   });
 }
 
-window.addEventListener("load", function () {
-  setPosition();
-  setColor(getRandomNumber(0, 150));
-  setScale();
-});
-
-overlay.addEventListener("click", function () {
-  chef.classList.add("hidden");
-  overlay.classList.add("hidden");
+reloadBtn.addEventListener("click", function () {
+  location.reload();
 });
 
 reloadBtn.addEventListener("click", function () {
@@ -261,10 +240,11 @@ chefBtn.addEventListener("click", function () {
   overlay.classList.remove("hidden");
 });
 
+/////////////////////////
+/////////////////////////
 //// DATABASE /////
 
-const Insula = new Work(
-  "0",
+const Insula = new Project(
   "Insula Lutherana and the Lutheran Museum",
   "2013-2015",
   "Freelance",
@@ -281,11 +261,10 @@ const Insula = new Work(
     "img/insula/insula_8.jpg",
     "img/insula/insula_9.jpg",
   ],
-  "paralelogramma"
+  "parallelogram"
 );
 
-const Plex = new Work(
-  "1",
+const Plex = new Project(
   "Plexopolis",
   "2017",
   "Designer at Uniform",
@@ -300,11 +279,10 @@ const Plex = new Work(
     "img/plexopolis/Uniform-plexopolis-13.jpg",
     "img/plexopolis/Uniform-plexopolis-15.jpg",
   ],
-  "hexagon"
+  "circle"
 );
 
-const River = new Work(
-  "2",
+const River = new Project(
   "All my rivers",
   "2020",
   "Artist in Residence",
@@ -325,10 +303,9 @@ const River = new Work(
     "img/rivers/Eszter-Muray-All-my-rivers-11.jpg",
     "img/rivers/Eszter-Muray-All-my-rivers-12.jpg",
   ],
-  "hexagon"
+  "hex"
 );
-const Veszprem = new Work(
-  "3",
+const Veszprem = new Project(
   "Petofi Szinhaz",
   "2021",
   "Freelance",
@@ -343,11 +320,10 @@ const Veszprem = new Work(
     "img/veszprem/Screenshot 2024-08-09 at 11.24.16 am.jpg",
     "img/veszprem/Screenshot 2024-08-09 at 11.24.26 am.jpg",
   ],
-  "hexagon"
+  "flower"
 );
 
-const Cine = new Work(
-  "4",
+const Cine = new Project(
   "Cinemachines",
   "2019",
   "ArtEZ University",
@@ -362,10 +338,9 @@ const Cine = new Work(
     "img/cinemachines/IMG_0543.jpg",
     "img/cinemachines/IMG_0546.jpg",
   ],
-  "hexagon"
+  "star"
 );
-const Animorph = new Work(
-  "4",
+const Animorph = new Project(
   "Animorph",
   "2021-now",
   "Freelance and then in house",
@@ -387,7 +362,15 @@ const Animorph = new Work(
 
     "img/animorph/gifts/ani-43.jpeg",
   ],
-  "hexagon"
+  "scallop"
 );
+const projects = [Insula, Plex, River, Veszprem, Cine, Animorph];
 
-const work = [Insula, Plex, River, Veszprem, Cine, Animorph];
+const para = new Shape("parallelogram");
+const circle = new Shape("circle");
+const flower = new Shape("flower");
+const hex = new Shape("hex");
+const star = new Shape("star");
+const scallop = new Shape("scallop");
+
+const shapesJS = [para, circle, flower, hex, star, scallop];

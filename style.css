@@ -43,26 +43,20 @@ p {
   font-weight: 400;
 }
 
-#head,
+.head,
 h1,
 h2,
 h3 {
   color: #000000;
   mix-blend-mode: multiply;
-  /* font-family: "Lilita One", sans-serif;
-  font-weight: 400;
-  font-style: normal; */
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
   margin: none;
+}
 
-  /* font-size: 3rem; */
-}
-.blurb {
-}
 .meta > p {
   color: #00000090;
   font-size: 0.8rem;
@@ -70,30 +64,46 @@ h3 {
   font-family: "Roboto Mono", monospace;
 }
 
+a {
+  text-decoration: none;
+  font-style: italic;
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.247);
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+a:hover {
+  font-style: normal;
+  background-color: rgba(235, 236, 230, 0.624);
+}
+
+a:visited {
+  background-color: none;
+}
+
 /*------------------------------------------- */
 /*--GENERAL-- */
 
 .projectMedia {
   max-width: 40vw;
-  /* margin: 20px; */
-  /* box-sizing: border-box; */
-  /* position: relative; */
 }
 .button {
-  background-color: #ffffff60;
+  background-color: rgba(255, 255, 255, 0.247);
   border: 1px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
   padding: 5px 5px;
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   font-size: 16px;
   cursor: help;
   transition: 0.3s;
   width: 200px;
 }
-#navMenu .button:hover {
+.button:hover {
   border-radius: 20px;
+  background-color: rgba(235, 236, 230, 0.624);
 }
 
 #logo {
@@ -170,50 +180,6 @@ hr {
   justify-content: center;
 }
 
-/*------------------------------------------- */
-/*--MODAL-- */
-.modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-  width: 800px;
-  padding: 1.3rem;
-  min-height: 250px;
-  position: absolute;
-  top: 10%;
-  background-color: rgb(255, 255, 255);
-  z-index: 2;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.flex {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex > p {
-  flex: 1;
-  text-align: left;
-}
-
-.modal > article {
-  gap: 30px;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -231,7 +197,7 @@ hr {
 }
 
 /*------------------------------------------- */
-/* --FoodSection: GENERAL-- */
+/* --SHAPES: GENERAL-- */
 
 #shapesContainer {
   isolation: isolate;
@@ -244,15 +210,18 @@ hr {
 .shape {
   transition: transform 2s ease-in-out;
   mix-blend-mode: soft-light;
-  z-index: 10;
+  z-index: 1;
   height: 30vw;
   width: 30vw;
   scale: 100%;
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
 }
 
 .shape:hover {
-  transform: rotate(44deg) scale(134%);
+  transition: 1s;
+  transform: rotate(20deg) scale(124%) !important;
 }
 
 .shape.clicked {
@@ -274,117 +243,8 @@ hr {
     0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
 }
 
-/*  --------------*/
-/* --FoodSection: INDIVIDUAL-- */
-
-#parallelogram {
-  top: 70px;
-  left: 15px;
-
-  aspect-ratio: 1/2;
-  transform: skew(20deg) rotate(20deg);
-}
-#circle {
-  top: 70px;
-  left: 15px;
-
-  aspect-ratio: 1/5;
-  transform: skew(20deg) rotate(20deg);
-  border-radius: 50%;
-}
-
-#flower {
-  top: 170px;
-  left: 15px;
-
-  aspect-ratio: 2/1;
-  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
-  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
-    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
-    radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
-}
-
-#hexagon {
-  top: 0px;
-  left: 35px;
-
-  aspect-ratio: 1 / cos(30deg);
-  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
-}
-
-#starburst {
-  top: 0px;
-  left: 35px;
-
-  aspect-ratio: 1;
-
-  clip-path: polygon(
-    100% 50%,
-    79.74% 53.92%,
-    98.3% 62.94%,
-    77.72% 61.48%,
-    93.3% 75%,
-    73.8% 68.26%,
-    85.36% 85.36%,
-    68.26% 73.8%,
-    75% 93.3%,
-    61.48% 77.72%,
-    62.94% 98.3%,
-    53.92% 79.74%,
-    50% 100%,
-    46.08% 79.74%,
-    37.06% 98.3%,
-    38.52% 77.72%,
-    25% 93.3%,
-    31.74% 73.8%,
-    14.64% 85.36%,
-    26.2% 68.26%,
-    6.7% 75%,
-    22.28% 61.48%,
-    1.7% 62.94%,
-    20.26% 53.92%,
-    0% 50%,
-    20.26% 46.08%,
-    1.7% 37.06%,
-    22.28% 38.52%,
-    6.7% 25%,
-    26.2% 31.74%,
-    14.64% 14.64%,
-    31.74% 26.2%,
-    25% 6.7%,
-    38.52% 22.28%,
-    37.06% 1.7%,
-    46.08% 20.26%,
-    50% 0%,
-    53.92% 20.26%,
-    62.94% 1.7%,
-    61.48% 22.28%,
-    75% 6.7%,
-    68.26% 26.2%,
-    85.36% 14.64%,
-    73.8% 31.74%,
-    93.3% 25%,
-    77.72% 38.52%,
-    98.3% 37.06%,
-    79.74% 46.08%
-  );
-}
-#scalloped-box {
-  top: 0px;
-  left: 35px;
-
-  --r: 30px; /* radius of circles */
-  aspect-ratio: 1;
-
-  padding: calc(1.5 * var(--r));
-  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
-      calc(100% - 2 * var(--r)),
-    radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
-      calc(2 * var(--r)) round;
-}
-
 /*  -----------------------------------------*/
-/*--EXTRA-- */
+/*--BTN-- */
 #reloadBtn {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
       16 0,
@@ -406,7 +266,7 @@ hr {
   scrollbar-color: rgb(255, 255, 255) #ffffff00;
 }
 
-/*  --------------*/
+/*  -----------------------------------------*/
 /* RESPONSIVE */
 @media (min-width: 1800px) {
   #plate {
@@ -458,12 +318,116 @@ hr {
   #navMenu {
     position: fixed;
   }
-  .modal {
-    width: 90vw;
-    gap: 20px;
-  }
-  .modal > article {
-    flex-direction: column;
-    gap: 10px;
-  }
+}
+
+/*  -----------------------------------------*/
+/* --SHAPE: Individual-- */
+
+#parallelogram {
+  aspect-ratio: 1/2;
+  transform: skew(20deg) rotate(20deg);
+}
+#circle {
+  aspect-ratio: 1/5;
+  transform: skew(20deg) rotate(20deg);
+  border-radius: 50%;
+}
+
+#flower {
+  aspect-ratio: 2/1;
+  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
+  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
+    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
+    radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
+}
+
+#hex {
+  aspect-ratio: 1 / cos(30deg);
+  clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+}
+
+#star {
+  aspect-ratio: 1;
+  clip-path: polygon(
+    100% 50%,
+    79.74% 53.92%,
+    98.3% 62.94%,
+    77.72% 61.48%,
+    93.3% 75%,
+    73.8% 68.26%,
+    85.36% 85.36%,
+    68.26% 73.8%,
+    75% 93.3%,
+    61.48% 77.72%,
+    62.94% 98.3%,
+    53.92% 79.74%,
+    50% 100%,
+    46.08% 79.74%,
+    37.06% 98.3%,
+    38.52% 77.72%,
+    25% 93.3%,
+    31.74% 73.8%,
+    14.64% 85.36%,
+    26.2% 68.26%,
+    6.7% 75%,
+    22.28% 61.48%,
+    1.7% 62.94%,
+    20.26% 53.92%,
+    0% 50%,
+    20.26% 46.08%,
+    1.7% 37.06%,
+    22.28% 38.52%,
+    6.7% 25%,
+    26.2% 31.74%,
+    14.64% 14.64%,
+    31.74% 26.2%,
+    25% 6.7%,
+    38.52% 22.28%,
+    37.06% 1.7%,
+    46.08% 20.26%,
+    50% 0%,
+    53.92% 20.26%,
+    62.94% 1.7%,
+    61.48% 22.28%,
+    75% 6.7%,
+    68.26% 26.2%,
+    85.36% 14.64%,
+    73.8% 31.74%,
+    93.3% 25%,
+    77.72% 38.52%,
+    98.3% 37.06%,
+    79.74% 46.08%
+  );
+}
+#scallop {
+  --r: 30px; /* radius of circles */
+  aspect-ratio: 1;
+
+  padding: calc(1.5 * var(--r));
+  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
+      calc(100% - 2 * var(--r)),
+    radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
+      calc(2 * var(--r)) round;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
 }
