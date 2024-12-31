@@ -28,9 +28,11 @@
       <main id="table">
         <div class="relativeContainer">
           <nav id="navMenu">
-            <button id="shuffleBtn" class="button">Shuffle your plate</button>
-            <button id="chefBtn" class="button">Talk to the chef</button>
-            <div class="slidecontainer">
+            <button id="chefBtn">Talk to the chef</button>
+            <button id="reloadBtn">Get a new meal</button>
+            <button id="shuffleBtn">Shuffle your plate</button>
+
+            <!-- <div class="slidecontainer">
               <input
                 type="range"
                 min="30"
@@ -39,7 +41,7 @@
                 class="slider"
                 id="hueRange"
               />
-            </div>
+            </div> -->
           </nav>
         </div>
 
@@ -51,20 +53,19 @@
             <nav id="scallop" class="shape absoluteItem"></nav>
             <nav id="parallelogram" class="shape absoluteItem"></nav>
             <nav id="circle" class="shape absoluteItem"></nav>
-            <button id="reloadBtn" class="button">Get a new meal</button>
-            <button id="startBtn" class="button">Click to start</button>
 
             <div id="plate"></div>
           </div>
         </section>
 
         <section id="contentSection" class="mainSections">
-          <article id="content" class="centered">
+          <article id="intro" class="centered xx">
             <h2 class="head">Hello and welcome.</h2>
 
             <p class="body">
-              Come, try my tasty taster menu of work. You can find out more
-              about me
+              Come, try my tasty taster menu of work. ← To start ← click any of
+              the shapes on the right. ← ← ← ← ← ← You can find out more about
+              me
               <a
                 href="https://drive.google.com/file/d/1cL6WVU6_HqZoxCy-iQYv60BOEmadrvJV/view"
                 title="Eszter Muray CV"
@@ -79,14 +80,13 @@
                 >here.</a
               >
             </p>
+
             <img src="img/_logos/logo.png" id="logo" />
           </article>
-        </section>
-        <!-- <section id="chef" class="centered hidden">
-        <button class="btn-close button">Back</button> 
 
-          <article class="flex">
-            <p class="question">Who are you?</p>
+          <article id="about" class="centered xx hidden">
+            <h2 class="head">Who are you?</h2>
+
             <p class="answer">
               Hi, I am Eszter, I am a member of Animorph co-operative, and have
               been working as a designer for the last 12 year. I currently
@@ -100,11 +100,9 @@
               >. A lot of my recent work is on our
               <a href="https://animorph.coop/" title="animorph">site.</a>
             </p>
-          </article>
-          <hr />
 
-          <article class="flex">
-            <p class="question">Why do you want to join FAC?</p>
+            <h2 class="head">Why do you want to join FAC?</h2>
+
             <p class="answer">
               I have been long interested both in FAC and programming. I dabbled
               in Processing and Arduino at Uni, but never to a really solid
@@ -117,18 +115,16 @@
               randomly. I would ideally like to become a creative technologist,
               so that I can leverage my skills in design still.
             </p>
-          </article>
-          <hr />
-          <article class="flex">
-            <p class="question">What could you bring to FAC?</p>
+
+            <h2 class="head">What could you bring to FAC?</h2>
             <p class="answer">
               I would be more than happy to share some UX and typography
               knowhow. I could also sow some fringe ideas around coops, webart,
               and obscure dutch digital design trends as needed.
             </p>
+            <img src="img/_logos/EszterMuray-intro.jpg" id="intoImg" />
           </article>
-          <img src="img/_logos/EszterMuray-intro.jpg" id="intoImg" />
-        </section> -->
+        </section>
       </main>
     </div>
     <script src="script.js"></script>

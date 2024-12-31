@@ -1,5 +1,5 @@
 "use strict";
-
+//////////////////////////////////////////////////
 //// SELECTOR /////
 
 ///none interactive
@@ -7,9 +7,10 @@ const contentSection = document.getElementById("contentSection");
 const foodSection = document.getElementById("foodSection");
 const table = document.getElementById("table");
 const body = document.querySelector("body");
-const scrollBar = document.querySelector(".scrollBar");
-const contentContainer = document.getElementById("content");
-const about = document.getElementById("chef");
+//text
+const about = document.getElementById("about");
+const content = document.getElementById("content");
+const intro = document.getElementById("intro");
 
 ///shapes
 const shapes = document.getElementsByClassName("shape");
@@ -18,35 +19,32 @@ const shapes = document.getElementsByClassName("shape");
 const reloadBtn = document.getElementById("reloadBtn");
 const shuffleBtn = document.getElementById("shuffleBtn");
 const chefBtn = document.getElementById("chefBtn");
-const slider = document.getElementById("hueRange");
+// const slider = document.getElementById("hueRange");
 
-///modal
+//////////////////////////////////////////////////
+////  Initialising Color array /////
 
-////  Initialising arrays /////
+// const shift = slider.oninput;
+const shift = 105;
 
-////  load hues /////
+// const shift = 80;
+// const sessionHues = [];
+// const seed = getRandomNumber(20, 340 - shift);
 
-const shift = slider.oninput;
+// for (let i = 0; i < 6; i++) {
+//   sessionHues.push(getRandomNumber(seed, seed + shift));
+// }
+// sessionHues.sort(function (a, b) {
+//   return a - b;
+// });
 
-const sessionHues = [];
-const seed = getRandomNumber(0, 360 - shift);
+// for (let i = 0; i < 6; i++) {
+//   if (i % 2 == 0) {
+//     sessionHues[i] /= 10;
+//   }
+// }
 
-for (let i = 0; i < 6; i++) {
-  sessionHues.push(getRandomNumber(seed, seed + shift));
-}
-sessionHues.sort(function (a, b) {
-  return a - b;
-});
-console.log("initial", sessionHues);
-
-for (let i = 0; i < 6; i++) {
-  if (i % 2 == 0) {
-    sessionHues[i] /= 10;
-  }
-}
-
-console.log("second", sessionHues);
-
+//////////////////////////////////////////////////
 ////  CONSTRUCTOR /////
 
 class Project {
@@ -70,16 +68,70 @@ class Project {
 }
 
 class Shape {
-  constructor(id) {
+  constructor(id, hueChoose) {
     this.shapeSelect = document.getElementById(id);
     this.shapeName = id;
-
     this.beenViewed = false;
+    this.hueChooseOrig = hueChoose;
+    this.hueChoose = getRandomNumber(hueChoose - shift, hueChoose + shift);
 
-    // this.loadContent();
+    this.hue;
+    this.saturation;
+    this.light;
+    this.hover = 3;
+
     this.randomScale();
     this.randomPosition();
     this.randomColor();
+    this.attachEventHandlers();
+  }
+
+  attachEventHandlers() {
+    this.shapeSelect.addEventListener("click", this.handleClick.bind(this));
+    this.shapeSelect.addEventListener(
+      "mouseenter",
+      this.handleEnter.bind(this)
+    );
+    this.shapeSelect.addEventListener(
+      "mouseleave",
+      this.handleLeave.bind(this)
+    );
+  }
+
+  handleEnter(event) {
+    this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
+      this.saturation + this.hover
+    }%, ${this.light + this.hover}%)`;
+  }
+
+  handleLeave(event) {
+    this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
+      this.saturation - this.hover
+    }%, ${this.light - this.hover}%)`;
+  }
+
+  handleClick(event) {
+    this.beenViewed = true;
+    this.matchColor();
+    this.loadContent();
+    this.removeShape();
+    intro.classList.add("hidden");
+    about.classList.add("hidden");
+    this.checkEnd();
+  }
+
+  checkEnd() {
+    let numberViewed = 0;
+    for (let i = 0; i < shapeInstances.length; i++) {
+      if (shapeInstances[i].beenViewed == true) {
+        numberViewed++;
+      } else {
+      }
+      if (numberViewed == shapeInstances.length) {
+        shuffleBtn.classList.add("hidden");
+        reloadBtn.classList.add("highlight");
+      }
+    }
   }
 
   randomScale() {
@@ -97,158 +149,103 @@ class Shape {
   }
 
   randomColor() {
-    const [hue, saturation, lightness, alpha] = getRandomHslaColor();
+    let lightness = getRandomNumber(38, 90);
+    let saturation = 80;
+    if (lightness > 85) {
+      saturation = getRandomNumber(80, 100);
+    } else if (lightness > 65) {
+      saturation = getRandomNumber(40, 60);
+    } else {
+      saturation = getRandomNumber(28, 50);
+    }
     for (let i = 0; i < projects.length; i++) {
       //match with the projects
       if (this.shapeName == projects[i].shape) {
-        this.shapeSelect.style.backgroundColor = `hsla(${sessionHues[i]}, ${saturation}%, ${lightness}%, ${alpha} )`;
+        // this.shapeSelect.style.backgroundColor = `hsl(${sessionHues[i]}, ${saturation}%, ${lightness}%)`;
+        this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${saturation}%, ${lightness}%)`;
+        // this.hue = sessionHues[i];
+        this.saturation = saturation;
+        this.light = lightness;
       }
     }
   }
 
-  // matchColor() {
-  //   const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
-  //   const colorBg = `hsla(${hue}, ${saturation - 30}%, ${
-  //     lightness + 30
-  //   }%, ${alpha} )`;
-  //   body.style.backgroundColor = colorBg;
-  // }
+  matchColor() {
+    const { saturation, lightness, alpha } = {
+      saturation: getRandomNumber(5, 25),
+      lightness: getRandomNumber(70, 95),
+    };
 
-  // loadContent() {
-  //   document.getElementById(this.id).addEventListener("click", (e) => {
-  //     //set boolean to true
-  //     this.beenViewed = true;
-  //     for (let i = 0; i < projects.length; i++) {
-  //       //match with the projects
-  //       if (this.id == projects[i].shape) {
-  //         //construct DOM for project
-  //         //load in images
-  //         const imageURLS = [];
-  //         projects[i].imgURL.forEach((url) => {
-  //           imageURLS.push(
-  //             `<img class="projectMedia" src="${url}" alt="Eszter Muray ${projects[i].title}" />`
-  //           );
-  //         });
+    const colorBg = `hsl(${this.hueChoose}, ${saturation}%, ${lightness}%)`;
+    body.style.backgroundColor = colorBg;
+  }
 
-  //         let div = document.createElement("article");
+  loadContent() {
+    this.removeContent();
+    for (let i = 0; i < projects.length; i++) {
+      //match with the projects
 
-  //         div.id = "content";
+      if (this.shapeName == projects[i].shape) {
+        const imageURLS = []; //load in images
+        projects[i].imgURL.forEach((url) => {
+          imageURLS.push(
+            `<img class="projectMedia" src="${url}" alt="Eszter Muray ${projects[i].title}" />`
+          );
+        });
 
-  //         div.innerHTML = `<h2 class="head">${projects[i].title}</h2>
-  //          <article class="meta">
-  //           <p class="date">${projects[i].meta.date}</p>
-  //           <p class="engagement">${projects[i].meta.engagement}</p>
-  //           <p class="client">For ${projects[i].meta.client}</p>
-  //          </article>
-  //          <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
-  //         contentSection.appendChild(div);
+        let div = document.createElement("article"); //construct DOM for project
 
-  //         matchColor();
-  //       }
-  //     }
-  //   });
-  // }
+        div.setAttribute("id", "content");
+        div.setAttribute("class", "centered");
+        div.setAttribute("class", "xx");
+
+        div.innerHTML = `<h2 class="head" style ="color: hsl(${
+          this.hueChooseOrig
+        }, 50%, 50%)
+  ">${projects[i].title}</h2>
+           <article class="meta">
+            <p class="date">${projects[i].meta.date}</p>
+            <p class="engagement">@ ${projects[i].meta.engagement}</p>
+            <p class="client">For ${projects[i].meta.client}</p>
+           </article>
+           <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
+        contentSection.appendChild(div);
+      }
+    }
+  }
+  removeShape() {
+    if ((this.beenViewed = true)) {
+      this.shapeSelect.style.display = "none";
+    }
+  }
+
+  removeContent() {
+    let element;
+    if ((element = document.getElementById("content"))) {
+      element.remove();
+    }
+    // let about;
+    // if ((about = document.getElementById("about"))) {
+    //   about.remove();
+    // }
+  }
 }
 
+//////////////////////////////////////////////////
 //// FUNCTION /////
-
-///generating random values
 
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-///generate random color
-
-function getRandomHslaColor() {
-  const { hue, saturation, lightness, alpha } = {
-    hue: getRandomNumber(0, 360),
-    saturation: getRandomNumber(25, 80),
-    lightness: getRandomNumber(30, 70),
-    alpha: 1,
-  };
-  return [hue, saturation, lightness, alpha];
-}
-
-///Setting random values
-
-function matchColor(hueLimit) {
-  const [hue, saturation, lightness, alpha] = getRandomHslaColor(hueLimit);
-  const colorBg = `hsla(${hue}, ${saturation - 30}%, ${
-    lightness + 30
-  }%, ${alpha} )`;
-  body.style.backgroundColor = colorBg;
-
-  const colorHead = `hsla(${hue}, ${saturation - 30}%, ${
-    lightness - 30
-  }%, ${alpha} )`;
-  header.style.color = colorHead;
-}
-
-//////// FUNCTION: Shapes /////
-
-function removeShape(e) {
-  e.style.display = "none";
-}
-
-function removeContent() {
-  let element;
-  if ((element = document.getElementById("content"))) {
-    element.remove();
-  } else {
-    console.log("not yet loaded");
-  }
-}
-
-//// EVENT LISTENERS /////
-
-let counter = 0;
-
-for (let i = 0; i < shapes.length; i++) {
-  shapes[i].addEventListener("click", function () {
-    removeContent();
-    setTimeout(() => {
-      removeShape(shapes[i]);
-    }, "1000");
-    // matchColor(getRandomNumber(0, 150));
-    // counter++;
-    // console.log(counter);
-    // if (counter >= shapes.length) {
-    //   shuffleBtn.style.display = "none";
-    // } else {
-    //   shuffleBtn.style.display = "block";
-    // }
-  });
-}
-
-reloadBtn.addEventListener("click", function () {
-  location.reload();
-});
-
-reloadBtn.addEventListener("click", function () {
-  location.reload();
-});
-
-shuffleBtn.addEventListener("click", function () {
-  setPosition();
-  setColor(getRandomNumber(0, 150));
-  setScale();
-});
-
-chefBtn.addEventListener("click", function () {
-  chef.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-});
-
-/////////////////////////
-/////////////////////////
+//////////////////////////////////////////////////
 //// DATABASE /////
 
 const Insula = new Project(
   "Insula Lutherana and the Lutheran Museum",
   "2013-2015",
   "Freelance",
-  "me",
+  "Lutheran Complex / Potzner Ádám (architech)",
   "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves, as well as rebranding the Lutheran Museum in the heart of Budapest.",
   "insula",
   [
@@ -268,7 +265,7 @@ const Plex = new Project(
   "Plexopolis",
   "2017",
   "Designer at Uniform",
-  "UCL",
+  "University College London",
   "Creating an engaging and affordable game for high school students on the topic of urban planning.",
   "insula",
   [
@@ -286,7 +283,7 @@ const River = new Project(
   "All my rivers",
   "2020",
   "Artist in Residence",
-  "Regensburg",
+  "Donumenta",
   "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. “All my rivers” is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
   "river",
   [
@@ -309,7 +306,7 @@ const Veszprem = new Project(
   "Petofi Szinhaz",
   "2021",
   "Freelance",
-  "Potzner Adam, Veszpremi Petofi Szinhaz",
+  "Potzner Ádám (architech)",
   "Concept and design for the Petofi theatre's refurbishment.",
   "veszprem",
   [
@@ -343,8 +340,8 @@ const Cine = new Project(
 const Animorph = new Project(
   "Animorph",
   "2021-now",
-  "Freelance and then in house",
-  "Animorph co-op",
+  "Freelance, subsequently in-house",
+  "Animorph co-operative",
   "Brand, website and outreach gifts.",
   "animorph",
   [
@@ -366,11 +363,36 @@ const Animorph = new Project(
 );
 const projects = [Insula, Plex, River, Veszprem, Cine, Animorph];
 
-const para = new Shape("parallelogram");
-const circle = new Shape("circle");
-const flower = new Shape("flower");
-const hex = new Shape("hex");
-const star = new Shape("star");
-const scallop = new Shape("scallop");
+const para = new Shape("parallelogram", 236);
+const circle = new Shape("circle", 0);
+const flower = new Shape("flower", 58);
+const hex = new Shape("hex", 149);
+const star = new Shape("star", 279);
+const scallop = new Shape("scallop", 236);
 
-const shapesJS = [para, circle, flower, hex, star, scallop];
+const shapeInstances = [para, circle, flower, hex, star, scallop];
+
+//////////////////////////////////////////////////
+//// EVENT LISTENERS /////
+
+reloadBtn.addEventListener("click", function () {
+  location.reload();
+});
+
+shuffleBtn.addEventListener("click", function () {
+  for (let i = 0; i < shapeInstances.length; i++) {
+    shapeInstances[i].randomPosition();
+    shapeInstances[i].randomScale();
+  }
+});
+
+chefBtn.addEventListener("click", function () {
+  about.classList.remove("hidden");
+  for (let i = 0; i < shapeInstances.length; i++) {
+    shapeInstances[i].removeContent();
+  }
+  intro.classList.add("hidden");
+  content.classList.add("hidden");
+
+  // overlay.classList.remove("hidden");
+});

@@ -19,7 +19,7 @@ body {
 
 /*------------------------------------------- */
 /*--TYPE-- */
-p,
+
 button {
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
@@ -36,18 +36,9 @@ p {
   max-width: 28em;
   text-align: center;
 }
-.question {
-  font-family: "Roboto Mono", monospace;
-  font-optical-sizing: auto;
-  font-size: 1rem;
-  font-weight: 400;
-}
 
-.head,
-h1,
-h2,
-h3 {
-  color: #000000;
+.head {
+  /* color: #000000; */
   mix-blend-mode: multiply;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
@@ -58,7 +49,7 @@ h3 {
 }
 
 .meta > p {
-  color: #00000090;
+  color: #00000095;
   font-size: 0.8rem;
   line-height: 135%;
   font-family: "Roboto Mono", monospace;
@@ -83,13 +74,16 @@ a:visited {
   background-color: none;
 }
 
+p {
+  color: #000000d0;
+}
 /*------------------------------------------- */
 /*--GENERAL-- */
 
 .projectMedia {
   max-width: 40vw;
 }
-.button {
+button {
   background-color: rgba(255, 255, 255, 0.247);
   border: 1px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
@@ -101,11 +95,31 @@ a:visited {
   transition: 0.3s;
   width: 200px;
 }
-.button:hover {
+button:hover {
   border-radius: 20px;
   background-color: rgba(235, 236, 230, 0.624);
 }
-
+button:active {
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+}
+.highlight {
+  animation: fade-in 5s ease-in-out 3;
+}
+@keyframes fade-in {
+  0% {
+    background-color: rgba(255, 255, 255, 0.247);
+  }
+  50% {
+    /* background-color: rgb(0, 0, 0);
+    color: #ffffff; */
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.247);
+  }
+}
 #logo {
   max-width: 50px;
 }
@@ -167,7 +181,7 @@ hr {
   display: flex;
 }
 
-#content {
+.xx {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,7 +207,7 @@ hr {
   z-index: 1;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /*------------------------------------------- */
@@ -209,6 +223,7 @@ hr {
 
 .shape {
   transition: transform 2s ease-in-out;
+
   mix-blend-mode: soft-light;
   z-index: 1;
   height: 30vw;
@@ -220,15 +235,15 @@ hr {
 }
 
 .shape:hover {
-  transition: 1s;
-  transform: rotate(20deg) scale(124%) !important;
+  transition: 2s;
+  transform: rotate(20deg) scale(144%) !important;
 }
 
-.shape.clicked {
+/* .shape.clicked {
   transition: 3s;
   background-color: hsla(0, 0%, 100%, 0) !important;
   scale: 0% !important;
-}
+} */
 
 #plate {
   width: 40vw;
