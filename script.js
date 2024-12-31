@@ -7,6 +7,7 @@ const contentSection = document.getElementById("contentSection");
 const foodSection = document.getElementById("foodSection");
 const table = document.getElementById("table");
 const body = document.querySelector("body");
+const overlay = document.getElementById("overlay");
 //text
 const about = document.getElementById("about");
 const content = document.getElementById("content");
@@ -196,8 +197,8 @@ class Shape {
         let div = document.createElement("article"); //construct DOM for project
 
         div.setAttribute("id", "content");
-        div.setAttribute("class", "centered");
         div.setAttribute("class", "xx");
+        // div.setAttribute("class", "xx");
 
         div.innerHTML = `<h2 class="head" style ="color: hsl(${
           this.hueChooseOrig
