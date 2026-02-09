@@ -1,0 +1,24 @@
+name: Deploy to SFTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        server: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        local_path: './*'
+        remote_path: '/public_html/'
+        sftpArgs: '-o ConnectTimeout=5'
