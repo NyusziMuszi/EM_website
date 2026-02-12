@@ -387,13 +387,13 @@ shuffleBtn.addEventListener("click", function () {
   }
 });
 
-chefBtn.addEventListener("click", function () {
-  about.classList.remove("hidden");
-  for (let i = 0; i < shapeInstances.length; i++) {
-    shapeInstances[i].removeContent();
-  }
-  intro.classList.add("hidden");
-  content.classList.add("hidden");
+// chefBtn.addEventListener("click", function () {
+//   about.classList.remove("hidden");
+//   for (let i = 0; i < shapeInstances.length; i++) {
+//     shapeInstances[i].removeContent();
+//   }
+//   intro.classList.add("hidden");
+//   content.classList.add("hidden");
 
-  // overlay.classList.remove("hidden");
-});
+//   // overlay.classList.remove("hidden");
+// });
