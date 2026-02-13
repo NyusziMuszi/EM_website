@@ -1,0 +1,113 @@
+{
+  "projects": [
+    {
+      "title": "Insula Lutherana and the Lutheran Museum",
+      "date": "2013-2015",
+      "engagement": "Freelance",
+      "client": "Lutheran Complex / Potzner Ádám (architech)",
+      "blurb": "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves, as well as rebranding the Lutheran Museum in the heart of Budapest.",
+      "shape": "parallelogram",
+      "images": [
+        "img/insula/insula_1.jpg",
+        "img/insula/insula_2.jpg",
+        "img/insula/insula_3.jpg",
+        "img/insula/insula_4.jpg",
+        "img/insula/insula_5.jpg",
+        "img/insula/insula_6.jpg",
+        "img/insula/insula_8.jpg",
+        "img/insula/insula_9.jpg"
+      ]
+    },
+    {
+      "title": "Plexopolis",
+      "date": "2017",
+      "engagement": "Designer at Uniform",
+      "client": "University College London",
+      "blurb": "Creating an engaging and affordable game for high school students on the topic of urban planning.",
+      "shape": "circle",
+      "images": [
+        "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+        "img/plexopolis/Uniform-plexopolis-0.jpg",
+        "img/plexopolis/Uniform-plexopolis-2.jpg",
+        "img/plexopolis/Uniform-plexopolis-11.jpg",
+        "img/plexopolis/Uniform-plexopolis-13.jpg",
+        "img/plexopolis/Uniform-plexopolis-15.jpg"
+      ]
+    },
+    {
+      "title": "All my rivers",
+      "date": "2020",
+      "engagement": "Artist in Residence",
+      "client": "Donumenta",
+      "blurb": "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
+      "shape": "hex",
+      "images": [
+        "img/rivers/Eszter-Muray-All-my-rivers-1.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-2.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-3.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-4.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-5.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-6.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-7.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-8.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-9.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-10.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-11.jpg",
+        "img/rivers/Eszter-Muray-All-my-rivers-12.jpg"
+      ]
+    },
+    {
+      "title": "Petofi Szinhaz",
+      "date": "2021",
+      "engagement": "Freelance",
+      "client": "Potzner Ádám (architech)",
+      "blurb": "Concept and design for the Petofi theatre's refurbishment.",
+      "shape": "flower",
+      "images": [
+        "img/veszprem/web_hd_220912_em--0811.jpeg",
+        "img/veszprem/Screenshot 2024-08-09 at 11.23.07 am.jpg",
+        "img/veszprem/Screenshot 2024-08-09 at 11.23.18 am.jpg",
+        "img/veszprem/Screenshot 2024-08-09 at 11.23.30 am.jpg",
+        "img/veszprem/Screenshot 2024-08-09 at 11.24.16 am.jpg",
+        "img/veszprem/Screenshot 2024-08-09 at 11.24.26 am.jpg"
+      ]
+    },
+    {
+      "title": "Cinemachines",
+      "date": "2019",
+      "engagement": "ArtEZ University",
+      "client": "-",
+      "blurb": "Games for children using projectors.",
+      "shape": "star",
+      "images": [
+        "img/cinemachines/DSC_9139.JPG",
+        "img/cinemachines/IMG_0334.jpg",
+        "img/cinemachines/IMG_0442.jpg",
+        "img/cinemachines/IMG_0540.jpg",
+        "img/cinemachines/IMG_0543.jpg",
+        "img/cinemachines/IMG_0546.jpg"
+      ]
+    },
+    {
+      "title": "Animorph",
+      "date": "2021-now",
+      "engagement": "Freelance, subsequently in-house",
+      "client": "Animorph co-operative",
+      "blurb": "Brand, website and outreach gifts.",
+      "shape": "scallop",
+      "images": [
+        "img/animorph/ani-1.jpg",
+        "img/animorph/ani-2.jpg",
+        "img/animorph/ani-3.jpg",
+        "img/animorph/ani-4.jpg",
+        "img/animorph/ani-5.jpg",
+        "img/animorph/kaleido/ani-2b.jpg",
+        "img/animorph/kaleido/ani-13.jpg",
+        "img/animorph/kaleido/ani-14.jpg",
+        "img/animorph/gifts/ani-7.jpg",
+        "img/animorph/gifts/ani-10.jpg",
+        "img/animorph/gifts/ani-43.jpeg"
+      ]
+    }
+  ]
+}
