@@ -28,6 +28,7 @@ jobs:
             [ -d "$item" ] && echo "-mkdir ${item%/}"
           done
           echo "put -r * ."
+          echo "put .htaccess ."
         } | sftp -b - \
           -o StrictHostKeyChecking=no \
           ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
