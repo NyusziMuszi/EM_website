@@ -341,10 +341,10 @@ function openProjectBySlug(slug) {
     (s) => s.shapeName === project.shape
   );
   if (shapeInstance) {
+    shapeInstance.beenViewed = true;
     shapeInstance.matchColor();
     shapeInstance.loadContent();
     shapeInstance.removeShape();
-    shapeInstance.beenViewed = true;
     intro.classList.add("hidden");
     about.classList.add("hidden");
     shapeInstance.checkEnd();
