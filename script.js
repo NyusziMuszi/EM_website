@@ -221,10 +221,7 @@ class Shape {
         div.setAttribute("class", "xx");
         // div.setAttribute("class", "xx");
 
-        div.innerHTML = `<h2 class="head" style ="color: hsl(${
-          this.hueChooseOrig
-        }, 50%, 50%)
-  ">${projects[i].title}</h2>
+        div.innerHTML = `<h2 class="head" style="color: ${projects[i].titleColor}">${projects[i].title}</h2>
            <article class="meta">
             <p class="date">${projects[i].date}</p>
             <p class="engagement">@ ${projects[i].engagement}</p>
@@ -232,6 +229,7 @@ class Shape {
            </article>
            <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
         contentSection.appendChild(div);
+        document.documentElement.style.setProperty("--scrollbar-color", projects[i].titleColor);
       }
     }
   }

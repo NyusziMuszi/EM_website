@@ -266,7 +266,7 @@ hr {
 }
 
 .scrollBar {
-  scrollbar-color: rgb(255, 255, 255) #ffffff00;
+  scrollbar-color: var(--scrollbar-color, #ffffff) #ffffff00;
 }
 
 /*  -----------------------------------------*/
