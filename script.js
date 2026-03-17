@@ -110,6 +110,14 @@ class Shape {
     intro.classList.add("hidden");
     about.classList.add("hidden");
     this.checkEnd();
+
+    const project = projects.find((p) => p.shape === this.shapeName);
+    if (project && project.slug) {
+      const newPath = "/" + project.slug;
+      if (window.location.pathname !== newPath) {
+        history.pushState({ slug: project.slug }, "", newPath);
+      }
+    }
   }
 
   checkEnd() {
@@ -274,8 +282,26 @@ function createShapes() {
 //////////////////////////////////////////////////
 //// EVENT LISTENERS /////
 
+function openProjectBySlug(slug) {
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return;
+  const shapeInstance = shapeInstances.find(
+    (s) => s.shapeName === project.shape
+  );
+  if (shapeInstance) {
+    shapeInstance.matchColor();
+    shapeInstance.loadContent();
+    shapeInstance.removeShape();
+    shapeInstance.beenViewed = true;
+    intro.classList.add("hidden");
+    about.classList.add("hidden");
+    shapeInstance.checkEnd();
+  }
+}
+
 function addEventListeners() {
   reloadBtn.addEventListener("click", function () {
+    history.pushState(null, "", "/");
     location.reload();
   });
 
@@ -285,6 +311,17 @@ function addEventListeners() {
       shapeInstances[i].randomScale();
     }
   });
+
+  window.addEventListener("popstate", function () {
+    const slug = window.location.pathname.replace(/^\/|\/$/g, "");
+    if (!slug) {
+      removeContent();
+      intro.classList.remove("hidden");
+      body.style.backgroundColor = "";
+    } else {
+      openProjectBySlug(slug);
+    }
+  });
 }
 
 async function init() {
@@ -292,6 +329,10 @@ async function init() {
   try {
     projects = await loadProjects();
     createShapes();
+    const slug = window.location.pathname.replace(/^\/|\/$/g, "");
+    if (slug) {
+      openProjectBySlug(slug);
+    }
   } catch (error) {
     console.error("Portfolio data load failed:", error);
     showLoadError();

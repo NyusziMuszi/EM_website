@@ -2,6 +2,7 @@
   "projects": [
     {
       "title": "Insula Lutherana and the Lutheran Museum",
+      "slug": "insula",
       "date": "2013-2015",
       "engagement": "Freelance",
       "category": ["Spatial", "Brand"],
@@ -21,6 +22,7 @@
     },
     {
       "title": "Plexopolis",
+      "slug": "plexopolis",
       "date": "2017",
       "engagement": "Designer at Uniform",
       "category": "Print",
@@ -39,6 +41,7 @@
     },
     {
       "title": "All my rivers",
+      "slug": "rivers",
       "date": "2020",
       "engagement": "Artist in Residence",
       "category": "Spatial",
@@ -63,6 +66,7 @@
     },
     {
       "title": "Petofi Szinhaz",
+      "slug": "petofi",
       "date": "2021",
       "engagement": "Freelance",
       "category": "Spatial",
@@ -82,6 +86,7 @@
     },
     {
       "title": "Cinemachines",
+      "slug": "cinemachines",
       "date": "2019",
       "engagement": "ArtEZ University",
       "category": "Experimental",
@@ -100,6 +105,7 @@
     },
     {
       "title": "Animorph",
+      "slug": "animorph",
       "date": "2021-now",
       "engagement": "Freelance, subsequently in-house",
       "category": "Brand",
