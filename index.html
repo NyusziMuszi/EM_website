@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scrollBar">
   <head>
     <meta charset="UTF-8" />
@@ -45,6 +45,7 @@
             <!-- <button id="chefBtn">Talk to the chef</button> -->
             <button id="reloadBtn">Get a new meal</button>
             <button id="shuffleBtn">Shuffle your plate</button>
+            <button id="chefBtn">Talk to chef</button>
           </nav>
         </div>
 
@@ -64,36 +65,26 @@
         <section id="contentSection" class="mainSections">
           <div id="overlay" class="hidden"></div>
           <article id="intro" class="centered xx">
+            <img src="img/logos/logo.png" id="logo" />
             <h2 class="head">Hello and welcome.</h2>
 
             <p class="body">
-              Come, try my tasty taster menu of work. ← To start ← click any of
-              the shapes on the right. ← ← ← ← ← ← Find out more:
-
-              <a
-                href="https://drive.google.com/file/d/1n3kLi-TUXWbBuX2SJ1aIVmEgcB4ax2Pa/view"
-                title="Eszter Muray CV"
-                target="_blank"
-                >CV</a
-              >,
-              <a
-                href="https://drive.google.com/file/d/1H2Hog-Pihic9S6wZgr2h7m0KEpKREcWe/view"
-                title="Eszter Muray CV"
-                target="_blank"
-                >Portfolio</a
-              >,
-              <a href="ux/index.html" title="Eszter Muray CV" target="_blank"
-                >UX casestudies</a
-              >,
-              <a
-                href="https://www.animorph.coop"
-                title="Animorph"
-                target="_blank"
-                >work for Animorph</a
-              >.
+              Come try my tasty menu of works. The following cuisines are
+              available, fusion encouraged:
             </p>
 
-            <img src="img/logos/logo.png" id="logo" />
+            <div id="categoryFilters">
+              <button class="categoryBtn" data-category="Brand">Brand</button>
+              <button class="categoryBtn" data-category="Print">Print</button>
+              <button class="categoryBtn" data-category="XR">XR</button>
+              <button class="categoryBtn" data-category="UX">UX</button>
+              <button class="categoryBtn" data-category="Spatial">
+                Spatial
+              </button>
+              <button class="categoryBtn" data-category="Experimental">
+                Experimental
+              </button>
+            </div>
           </article>
 
           <article id="about" class="xx centered hidden">

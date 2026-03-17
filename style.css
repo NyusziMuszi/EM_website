@@ -60,7 +60,8 @@ a {
   font-style: italic;
   color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.247);
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>")
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>")
       16 0,
     auto; /*!emojicursor.app*/
 }
@@ -219,7 +220,8 @@ hr {
   height: 30vw;
   width: 30vw;
   scale: 100%;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>")
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>")
       16 0,
     auto; /*!emojicursor.app*/
 }
@@ -244,29 +246,27 @@ hr {
   border-radius: 50%;
 
   background-color: rgba(219, 219, 219, 0.233);
-  box-shadow: 0 -5px 4px -2px rgba(79, 77, 77, 0.3),
+  box-shadow:
+    0 -5px 4px -2px rgba(79, 77, 77, 0.3),
     0 0 3px 2px rgba(1, 1, 1, 0.2) inset;
 }
 
 /*  -----------------------------------------*/
 /*--BTN-- */
 #reloadBtn {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
       16 0,
     auto; /*!emojicursor.app*/
 }
 
 #shuffleBtn {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>")
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>")
       16 0,
     auto; /*!emojicursor.app*/
 }
 
-#chefBtn {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
-}
 .scrollBar {
   scrollbar-color: rgb(255, 255, 255) #ffffff00;
 }
@@ -321,6 +321,34 @@ hr {
 }
 
 /*  -----------------------------------------*/
+/* --CATEGORY FILTER-- */
+
+#categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.categoryBtn {
+  width: auto;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.categoryBtn.active {
+  border-radius: 20px;
+  background-color: rgba(235, 236, 230, 0.8);
+}
+
+#chefBtn {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
+      16 0,
+    auto; /*!emojicursor.app*/
+}
+
+/*  -----------------------------------------*/
 /* --SHAPE: Individual-- */
 
 #parallelogram {
@@ -335,9 +363,15 @@ hr {
 
 #flower {
   aspect-ratio: 2/1;
-  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%) no-repeat;
-  mask: 100% 50% var(--g), 75% 93.301% var(--g), 25% 93.301% var(--g),
-    0% 50% var(--g), 25% 6.699% var(--g), 75% 6.699% var(--g),
+  --g: /33.334% 33.334% radial-gradient(#000 calc(71% - 1px), #0000 71%)
+    no-repeat;
+  mask:
+    100% 50% var(--g),
+    75% 93.301% var(--g),
+    25% 93.301% var(--g),
+    0% 50% var(--g),
+    25% 6.699% var(--g),
+    75% 6.699% var(--g),
     radial-gradient(100% 100%, #000 28.868%, #0000 calc(28.868% + 1px));
 }
 
@@ -404,7 +438,8 @@ hr {
   aspect-ratio: 1;
 
   padding: calc(1.5 * var(--r));
-  mask: linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
+  mask:
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 2 * var(--r))
       calc(100% - 2 * var(--r)),
     radial-gradient(farthest-side, #000 97%, #0000) 0 0 / calc(2 * var(--r))
       calc(2 * var(--r)) round;

@@ -23,6 +23,8 @@ const chefBtn = document.getElementById("chefBtn");
 // const slider = document.getElementById("hueRange");
 let projects = [];
 let shapeInstances = [];
+let selectedCategories = new Set();
+const ALL_CATEGORIES = ["Brand", "Print", "XR", "UX", "Spatial", "Experimental"];
 
 const shapeConfig = [
   { id: "parallelogram", hue: 236 },
@@ -282,6 +284,56 @@ function createShapes() {
 //////////////////////////////////////////////////
 //// EVENT LISTENERS /////
 
+function updateCategoryURL() {
+  if (selectedCategories.size === 0) {
+    history.pushState(null, "", "/");
+  } else {
+    const path = Array.from(selectedCategories)
+      .map((c) => c.toLowerCase())
+      .join("+");
+    history.pushState({ categories: path }, "", "/" + path);
+  }
+}
+
+function applyCategoriesFromPath(path) {
+  const parts = path.split("+");
+  const matched = parts
+    .map((p) => ALL_CATEGORIES.find((c) => c.toLowerCase() === p.toLowerCase()))
+    .filter(Boolean);
+  if (matched.length === 0) return false;
+
+  selectedCategories.clear();
+  document
+    .querySelectorAll(".categoryBtn")
+    .forEach((btn) => btn.classList.remove("active"));
+
+  matched.forEach((cat) => {
+    selectedCategories.add(cat);
+    const btn = document.querySelector(`.categoryBtn[data-category="${cat}"]`);
+    if (btn) btn.classList.add("active");
+  });
+
+  filterShapes();
+  return true;
+}
+
+function filterShapes() {
+  for (const shape of shapeInstances) {
+    if (shape.beenViewed) continue;
+    const project = projects.find((p) => p.shape === shape.shapeName);
+    if (!project) continue;
+    if (selectedCategories.size === 0) {
+      shape.shapeSelect.style.display = "";
+    } else {
+      const projectCategories = Array.isArray(project.category)
+        ? project.category
+        : [project.category];
+      const matches = projectCategories.some((c) => selectedCategories.has(c));
+      shape.shapeSelect.style.display = matches ? "" : "none";
+    }
+  }
+}
+
 function openProjectBySlug(slug) {
   const project = projects.find((p) => p.slug === slug);
   if (!project) return;
@@ -312,13 +364,39 @@ function addEventListeners() {
     }
   });
 
+  document.querySelectorAll(".categoryBtn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const cat = this.dataset.category;
+      if (selectedCategories.has(cat)) {
+        selectedCategories.delete(cat);
+        this.classList.remove("active");
+      } else {
+        selectedCategories.add(cat);
+        this.classList.add("active");
+      }
+      filterShapes();
+      updateCategoryURL();
+    });
+  });
+
+  chefBtn.addEventListener("click", function () {
+    about.classList.remove("hidden");
+    removeContent();
+    intro.classList.add("hidden");
+  });
+
   window.addEventListener("popstate", function () {
     const slug = window.location.pathname.replace(/^\/|\/$/g, "");
     if (!slug) {
       removeContent();
       intro.classList.remove("hidden");
       body.style.backgroundColor = "";
-    } else {
+      selectedCategories.clear();
+      document
+        .querySelectorAll(".categoryBtn")
+        .forEach((btn) => btn.classList.remove("active"));
+      filterShapes();
+    } else if (!applyCategoriesFromPath(slug)) {
       openProjectBySlug(slug);
     }
   });
@@ -329,9 +407,12 @@ async function init() {
   try {
     projects = await loadProjects();
     createShapes();
+    filterShapes();
     const slug = window.location.pathname.replace(/^\/|\/$/g, "");
     if (slug) {
-      openProjectBySlug(slug);
+      if (!applyCategoriesFromPath(slug)) {
+        openProjectBySlug(slug);
+      }
     }
   } catch (error) {
     console.error("Portfolio data load failed:", error);
@@ -341,13 +422,3 @@ async function init() {
 
 init();
 
-// chefBtn.addEventListener("click", function () {
-//   about.classList.remove("hidden");
-//   for (let i = 0; i < shapeInstances.length; i++) {
-//     shapeInstances[i].removeContent();
-//   }
-//   intro.classList.add("hidden");
-//   content.classList.add("hidden");
-
-//   // overlay.classList.remove("hidden");
-// });
