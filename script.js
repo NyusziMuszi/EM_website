@@ -16,6 +16,9 @@ const intro = document.getElementById("intro");
 ///shapes
 const shapes = document.getElementsByClassName("shape");
 
+///tooltip
+const tooltip = document.getElementById("tooltip");
+
 ///button
 const reloadBtn = document.getElementById("reloadBtn");
 const shuffleBtn = document.getElementById("shuffleBtn");
@@ -90,18 +93,35 @@ class Shape {
       "mouseleave",
       this.handleLeave.bind(this)
     );
+    this.shapeSelect.addEventListener(
+      "mousemove",
+      this.handleMove.bind(this)
+    );
   }
 
   handleEnter(event) {
     this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
       this.saturation + this.hover
     }%, ${this.light + this.hover}%)`;
+
+    const project = projects.find((p) => p.shape === this.shapeName);
+    if (project) {
+      tooltip.textContent = project.title;
+      tooltip.style.opacity = "1";
+    }
   }
 
   handleLeave(event) {
     this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
       this.saturation - this.hover
     }%, ${this.light - this.hover}%)`;
+
+    tooltip.style.opacity = "0";
+  }
+
+  handleMove(event) {
+    tooltip.style.left = `${event.clientX + 16}px`;
+    tooltip.style.top = `${event.clientY + 16}px`;
   }
 
   handleClick(event) {

@@ -443,6 +443,19 @@ hr {
       calc(2 * var(--r)) round;
 }
 
+/* --TOOLTIP-- */
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s;
+  mix-blend-mode: multiply;
+  z-index: 9999;
+}
+
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
