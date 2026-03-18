@@ -44,6 +44,7 @@ const shapeConfig = [
   { id: "hex", hue: 149 },
   { id: "star", hue: 279 },
   { id: "scallop", hue: 236 },
+  { id: "circle2", hue: 236 },
 ];
 
 //////////////////////////////////////////////////
@@ -206,48 +207,57 @@ class Shape {
   }
 
   matchColor() {
-    const { saturation, lightness, alpha } = {
+    const project = projects.find((p) => p.shape === this.shapeName);
+    if (project && project.backgroundColor) {
+      body.style.backgroundColor = project.backgroundColor;
+      return;
+    }
+    const { saturation, lightness } = {
       saturation: getRandomNumber(5, 25),
       lightness: getRandomNumber(70, 95),
     };
-
     const colorBg = `hsl(${this.hueChoose}, ${saturation}%, ${lightness}%)`;
     body.style.backgroundColor = colorBg;
   }
 
   loadContent() {
     this.removeContent();
-    for (let i = 0; i < projects.length; i++) {
-      //match with the projects
+    const project = projects.find((p) => p.shape === this.shapeName);
+    if (!project) return;
 
-      if (this.shapeName == projects[i].shape) {
-        const imageURLS = []; //load in images
-        projects[i].images.forEach((url) => {
-          imageURLS.push(
-            `<img class="projectMedia" src="${url}" loading="lazy" decoding="async" alt="Eszter Muray ${projects[i].title}" />`,
-          );
-        });
+    let div = document.createElement("article");
+    div.setAttribute("id", "content");
+    div.setAttribute("class", "xx");
 
-        let div = document.createElement("article"); //construct DOM for project
+    const header = `<h2 class="head" style="color: ${project.titleColor}">${project.title}</h2>
+       <article class="meta">
+        <p class="date">${project.date}</p>
+        <p class="engagement">@ ${project.engagement}</p>
+        <p class="client">For ${project.client}</p>
+       </article>
+       <p class="blurb">${project.blurb}</p>`;
 
-        div.setAttribute("id", "content");
-        div.setAttribute("class", "xx");
-        // div.setAttribute("class", "xx");
-
-        div.innerHTML = `<h2 class="head" style="color: ${projects[i].titleColor}">${projects[i].title}</h2>
-           <article class="meta">
-            <p class="date">${projects[i].date}</p>
-            <p class="engagement">@ ${projects[i].engagement}</p>
-            <p class="client">For ${projects[i].client}</p>
-           </article>
-           <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
-        contentSection.appendChild(div);
-        document.documentElement.style.setProperty(
-          "--scrollbar-color",
-          projects[i].titleColor,
-        );
-      }
+    let gridHTML = "";
+    if (Array.isArray(project.content) && project.content.length > 0) {
+      const items = project.content.map((block) =>
+        renderContentBlock(block, project.title),
+      );
+      gridHTML = `<div class="projectGrid">${items.join("")}</div>`;
+    } else if (Array.isArray(project.images) && project.images.length > 0) {
+      const items = project.images.map(
+        (url) => `<figure class="gridItem" style="--cols: 6">
+          <img class="projectMedia" src="${url}" loading="lazy" decoding="async" alt="Eszter Muray ${project.title}" />
+        </figure>`,
+      );
+      gridHTML = `<div class="projectGrid">${items.join("")}</div>`;
     }
+
+    div.innerHTML = header + gridHTML;
+    contentSection.appendChild(div);
+    document.documentElement.style.setProperty(
+      "--scrollbar-color",
+      project.titleColor,
+    );
   }
   removeShape() {
     if (this.beenViewed === true) {
@@ -295,6 +305,63 @@ function showLoadError() {
   div.innerHTML = `<h2 class="head">Content unavailable</h2>
     <p class="blurb">Project data could not be loaded. Please refresh and try again.</p>`;
   contentSection.appendChild(div);
+}
+
+function renderContentBlock(block, projectTitle) {
+  // standalone media at the top level
+  if (block.type === "image" || block.type === "video") {
+    return renderMediaItem(block, projectTitle);
+  }
+
+  // section block
+  let html = "";
+  if (block.title) {
+    html += `<h3 class="gridSection">${block.title}</h3>`;
+  }
+  if (Array.isArray(block.content)) {
+    html += block.content
+      .map((item) => renderSectionItem(item, projectTitle))
+      .join("");
+  }
+  return html;
+}
+
+function renderSectionItem(item, projectTitle) {
+  if (item.type === "text") {
+    const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
+    return `<p class="gridBody"${style}>${item.text}</p>`;
+  }
+  if (item.type === "subtitle") {
+    const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
+    return `<h4 class="gridSubtitle"${style}>${item.text}</h4>`;
+  }
+  return renderMediaItem(item, projectTitle);
+}
+
+function renderMediaItem(item, projectTitle) {
+  const cols = item.cols || 6;
+  const caption = item.caption
+    ? `<figcaption class="mediaCaption">${item.caption}</figcaption>`
+    : "";
+
+  if (item.type === "image") {
+    return `<figure class="gridItem" style="--cols: ${cols}">
+      <img class="projectMedia" src="${item.src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+      ${caption}
+    </figure>`;
+  }
+
+  if (item.type === "video") {
+    const poster = item.poster ? `poster="${item.poster}"` : "";
+    return `<figure class="gridItem" style="--cols: ${cols}">
+      <video class="projectMedia" ${poster} controls preload="none">
+        <source src="${item.src}" />
+      </video>
+      ${caption}
+    </figure>`;
+  }
+
+  return "";
 }
 
 async function loadProjects() {

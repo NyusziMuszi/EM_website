@@ -80,7 +80,10 @@ p {
 /*--GENERAL-- */
 
 .projectMedia {
-  max-width: 80cqw;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 button {
   background-color: rgba(255, 255, 255, 0.247);
@@ -207,6 +210,51 @@ hr {
 
 .centered {
   justify-content: center;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+}
+
+.gridItem {
+  grid-column: span var(--cols, 6);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gridSection,
+.gridSubheader,
+.gridSubtitle,
+.gridBody {
+  grid-column: 1 / -1;
+  text-align: left;
+  max-width: none;
+}
+
+.mediaCaption {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+  color: #00000080;
+}
+
+.gridSection {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(148, 148, 148, 0.5);
+}
+
+.gridSubheader {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #00000090;
 }
 
 .hidden {
@@ -342,6 +390,15 @@ hr {
   .projectMedia {
     max-width: 100%;
   }
+  .projectGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .gridItem[style*="--cols: 4"],
+  .gridItem[style*="--cols: 5"],
+  .gridItem[style*="--cols: 6"] {
+    grid-column: 1 / -1;
+  }
   #intoImg {
     max-width: 40vw;
   }
@@ -389,6 +446,12 @@ hr {
 #circle {
   aspect-ratio: 1/5;
   transform: skew(20deg) rotate(20deg);
+  border-radius: 50%;
+}
+
+#circle2 {
+  aspect-ratio: 2/5;
+  transform: skew(10deg) rotate(5deg);
   border-radius: 50%;
 }
 

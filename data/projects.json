@@ -10,15 +10,34 @@
       "blurb": "Making the Lutheran Complex (situated on the main square of Budapest) visible, by initiating a dialogue with the city it serves, as well as rebranding the Lutheran Museum in the heart of Budapest.",
       "shape": "parallelogram",
       "titleColor": "#0F327E",
-      "images": [
-        "img/insula/insula_1.jpg",
-        "img/insula/insula_2.jpg",
-        "img/insula/insula_3.jpg",
-        "img/insula/insula_4.jpg",
-        "img/insula/insula_5.jpg",
-        "img/insula/insula_6.jpg",
-        "img/insula/insula_8.jpg",
-        "img/insula/insula_9.jpg"
+      "backgroundColor": "#c4c9dc",
+
+      "content": [
+        {
+          "type": "image",
+          "src": "img/insula/insula_2.jpg",
+          "cols": 6
+        },
+        {
+          "title": "Origin",
+          "content": [
+            {
+              "type": "text",
+              "text": "We were approached by Dr. Fergus Kane from South London & Maudsley NHS hospital to develop a digital version of the Early Warning Signs (EWS) card sort. We applied to InnovateUK and won two rounds of Mindset XR funding (totalling £200k), making the project possible.",
+              "cols": 6
+            },
+            {
+              "type": "image",
+              "src": "img/insula/insula_2.jpg",
+              "cols": 6,
+              "caption": "Caption text"
+            },
+            { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
+          ]
+        },
+        {
+          "title": "Details"
+        }
       ]
     },
     {
@@ -32,6 +51,7 @@
       "blurb": "Creating an engaging and affordable game for high school students on the topic of urban planning.",
       "shape": "circle",
       "titleColor": "#FF6155",
+      "backgroundColor": "#dcc4c4",
       "images": [
         "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
         "img/plexopolis/Uniform-plexopolis-0.jpg",
@@ -52,6 +72,7 @@
       "blurb": "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
       "shape": "hex",
       "titleColor": "#9B982D",
+      "backgroundColor": "#c4dcc9",
       "images": [
         "img/rivers/Eszter-Muray-All-my-rivers-1.jpg",
         "img/rivers/Eszter-Muray-All-my-rivers-2.jpg",
@@ -78,7 +99,8 @@
 
       "blurb": "Concept and design for the Petofi theatre's refurbishment.",
       "shape": "flower",
-      "titleColor": "#FE1CD5",
+      "titleColor": "#B52FA5",
+      "backgroundColor": "#E3DBA1",
       "images": [
         "img/veszprem/web_hd_220912_em--0811.jpeg",
         "img/veszprem/Screenshot 2024-08-09 at 11.23.07 am.jpg",
@@ -99,6 +121,7 @@
       "blurb": "Games for children using projectors.",
       "shape": "star",
       "titleColor": "#6251CD",
+      "backgroundColor": "#DADFEB",
       "images": [
         "img/cinemachines/DSC_9139.JPG",
         "img/cinemachines/IMG_0334.jpg",
@@ -120,6 +143,7 @@
       "blurb": "Brand, website and outreach gifts.",
       "shape": "scallop",
       "titleColor": "#4e56ff",
+      "backgroundColor": "#c4c9dc",
       "images": [
         "img/animorph/ani-1.jpg",
         "img/animorph/ani-2.jpg",
@@ -132,6 +156,39 @@
         "img/animorph/gifts/ani-7.jpg",
         "img/animorph/gifts/ani-10.jpg",
         "img/animorph/gifts/ani-43.jpeg"
+      ]
+    },
+
+    {
+      "title": "StayingWell",
+      "slug": "stayingwell",
+      "date": "2021-now",
+      "engagement": "Freelance, subsequently in-house",
+      "category": "Brand",
+
+      "client": "Animorph co-operative",
+
+      "blurb": "StayingWell XR is an online tool helping people living with bipolar, depression and psychosis avoid relapse. It allows users to map their past episodes, identify early warning signs, and develop tailored coping strategies and apply these in the critical moment.",
+      "shape": "circle2",
+      "titleColor": "#4e56ff",
+      "backgroundColor": "#c4c9dc",
+
+      "content": [
+        {
+          "title": "Origin",
+          "content": [
+            {
+              "type": "image",
+              "src": "img/insula/insula_2.jpg",
+              "cols": 4,
+              "caption": "Caption text"
+            },
+            { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
+          ]
+        },
+        {
+          "title": "Details"
+        }
       ]
     }
   ]
