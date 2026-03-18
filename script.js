@@ -27,7 +27,15 @@ const chefBtn = document.getElementById("chefBtn");
 let projects = [];
 let shapeInstances = [];
 let selectedCategories = new Set();
-const ALL_CATEGORIES = ["Brand", "Print", "XR", "UX", "Spatial", "Experimental"];
+let contentExpanded = false;
+const ALL_CATEGORIES = [
+  "Brand",
+  "Print",
+  "XR",
+  "UX",
+  "Spatial",
+  "Experimental",
+];
 
 const shapeConfig = [
   { id: "parallelogram", hue: 236 },
@@ -87,16 +95,13 @@ class Shape {
     this.shapeSelect.addEventListener("click", this.handleClick.bind(this));
     this.shapeSelect.addEventListener(
       "mouseenter",
-      this.handleEnter.bind(this)
+      this.handleEnter.bind(this),
     );
     this.shapeSelect.addEventListener(
       "mouseleave",
-      this.handleLeave.bind(this)
+      this.handleLeave.bind(this),
     );
-    this.shapeSelect.addEventListener(
-      "mousemove",
-      this.handleMove.bind(this)
-    );
+    this.shapeSelect.addEventListener("mousemove", this.handleMove.bind(this));
   }
 
   handleEnter(event) {
@@ -125,6 +130,14 @@ class Shape {
   }
 
   handleClick(event) {
+    if (!contentExpanded) {
+      contentExpanded = true;
+      table.classList.add("content-expanded");
+      // console.log(
+      //   "content-expanded added:",
+      //   table.classList.contains("content-expanded"),
+      // );
+    }
     this.beenViewed = true;
     this.matchColor();
     this.loadContent();
@@ -211,7 +224,7 @@ class Shape {
         const imageURLS = []; //load in images
         projects[i].images.forEach((url) => {
           imageURLS.push(
-            `<img class="projectMedia" src="${url}" loading="lazy" decoding="async" alt="Eszter Muray ${projects[i].title}" />`
+            `<img class="projectMedia" src="${url}" loading="lazy" decoding="async" alt="Eszter Muray ${projects[i].title}" />`,
           );
         });
 
@@ -229,7 +242,10 @@ class Shape {
            </article>
            <p class="blurb">${projects[i].blurb}</p>${imageURLS.join(" ")}`;
         contentSection.appendChild(div);
-        document.documentElement.style.setProperty("--scrollbar-color", projects[i].titleColor);
+        document.documentElement.style.setProperty(
+          "--scrollbar-color",
+          projects[i].titleColor,
+        );
       }
     }
   }
@@ -295,7 +311,7 @@ async function loadProjects() {
 
 function createShapes() {
   shapeInstances = shapeConfig.map(
-    (shapeSetting) => new Shape(shapeSetting.id, shapeSetting.hue)
+    (shapeSetting) => new Shape(shapeSetting.id, shapeSetting.hue),
   );
 }
 
@@ -356,7 +372,7 @@ function openProjectBySlug(slug) {
   const project = projects.find((p) => p.slug === slug);
   if (!project) return;
   const shapeInstance = shapeInstances.find(
-    (s) => s.shapeName === project.shape
+    (s) => s.shapeName === project.shape,
   );
   if (shapeInstance) {
     shapeInstance.beenViewed = true;
@@ -439,4 +455,3 @@ async function init() {
 }
 
 init();
-
