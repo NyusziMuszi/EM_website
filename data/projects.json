@@ -19,13 +19,7 @@
           "cols": 6
         },
         {
-          "title": "Origin",
           "content": [
-            {
-              "type": "text",
-              "text": "We were approached by Dr. Fergus Kane from South London & Maudsley NHS hospital to develop a digital version of the Early Warning Signs (EWS) card sort. We applied to InnovateUK and won two rounds of Mindset XR funding (totalling £200k), making the project possible.",
-              "cols": 6
-            },
             {
               "type": "image",
               "src": "img/insula/insula_2.jpg",
@@ -34,9 +28,6 @@
             },
             { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
           ]
-        },
-        {
-          "title": "Details"
         }
       ]
     },
@@ -48,17 +39,53 @@
       "category": "Print",
 
       "client": "University College London",
-      "blurb": "Creating an engaging and affordable game for high school students on the topic of urban planning.",
+      "blurb": "Plexopolis is a flatpack, affordable board game, designed for high school. Each game teaches students about different principles of urban planning.",
       "shape": "circle",
       "titleColor": "#FF6155",
       "backgroundColor": "#dcc4c4",
-      "images": [
-        "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
-        "img/plexopolis/Uniform-plexopolis-0.jpg",
-        "img/plexopolis/Uniform-plexopolis-2.jpg",
-        "img/plexopolis/Uniform-plexopolis-11.jpg",
-        "img/plexopolis/Uniform-plexopolis-13.jpg",
-        "img/plexopolis/Uniform-plexopolis-15.jpg"
+
+      "content": [
+        {
+          "type": "image",
+          "src": "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+          "cols": 6
+        },
+        {
+          "content": [
+            {
+              "type": "image",
+              "src": "img/plexopolis/Uniform-plexopolis-13.jpg",
+
+              "cols": 2
+            },
+            {
+              "type": "image",
+              "src": "img/plexopolis/Uniform-plexopolis-5.jpg",
+              "cols": 3
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "type": "image",
+              "src": "img/plexopolis/Uniform-plexopolis-15.jpg",
+              "cols": 6
+            },
+            {
+              "type": "image",
+              "src": "img/plexopolis/Uniform-plexopolis-0.jpg",
+
+              "cols": 4,
+              "caption": "Caption text"
+            },
+            {
+              "type": "image",
+              "src": "img/plexopolis/Uniform-plexopolis-4.jpg",
+              "cols": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -71,8 +98,8 @@
       "client": "Donumenta",
       "blurb": "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
       "shape": "hex",
-      "titleColor": "#9B982D",
-      "backgroundColor": "#c4dcc9",
+      "titleColor": "#7C8D33",
+      "backgroundColor": "#D8E6D1",
       "images": [
         "img/rivers/Eszter-Muray-All-my-rivers-1.jpg",
         "img/rivers/Eszter-Muray-All-my-rivers-2.jpg",
@@ -89,7 +116,7 @@
       ]
     },
     {
-      "title": "Petofi Szinhaz",
+      "title": "Petőfi Színhaz",
       "slug": "petofi",
       "date": "2021",
       "engagement": "Freelance",
@@ -101,13 +128,73 @@
       "shape": "flower",
       "titleColor": "#B52FA5",
       "backgroundColor": "#E3DBA1",
-      "images": [
-        "img/veszprem/web_hd_220912_em--0811.jpeg",
-        "img/veszprem/Screenshot 2024-08-09 at 11.23.07 am.jpg",
-        "img/veszprem/Screenshot 2024-08-09 at 11.23.18 am.jpg",
-        "img/veszprem/Screenshot 2024-08-09 at 11.23.30 am.jpg",
-        "img/veszprem/Screenshot 2024-08-09 at 11.24.16 am.jpg",
-        "img/veszprem/Screenshot 2024-08-09 at 11.24.26 am.jpg"
+
+      "content": [
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_10.jpeg",
+          "cols": 4
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_7.jpeg",
+          "cols": 2
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_8.jpeg",
+
+          "cols": 2
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_5.jpg",
+          "cols": 2
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_1.png",
+          "cols": 2
+        },
+
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_2.jpg",
+          "cols": 3
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_4.jpg",
+
+          "cols": 3
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_3.jpg",
+          "cols": 6
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_9.jpeg",
+
+          "cols": 3
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_11.jpeg",
+          "cols": 3
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_12.png",
+
+          "cols": 3
+        },
+        {
+          "type": "image",
+          "src": "img/veszprem/petofi_6.jpg",
+          "cols": 3
+        }
       ]
     },
     {
@@ -160,6 +247,7 @@
     },
 
     {
+      "hidden": true,
       "title": "StayingWell",
       "slug": "stayingwell",
       "date": "2021-now",
@@ -170,8 +258,8 @@
 
       "blurb": "StayingWell XR is an online tool helping people living with bipolar, depression and psychosis avoid relapse. It allows users to map their past episodes, identify early warning signs, and develop tailored coping strategies and apply these in the critical moment.",
       "shape": "circle2",
-      "titleColor": "#4e56ff",
-      "backgroundColor": "#c4c9dc",
+      "titleColor": "#565245",
+      "backgroundColor": "#FFEFAE",
 
       "content": [
         {

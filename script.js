@@ -165,6 +165,7 @@ class Shape {
       }
       if (numberViewed == shapeInstances.length) {
         shuffleBtn.classList.add("hidden");
+        reloadBtn.classList.remove("hidden");
         reloadBtn.classList.add("highlight");
       }
     }
@@ -340,24 +341,39 @@ function renderSectionItem(item, projectTitle) {
 
 function renderMediaItem(item, projectTitle) {
   const cols = item.cols || 6;
-  const caption = item.caption
+  const captionSide = item.captionSide || "bottom";
+  const captionHTML = item.caption
     ? `<figcaption class="mediaCaption">${item.caption}</figcaption>`
     : "";
 
   if (item.type === "image") {
+    if (captionSide === "left" && item.caption) {
+      return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
+        ${captionHTML}
+        <img class="projectMedia" src="${item.src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+      </figure>`;
+    }
     return `<figure class="gridItem" style="--cols: ${cols}">
       <img class="projectMedia" src="${item.src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
-      ${caption}
+      ${captionHTML}
     </figure>`;
   }
 
   if (item.type === "video") {
     const poster = item.poster ? `poster="${item.poster}"` : "";
+    if (captionSide === "left" && item.caption) {
+      return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
+        ${captionHTML}
+        <video class="projectMedia" ${poster} controls preload="none">
+          <source src="${item.src}" />
+        </video>
+      </figure>`;
+    }
     return `<figure class="gridItem" style="--cols: ${cols}">
       <video class="projectMedia" ${poster} controls preload="none">
         <source src="${item.src}" />
       </video>
-      ${caption}
+      ${captionHTML}
     </figure>`;
   }
 
@@ -367,13 +383,13 @@ function renderMediaItem(item, projectTitle) {
 async function loadProjects() {
   const response = await fetch("data/projects.json");
   if (!response.ok) {
-    throw new Error("Failed to fetch project data");
+    throw new Error("Failed to fetch projects");
   }
   const data = await response.json();
   if (!Array.isArray(data.projects)) {
     throw new Error("Invalid project data format");
   }
-  return data.projects;
+  return data.projects.filter((p) => !p.hidden);
 }
 
 function createShapes() {
@@ -422,7 +438,10 @@ function filterShapes() {
   for (const shape of shapeInstances) {
     if (shape.beenViewed) continue;
     const project = projects.find((p) => p.shape === shape.shapeName);
-    if (!project) continue;
+    if (!project) {
+      shape.shapeSelect.style.display = "none";
+      continue;
+    }
     if (selectedCategories.size === 0) {
       shape.shapeSelect.style.display = "";
     } else {
