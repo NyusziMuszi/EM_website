@@ -157,17 +157,14 @@ class Shape {
   }
 
   checkEnd() {
-    let numberViewed = 0;
-    for (let i = 0; i < shapeInstances.length; i++) {
-      if (shapeInstances[i].beenViewed == true) {
-        numberViewed++;
-      } else {
-      }
-      if (numberViewed == shapeInstances.length) {
-        shuffleBtn.classList.add("hidden");
-        reloadBtn.classList.remove("hidden");
-        reloadBtn.classList.add("highlight");
-      }
+    const visibleShapes = shapeInstances.filter((s) =>
+      projects.find((p) => p.shape === s.shapeName),
+    );
+    const numberViewed = visibleShapes.filter((s) => s.beenViewed).length;
+    if (numberViewed === visibleShapes.length) {
+      shuffleBtn.classList.add("hidden");
+      reloadBtn.classList.remove("hidden");
+      reloadBtn.classList.add("highlight");
     }
   }
 
