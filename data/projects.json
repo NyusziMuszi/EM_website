@@ -15,18 +15,19 @@
       "content": [
         {
           "type": "image",
-          "src": "img/insula/insula_2.jpg",
+          "src": "insula_2.jpg",
           "cols": 6
         },
         {
+          "type": "row",
           "content": [
             {
               "type": "image",
-              "src": "img/insula/insula_2.jpg",
+              "src": "insula_2.jpg",
               "cols": 6,
               "caption": "Caption text"
             },
-            { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
+            { "type": "image", "src": "insula_1.jpg", "cols": 2 }
           ]
         }
       ]
@@ -36,7 +37,7 @@
       "slug": "plexopolis",
       "date": "2017",
       "engagement": "Designer at Uniform",
-      "category": "Print",
+      "category": ["Print"],
 
       "client": "University College London",
       "blurb": "Plexopolis is a flatpack, affordable board game, designed for high school. Each game teaches students about different principles of urban planning.",
@@ -47,41 +48,41 @@
       "content": [
         {
           "type": "image",
-          "src": "img/plexopolis/Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+          "src": "Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
           "cols": 6
         },
         {
+          "type": "row",
           "content": [
             {
               "type": "image",
-              "src": "img/plexopolis/Uniform-plexopolis-13.jpg",
-
+              "src": "Uniform-plexopolis-13.jpg",
               "cols": 2
             },
             {
               "type": "image",
-              "src": "img/plexopolis/Uniform-plexopolis-5.jpg",
+              "src": "Uniform-plexopolis-5.jpg",
               "cols": 3
             }
           ]
         },
         {
+          "type": "row",
           "content": [
             {
               "type": "image",
-              "src": "img/plexopolis/Uniform-plexopolis-15.jpg",
+              "src": "Uniform-plexopolis-15.jpg",
               "cols": 6
             },
             {
               "type": "image",
-              "src": "img/plexopolis/Uniform-plexopolis-0.jpg",
-
+              "src": "Uniform-plexopolis-0.jpg",
               "cols": 4,
               "caption": "Caption text"
             },
             {
               "type": "image",
-              "src": "img/plexopolis/Uniform-plexopolis-4.jpg",
+              "src": "Uniform-plexopolis-4.jpg",
               "cols": 2
             }
           ]
@@ -93,7 +94,7 @@
       "slug": "rivers",
       "date": "2020",
       "engagement": "Artist in Residence",
-      "category": "Spatial",
+      "category": ["Spatial"],
 
       "client": "Donumenta",
       "blurb": "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
@@ -101,18 +102,18 @@
       "titleColor": "#7C8D33",
       "backgroundColor": "#D8E6D1",
       "images": [
-        "img/rivers/Eszter-Muray-All-my-rivers-1.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-2.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-3.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-4.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-5.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-6.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-7.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-8.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-9.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-10.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-11.jpg",
-        "img/rivers/Eszter-Muray-All-my-rivers-12.jpg"
+        "Eszter-Muray-All-my-rivers-1.jpg",
+        "Eszter-Muray-All-my-rivers-2.jpg",
+        "Eszter-Muray-All-my-rivers-3.jpg",
+        "Eszter-Muray-All-my-rivers-4.jpg",
+        "Eszter-Muray-All-my-rivers-5.jpg",
+        "Eszter-Muray-All-my-rivers-6.jpg",
+        "Eszter-Muray-All-my-rivers-7.jpg",
+        "Eszter-Muray-All-my-rivers-8.jpg",
+        "Eszter-Muray-All-my-rivers-9.jpg",
+        "Eszter-Muray-All-my-rivers-10.jpg",
+        "Eszter-Muray-All-my-rivers-11.jpg",
+        "Eszter-Muray-All-my-rivers-12.jpg"
       ]
     },
     {
@@ -120,7 +121,7 @@
       "slug": "petofi",
       "date": "2021",
       "engagement": "Freelance",
-      "category": "Spatial",
+      "category": ["Spatial"],
 
       "client": "Potzner Ádám (architech)",
 
@@ -130,71 +131,18 @@
       "backgroundColor": "#E3DBA1",
 
       "content": [
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_10.jpeg",
-          "cols": 4
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_7.jpeg",
-          "cols": 2
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_8.jpeg",
-
-          "cols": 2
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_5.jpg",
-          "cols": 2
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_1.png",
-          "cols": 2
-        },
-
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_2.jpg",
-          "cols": 3
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_4.jpg",
-
-          "cols": 3
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_3.jpg",
-          "cols": 6
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_9.jpeg",
-
-          "cols": 3
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_11.jpeg",
-          "cols": 3
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_12.png",
-
-          "cols": 3
-        },
-        {
-          "type": "image",
-          "src": "img/veszprem/petofi_6.jpg",
-          "cols": 3
-        }
+        { "type": "image", "src": "petofi_10.jpeg", "cols": 4 },
+        { "type": "image", "src": "petofi_7.jpeg", "cols": 2 },
+        { "type": "image", "src": "petofi_8.jpeg", "cols": 2 },
+        { "type": "image", "src": "petofi_5.jpg", "cols": 2 },
+        { "type": "image", "src": "petofi_1.png", "cols": 2 },
+        { "type": "image", "src": "petofi_2.jpg", "cols": 3 },
+        { "type": "image", "src": "petofi_4.jpg", "cols": 3 },
+        { "type": "image", "src": "petofi_3.jpg", "cols": 6 },
+        { "type": "image", "src": "petofi_9.jpeg", "cols": 3 },
+        { "type": "image", "src": "petofi_11.jpeg", "cols": 3 },
+        { "type": "image", "src": "petofi_12.png", "cols": 3 },
+        { "type": "image", "src": "petofi_6.jpg", "cols": 3 }
       ]
     },
     {
@@ -202,7 +150,7 @@
       "slug": "cinemachines",
       "date": "2019",
       "engagement": "ArtEZ University",
-      "category": "Experimental",
+      "category": ["Experimental"],
 
       "client": "-",
       "blurb": "Games for children using projectors.",
@@ -210,12 +158,12 @@
       "titleColor": "#6251CD",
       "backgroundColor": "#DADFEB",
       "images": [
-        "img/cinemachines/DSC_9139.JPG",
-        "img/cinemachines/IMG_0334.jpg",
-        "img/cinemachines/IMG_0442.jpg",
-        "img/cinemachines/IMG_0540.jpg",
-        "img/cinemachines/IMG_0543.jpg",
-        "img/cinemachines/IMG_0546.jpg"
+        "DSC_9139.JPG",
+        "IMG_0334.jpg",
+        "IMG_0442.jpg",
+        "IMG_0540.jpg",
+        "IMG_0543.jpg",
+        "IMG_0546.jpg"
       ]
     },
     {
@@ -223,7 +171,7 @@
       "slug": "animorph",
       "date": "2021-now",
       "engagement": "Freelance, subsequently in-house",
-      "category": "Brand",
+      "category": ["Brand"],
 
       "client": "Animorph co-operative",
 
@@ -232,17 +180,17 @@
       "titleColor": "#4e56ff",
       "backgroundColor": "#c4c9dc",
       "images": [
-        "img/animorph/ani-1.jpg",
-        "img/animorph/ani-2.jpg",
-        "img/animorph/ani-3.jpg",
-        "img/animorph/ani-4.jpg",
-        "img/animorph/ani-5.jpg",
-        "img/animorph/kaleido/ani-2b.jpg",
-        "img/animorph/kaleido/ani-13.jpg",
-        "img/animorph/kaleido/ani-14.jpg",
-        "img/animorph/gifts/ani-7.jpg",
-        "img/animorph/gifts/ani-10.jpg",
-        "img/animorph/gifts/ani-43.jpeg"
+        "ani-1.jpg",
+        "ani-2.jpg",
+        "ani-3.jpg",
+        "ani-4.jpg",
+        "ani-5.jpg",
+        "kaleido/ani-2b.jpg",
+        "kaleido/ani-13.jpg",
+        "kaleido/ani-14.jpg",
+        "gifts/ani-7.jpg",
+        "gifts/ani-10.jpg",
+        "gifts/ani-43.jpeg"
       ]
     },
 
@@ -252,7 +200,7 @@
       "slug": "stayingwell",
       "date": "2021-now",
       "engagement": "Freelance, subsequently in-house",
-      "category": "Brand",
+      "category": ["Brand"],
 
       "client": "Animorph co-operative",
 
@@ -263,6 +211,7 @@
 
       "content": [
         {
+          "type": "section",
           "title": "Origin",
           "content": [
             {
@@ -275,6 +224,7 @@
           ]
         },
         {
+          "type": "section",
           "title": "Details"
         }
       ]

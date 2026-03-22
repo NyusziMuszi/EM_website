@@ -238,15 +238,16 @@ class Shape {
     let gridHTML = "";
     if (Array.isArray(project.content) && project.content.length > 0) {
       const items = project.content.map((block) =>
-        renderContentBlock(block, project.title),
+        renderContentBlock(block, project.title, project.slug),
       );
       gridHTML = `<div class="projectGrid">${items.join("")}</div>`;
     } else if (Array.isArray(project.images) && project.images.length > 0) {
-      const items = project.images.map(
-        (url) => `<figure class="gridItem" style="--cols: 6">
-          <img class="projectMedia" src="${url}" loading="lazy" decoding="async" alt="Eszter Muray ${project.title}" />
-        </figure>`,
-      );
+      const items = project.images.map((filename) => {
+        const src = filename.startsWith("img/") ? filename : `img/${project.slug}/${filename}`;
+        return `<figure class="gridItem" style="--cols: 6">
+          <img class="projectMedia" src="${src}" loading="lazy" decoding="async" alt="Eszter Muray ${project.title}" />
+        </figure>`;
+      });
       gridHTML = `<div class="projectGrid">${items.join("")}</div>`;
     }
 
@@ -305,26 +306,31 @@ function showLoadError() {
   contentSection.appendChild(div);
 }
 
-function renderContentBlock(block, projectTitle) {
-  // standalone media at the top level
+function renderContentBlock(block, projectTitle, projectSlug) {
   if (block.type === "image" || block.type === "video") {
-    return renderMediaItem(block, projectTitle);
+    return renderMediaItem(block, projectTitle, projectSlug);
   }
 
-  // section block
+  if (block.type === "row") {
+    return Array.isArray(block.content)
+      ? block.content.map((item) => renderSectionItem(item, projectTitle, projectSlug)).join("")
+      : "";
+  }
+
+  // section block (type === "section")
   let html = "";
   if (block.title) {
     html += `<h3 class="gridSection">${block.title}</h3>`;
   }
   if (Array.isArray(block.content)) {
     html += block.content
-      .map((item) => renderSectionItem(item, projectTitle))
+      .map((item) => renderSectionItem(item, projectTitle, projectSlug))
       .join("");
   }
   return html;
 }
 
-function renderSectionItem(item, projectTitle) {
+function renderSectionItem(item, projectTitle, projectSlug) {
   if (item.type === "text") {
     const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
     return `<p class="gridBody"${style}>${item.text}</p>`;
@@ -333,10 +339,11 @@ function renderSectionItem(item, projectTitle) {
     const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
     return `<h4 class="gridSubtitle"${style}>${item.text}</h4>`;
   }
-  return renderMediaItem(item, projectTitle);
+  return renderMediaItem(item, projectTitle, projectSlug);
 }
 
-function renderMediaItem(item, projectTitle) {
+function renderMediaItem(item, projectTitle, projectSlug) {
+  const src = item.src.startsWith("img/") ? item.src : `img/${projectSlug}/${item.src}`;
   const cols = item.cols || 6;
   const captionSide = item.captionSide || "bottom";
   const captionHTML = item.caption
@@ -347,28 +354,30 @@ function renderMediaItem(item, projectTitle) {
     if (captionSide === "left" && item.caption) {
       return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
         ${captionHTML}
-        <img class="projectMedia" src="${item.src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+        <img class="projectMedia" src="${src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
       </figure>`;
     }
     return `<figure class="gridItem" style="--cols: ${cols}">
-      <img class="projectMedia" src="${item.src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+      <img class="projectMedia" src="${src}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
       ${captionHTML}
     </figure>`;
   }
 
   if (item.type === "video") {
-    const poster = item.poster ? `poster="${item.poster}"` : "";
+    const poster = item.poster
+      ? `poster="${item.poster.startsWith("img/") ? item.poster : `img/${projectSlug}/${item.poster}`}"`
+      : "";
     if (captionSide === "left" && item.caption) {
       return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
         ${captionHTML}
         <video class="projectMedia" ${poster} controls preload="none">
-          <source src="${item.src}" />
+          <source src="${src}" />
         </video>
       </figure>`;
     }
     return `<figure class="gridItem" style="--cols: ${cols}">
       <video class="projectMedia" ${poster} controls preload="none">
-        <source src="${item.src}" />
+        <source src="${src}" />
       </video>
       ${captionHTML}
     </figure>`;

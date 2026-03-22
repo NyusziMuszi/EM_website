@@ -1,0 +1,139 @@
+{
+  // This file documents the full projects.json structure.
+  // Copy a project block from here as a starting point.
+  // The real file is projects.json — this file is not loaded by the site.
+
+  "projects": [
+
+    // ─────────────────────────────────────────────
+    // MINIMAL PROJECT — simplest possible entry
+    // ─────────────────────────────────────────────
+    {
+      "title": "Project Title",
+      "slug": "project-slug",            // URL path: yoursite.com/project-slug
+      "date": "2024",                    // Freeform string, e.g. "2022-2024" or "2024"
+      "engagement": "Freelance",         // Shown as "@ Freelance"
+      "category": ["Brand"],             // Array. Options: Brand, Print, XR, UX, Spatial, Experimental
+      "client": "Client Name",           // Shown as "For Client Name"
+      "blurb": "Short project description. HTML is supported, e.g. <br> for line breaks.",
+      "shape": "circle",                 // Which shape this project is assigned to on the homepage
+      "titleColor": "#FF6155",           // Hex colour for the project title
+      "backgroundColor": "#dcc4c4",      // Hex colour for the page background when this project is open
+
+      // Simple image gallery — just a list of filenames.
+      // Images are resolved as: img/<slug>/<filename>
+      "images": [
+        "photo-1.jpg",
+        "photo-2.jpg",
+        "subfolder/photo-3.jpg"          // Subdirectories within the project folder are fine
+      ]
+    },
+
+    // ─────────────────────────────────────────────
+    // FULL PROJECT — all available content blocks
+    // ─────────────────────────────────────────────
+    {
+      "hidden": true,                    // Optional. Set to true to hide from the site without deleting
+
+      "title": "Full Example Project",
+      "slug": "example",
+      "date": "2021-2024",
+      "engagement": "Designer at Studio X",
+      "category": ["Spatial", "Brand"], // Multiple categories are allowed
+      "client": "Some Client",
+      "blurb": "Project description. Supports <br> and other inline HTML.",
+      "shape": "star",
+      "titleColor": "#6251CD",
+      "backgroundColor": "#DADFEB",
+
+      // Structured layout — use this instead of "images" when you need
+      // control over sizing, grouping, captions, or text blocks.
+      // Images are resolved as: img/<slug>/<filename>
+      "content": [
+
+        // ── FULL-WIDTH IMAGE ──────────────────────
+        // cols controls width on a 6-column grid:
+        //   6 = full width
+        //   4 = two thirds
+        //   3 = half
+        //   2 = one third
+        {
+          "type": "image",
+          "src": "hero.jpg",
+          "cols": 6
+        },
+
+        // ── IMAGE WITH CAPTION ────────────────────
+        {
+          "type": "image",
+          "src": "detail.jpg",
+          "cols": 4,
+          "caption": "Caption text below the image"  // Optional
+        },
+
+        // ── IMAGE WITH LEFT-SIDE CAPTION ─────────
+        {
+          "type": "image",
+          "src": "detail-2.jpg",
+          "cols": 3,
+          "caption": "Caption to the left of the image",
+          "captionSide": "left"          // Default is "bottom"
+        },
+
+        // ── VIDEO ────────────────────────────────
+        {
+          "type": "video",
+          "src": "demo.mp4",
+          "cols": 6,
+          "poster": "demo-poster.jpg",   // Optional thumbnail shown before play
+          "caption": "Optional caption",
+          "captionSide": "bottom"
+        },
+
+        // ── ROW — side-by-side items ──────────────
+        // Groups multiple items on the same grid row.
+        // The cols of items within should add up to 6 (or less).
+        {
+          "type": "row",
+          "content": [
+            { "type": "image", "src": "left.jpg",   "cols": 3 },
+            { "type": "image", "src": "right.jpg",  "cols": 3 }
+          ]
+        },
+
+        // A row can mix images, videos, text, and subtitles:
+        {
+          "type": "row",
+          "content": [
+            { "type": "image",    "src": "photo.jpg",          "cols": 4 },
+            { "type": "subtitle", "text": "A subtitle label",  "cols": 2 }
+          ]
+        },
+
+        // ── SECTION — titled group of items ───────
+        // Renders a heading (h3) followed by its content items.
+        {
+          "type": "section",
+          "title": "Section Heading",
+          "content": [
+            { "type": "image", "src": "section-img-1.jpg", "cols": 3 },
+            { "type": "image", "src": "section-img-2.jpg", "cols": 3 },
+            {
+              "type": "text",
+              "text": "Body text that appears in the grid.",
+              "cols": 6
+            }
+          ]
+        },
+
+        // A section without content just renders the heading:
+        {
+          "type": "section",
+          "title": "Coming Soon"
+        }
+
+      ]
+    }
+
+  ]
+}
