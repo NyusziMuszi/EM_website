@@ -199,10 +199,10 @@
       "title": "StayingWell",
       "slug": "stayingwell",
       "date": "2021-now",
-      "engagement": "Freelance, subsequently in-house",
-      "category": ["Brand"],
+      "engagement": "Designer at Animorph",
+      "category": ["UX", "XR"],
 
-      "client": "Animorph co-operative",
+      "client": "–",
 
       "blurb": "StayingWell XR is an online tool helping people living with bipolar, depression and psychosis avoid relapse. It allows users to map their past episodes, identify early warning signs, and develop tailored coping strategies and apply these in the critical moment.",
       "shape": "circle2",
@@ -215,10 +215,9 @@
           "title": "Origin",
           "content": [
             {
-              "type": "image",
-              "src": "img/insula/insula_2.jpg",
-              "cols": 4,
-              "caption": "Caption text"
+              "type": "text",
+              "text": "We were approached by Dr. Fergus Kane from South London & Maudsley NHS hospital to develop a digital version of the Early Warning Signs (EWS) card sort. We applied to InnovateUK and won two rounds of Mindset XR funding (totalling £200k), making the project possible.",
+              "cols": 6
             },
             { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
           ]
