@@ -4,13 +4,31 @@
   padding: 0;
 }
 
+:root {
+  /* emoji cursors */
+  --cursor-plane: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>") 16 0, auto;
+  --cursor-eyes: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>") 16 0, auto;
+  --cursor-plate: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>") 16 0, auto;
+  --cursor-fork: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>") 16 0, auto;
+  --cursor-chef: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>") 16 0, auto;
+
+  /* transitions */
+  --t-fast: 0.15s;
+  --t-default: 0.3s;
+  --t-slow: 2s;
+
+  /* shape / plate sizing */
+  --shape-size: 60cqw;
+  --plate-size: 80cqw;
+}
+
 body {
   /*  no bounce */
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
   /*  background with soft change */
   background-color: rgb(175, 174, 174);
-  transition: background-color 0.3s linear;
+  transition: background-color var(--t-default) linear;
   will-change: background-color;
   overflow: hidden;
 }
@@ -21,29 +39,47 @@ body {
 button {
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
+  background-color: rgba(255, 255, 255, 0.247);
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: help;
+  transition: var(--t-default);
+  width: 200px;
+}
+
+button:hover {
+  border-radius: 20px;
+  background-color: rgba(235, 236, 230, 0.624);
+}
+
+button:active {
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 p {
   font-style: normal;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-
   line-height: 135%;
   max-width: 28em;
   text-align: center;
+  color: #000000d0;
 }
 
 .head {
-  /* color: #000000; */
   mix-blend-mode: multiply;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
-  margin: none;
+  margin: 0;
 }
 
 .meta > p {
@@ -58,10 +94,7 @@ a {
   font-style: italic;
   color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.247);
-  cursor:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
+  cursor: var(--cursor-plane);
 }
 
 a:hover {
@@ -70,12 +103,9 @@ a:hover {
 }
 
 a:visited {
-  background-color: none;
+  background-color: transparent;
 }
 
-p {
-  color: #000000d0;
-}
 /*------------------------------------------- */
 /*--GENERAL-- */
 
@@ -85,36 +115,16 @@ p {
   height: auto;
   display: block;
 }
-button {
-  background-color: rgba(255, 255, 255, 0.247);
-  border: 1px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-  padding: 5px 5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: help;
-  transition: 0.3s;
-  width: 200px;
-}
-button:hover {
-  border-radius: 20px;
-  background-color: rgba(235, 236, 230, 0.624);
-}
-button:active {
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-}
+
 .highlight {
   animation: fade-in 5s ease-in-out 3;
 }
+
 @keyframes fade-in {
   0% {
     background-color: rgba(255, 255, 255, 0.247);
   }
   50% {
-    /* background-color: rgb(0, 0, 0);
-    color: #ffffff; */
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
   }
@@ -122,18 +132,22 @@ button:active {
     background-color: rgba(255, 255, 255, 0.247);
   }
 }
+
 #logo {
   max-width: 50px;
 }
 
-#intoImg {
+#introImg {
   max-width: 40cqw;
 }
+
 hr {
   border: 1px dashed rgba(148, 148, 148, 0.543);
 }
+
 /*------------------------------------------- */
 /*--LAYOUT-- */
+
 .wrapper {
   max-width: 1800px;
   margin: auto;
@@ -143,7 +157,7 @@ hr {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  transition: background-color 0.3s linear;
+  transition: background-color var(--t-default) linear;
   will-change: background-color;
 }
 
@@ -289,33 +303,23 @@ hr {
 }
 
 .shape {
-  transition: transform 2s ease-in-out;
-
+  transition: transform var(--t-slow) ease-in-out;
   mix-blend-mode: soft-light;
   z-index: 1;
-  height: 60cqw;
-  width: 60cqw;
+  height: var(--shape-size);
+  width: var(--shape-size);
   scale: 100%;
-  cursor:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
+  cursor: var(--cursor-eyes);
 }
 
 .shape:hover {
-  transition: 2s;
+  transition: var(--t-slow);
   transform: rotate(20deg) scale(144%) !important;
 }
 
-/* .shape.clicked {
-  transition: 3s;
-  background-color: hsla(0, 0%, 100%, 0) !important;
-  scale: 0% !important;
-} */
-
 #plate {
-  width: 80cqw;
-  height: 80cqw;
+  width: var(--plate-size);
+  height: var(--plate-size);
   margin: 30px;
   z-index: 1;
 
@@ -333,18 +337,13 @@ hr {
 
 /*  -----------------------------------------*/
 /*--BTN-- */
+
 #reloadBtn {
-  cursor:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
+  cursor: var(--cursor-plate);
 }
 
 #shuffleBtn {
-  cursor:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
+  cursor: var(--cursor-fork);
 }
 
 .scrollBar {
@@ -360,6 +359,7 @@ hr {
     gap: 5px;
   }
 }
+
 @media (max-width: 800px) {
   body {
     overflow: visible;
@@ -386,6 +386,7 @@ hr {
     position: relative;
     height: auto;
   }
+
   #contentSection {
     position: relative;
   }
@@ -403,27 +404,33 @@ hr {
     width: 85vw;
     height: 85vw;
   }
+
   .shape {
     width: 30vw;
     height: 30vw;
   }
+
   .xx {
     width: 100%;
     box-sizing: border-box;
   }
+
   .projectMedia {
     max-width: 100%;
   }
+
   .projectGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
+
   .gridItem[style*="--cols: 4"],
   .gridItem[style*="--cols: 5"],
   .gridItem[style*="--cols: 6"] {
     grid-column: 1 / -1;
   }
-  #intoImg {
+
+  #introImg {
     max-width: 40vw;
   }
 
@@ -454,10 +461,7 @@ hr {
 }
 
 #chefBtn {
-  cursor:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
-      16 0,
-    auto; /*!emojicursor.app*/
+  cursor: var(--cursor-chef);
 }
 
 /*  -----------------------------------------*/
@@ -467,6 +471,7 @@ hr {
   aspect-ratio: 1/2;
   transform: skew(20deg) rotate(20deg);
 }
+
 #circle {
   aspect-ratio: 1/5;
   transform: skew(20deg) rotate(20deg);
@@ -551,6 +556,7 @@ hr {
     79.74% 46.08%
   );
 }
+
 #scallop {
   --r: 30px; /* radius of circles */
   aspect-ratio: 1;
@@ -571,29 +577,12 @@ hr {
   font-size: 0.85rem;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: opacity var(--t-fast);
   mix-blend-mode: multiply;
   z-index: 9999;
 }
 
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
-/* The slider itself */
-.slider {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
+/* --PROJECT TITLE COLOR-- */
+#content .head {
+  color: var(--title-color);
 }

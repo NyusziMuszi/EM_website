@@ -10,7 +10,6 @@ const body = document.querySelector("body");
 const overlay = document.getElementById("overlay");
 //text
 const about = document.getElementById("about");
-const content = document.getElementById("content");
 const intro = document.getElementById("intro");
 
 ///shapes
@@ -23,11 +22,13 @@ const tooltip = document.getElementById("tooltip");
 const reloadBtn = document.getElementById("reloadBtn");
 const shuffleBtn = document.getElementById("shuffleBtn");
 const chefBtn = document.getElementById("chefBtn");
-// const slider = document.getElementById("hueRange");
+
 let projects = [];
 let shapeInstances = [];
 let selectedCategories = new Set();
 let contentExpanded = false;
+let categoryBtns;
+
 const ALL_CATEGORIES = [
   "Brand",
   "Print",
@@ -47,28 +48,7 @@ const shapeConfig = [
   { id: "circle2", hue: 236 },
 ];
 
-//////////////////////////////////////////////////
-////  Initialising Color array /////
-
-// const shift = slider.oninput;
 const shift = 105;
-
-// const shift = 80;
-// const sessionHues = [];
-// const seed = getRandomNumber(20, 340 - shift);
-
-// for (let i = 0; i < 6; i++) {
-//   sessionHues.push(getRandomNumber(seed, seed + shift));
-// }
-// sessionHues.sort(function (a, b) {
-//   return a - b;
-// });
-
-// for (let i = 0; i < 6; i++) {
-//   if (i % 2 == 0) {
-//     sessionHues[i] /= 10;
-//   }
-// }
 
 //////////////////////////////////////////////////
 ////  CONSTRUCTOR /////
@@ -80,11 +60,8 @@ class Shape {
     this.beenViewed = false;
     this.hueChooseOrig = hueChoose;
     this.hueChoose = getRandomNumber(hueChoose - shift, hueChoose + shift);
-
-    this.hue;
-    this.saturation;
-    this.light;
     this.hover = 3;
+    this._rafPending = false;
 
     this.randomScale();
     this.randomPosition();
@@ -105,7 +82,7 @@ class Shape {
     this.shapeSelect.addEventListener("mousemove", this.handleMove.bind(this));
   }
 
-  handleEnter(event) {
+  handleEnter() {
     this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
       this.saturation + this.hover
     }%, ${this.light + this.hover}%)`;
@@ -117,7 +94,7 @@ class Shape {
     }
   }
 
-  handleLeave(event) {
+  handleLeave() {
     this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${
       this.saturation - this.hover
     }%, ${this.light - this.hover}%)`;
@@ -125,19 +102,22 @@ class Shape {
     tooltip.style.opacity = "0";
   }
 
-  handleMove(event) {
-    tooltip.style.left = `${event.clientX + 16}px`;
-    tooltip.style.top = `${event.clientY + 16}px`;
+  handleMove({ clientX, clientY }) {
+    if (this._rafPending) return;
+    this._rafPending = true;
+    const x = clientX;
+    const y = clientY;
+    requestAnimationFrame(() => {
+      tooltip.style.left = `${x + 16}px`;
+      tooltip.style.top = `${y + 16}px`;
+      this._rafPending = false;
+    });
   }
 
   handleClick(event) {
     if (!contentExpanded) {
       contentExpanded = true;
       table.classList.add("content-expanded");
-      // console.log(
-      //   "content-expanded added:",
-      //   table.classList.contains("content-expanded"),
-      // );
     }
     this.beenViewed = true;
     this.matchColor();
@@ -192,15 +172,11 @@ class Shape {
     } else {
       saturation = getRandomNumber(28, 50);
     }
-    for (let i = 0; i < projects.length; i++) {
-      //match with the projects
-      if (this.shapeName == projects[i].shape) {
-        // this.shapeSelect.style.backgroundColor = `hsl(${sessionHues[i]}, ${saturation}%, ${lightness}%)`;
-        this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${saturation}%, ${lightness}%)`;
-        // this.hue = sessionHues[i];
-        this.saturation = saturation;
-        this.light = lightness;
-      }
+    const project = projects.find((p) => p.shape === this.shapeName);
+    if (project) {
+      this.shapeSelect.style.backgroundColor = `hsl(${this.hueChoose}, ${saturation}%, ${lightness}%)`;
+      this.saturation = saturation;
+      this.light = lightness;
     }
   }
 
@@ -219,15 +195,16 @@ class Shape {
   }
 
   loadContent() {
-    this.removeContent();
+    removeContent();
     const project = projects.find((p) => p.shape === this.shapeName);
     if (!project) return;
 
     let div = document.createElement("article");
     div.setAttribute("id", "content");
     div.setAttribute("class", "xx");
+    div.style.setProperty("--title-color", project.titleColor);
 
-    const header = `<h2 class="head" style="color: ${project.titleColor}">${project.title}</h2>
+    const header = `<h2 class="head">${project.title}</h2>
        <article class="meta">
         <p class="date">${project.date}</p>
         <p class="engagement">@ ${project.engagement}</p>
@@ -258,21 +235,11 @@ class Shape {
       project.titleColor,
     );
   }
+
   removeShape() {
     if (this.beenViewed === true) {
       this.shapeSelect.style.display = "none";
     }
-  }
-
-  removeContent() {
-    let element;
-    if ((element = document.getElementById("content"))) {
-      element.remove();
-    }
-    // let about;
-    // if ((about = document.getElementById("about"))) {
-    //   about.remove();
-    // }
   }
 }
 
@@ -287,10 +254,8 @@ function getRandomNumber(min, max) {
 //// DATA LOADING /////
 
 function removeContent() {
-  let element;
-  if ((element = document.getElementById("content"))) {
-    element.remove();
-  }
+  const element = document.getElementById("content");
+  if (element) element.remove();
 }
 
 function showLoadError() {
@@ -426,13 +391,11 @@ function applyCategoriesFromPath(path) {
   if (matched.length === 0) return false;
 
   selectedCategories.clear();
-  document
-    .querySelectorAll(".categoryBtn")
-    .forEach((btn) => btn.classList.remove("active"));
+  categoryBtns.forEach((btn) => btn.classList.remove("active"));
 
   matched.forEach((cat) => {
     selectedCategories.add(cat);
-    const btn = document.querySelector(`.categoryBtn[data-category="${cat}"]`);
+    const btn = Array.from(categoryBtns).find((b) => b.dataset.category === cat);
     if (btn) btn.classList.add("active");
   });
 
@@ -478,6 +441,8 @@ function openProjectBySlug(slug) {
 }
 
 function addEventListeners() {
+  categoryBtns = document.querySelectorAll(".categoryBtn");
+
   reloadBtn.addEventListener("click", function () {
     history.pushState(null, "", "/");
     location.reload();
@@ -490,7 +455,7 @@ function addEventListeners() {
     }
   });
 
-  document.querySelectorAll(".categoryBtn").forEach(function (btn) {
+  categoryBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
       const cat = this.dataset.category;
       if (selectedCategories.has(cat)) {
@@ -518,10 +483,10 @@ function addEventListeners() {
       intro.classList.remove("hidden");
       body.style.backgroundColor = "";
       selectedCategories.clear();
-      document
-        .querySelectorAll(".categoryBtn")
-        .forEach((btn) => btn.classList.remove("active"));
+      categoryBtns.forEach((btn) => btn.classList.remove("active"));
       filterShapes();
+      contentExpanded = false;
+      table.classList.remove("content-expanded");
     } else if (!applyCategoriesFromPath(slug)) {
       openProjectBySlug(slug);
     }
