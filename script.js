@@ -278,12 +278,12 @@ function renderContentBlock(block, projectTitle, projectSlug) {
 
   if (block.type === "row") {
     return Array.isArray(block.content)
-      ? block.content.map((item) => renderSectionItem(item, projectTitle, projectSlug)).join("")
+      ? `<div class="gridRow">${block.content.map((item) => renderSectionItem(item, projectTitle, projectSlug)).join("")}</div>`
       : "";
   }
 
   // section block (type === "section")
-  let html = "";
+  let html = `<div class="gridSectionBlock">`;
   if (block.title) {
     html += `<h3 class="gridSection">${block.title}</h3>`;
   }
@@ -292,12 +292,22 @@ function renderContentBlock(block, projectTitle, projectSlug) {
       .map((item) => renderSectionItem(item, projectTitle, projectSlug))
       .join("");
   }
+  html += `</div>`;
   return html;
 }
 
 function renderSectionItem(item, projectTitle, projectSlug) {
+  if (item.type === "row") {
+    return Array.isArray(item.content)
+      ? `<div class="gridRow">${item.content.map((child) => renderSectionItem(child, projectTitle, projectSlug)).join("")}</div>`
+      : "";
+  }
   if (item.type === "text") {
     const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
+    if (item.subheader) {
+      const body = item.text ? `<p class="gridBody">${item.text}</p>` : "";
+      return `<div${style}><h4 class="gridSubheader">${item.subheader}</h4>${body}</div>`;
+    }
     return `<p class="gridBody"${style}>${item.text}</p>`;
   }
   if (item.type === "subtitle") {

@@ -90,6 +90,23 @@
           "captionSide": "bottom"
         },
 
+        // ── TEXT ─────────────────────────────────
+        // The "text" field supports inline HTML, including links:
+        // "text": "Visit <a href='https://example.com' target='_blank'>example.com</a> for more."
+        {
+          "type": "text",
+          "text": "Body text that appears in the grid.",
+          "cols": 6
+        },
+
+        // ── TEXT WITH SUBHEADER ───────────────────
+        {
+          "type": "text",
+          "subheader": "Subheader above the text",  // Optional
+          "text": "Body text that appears below the subheader.",
+          "cols": 6
+        },
+
         // ── ROW — side-by-side items ──────────────
         // Groups multiple items on the same grid row.
         // The cols of items within should add up to 6 (or less).
@@ -112,6 +129,8 @@
 
         // ── SECTION — titled group of items ───────
         // Renders a heading (h3) followed by its content items.
+        // The heading and items are grouped with tight inner spacing (16px row gap).
+        // Sections are separated from each other by the larger outer grid gap (80px).
         {
           "type": "section",
           "title": "Section Heading",
@@ -120,6 +139,7 @@
             { "type": "image", "src": "section-img-2.jpg", "cols": 3 },
             {
               "type": "text",
+              "subheader": "Subheader above the text",
               "text": "Body text that appears in the grid.",
               "cols": 6
             }

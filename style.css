@@ -6,11 +6,26 @@
 
 :root {
   /* emoji cursors */
-  --cursor-plane: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>") 16 0, auto;
-  --cursor-eyes: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>") 16 0, auto;
-  --cursor-plate: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>") 16 0, auto;
-  --cursor-fork: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>") 16 0, auto;
-  --cursor-chef: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>") 16 0, auto;
+  --cursor-plane:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'> ✈️</text></svg>")
+      16 0,
+    auto;
+  --cursor-eyes:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀 </text></svg>")
+      16 0,
+    auto;
+  --cursor-plate:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍽️ </text></svg>")
+      16 0,
+    auto;
+  --cursor-fork:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍴</text></svg>")
+      16 0,
+    auto;
+  --cursor-chef:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👩‍🍳</text></svg>")
+      16 0,
+    auto;
 
   /* transitions */
   --t-fast: 0.15s;
@@ -35,6 +50,8 @@ body {
 
 /*------------------------------------------- */
 /*--TYPE-- */
+body {
+}
 
 button {
   font-family: "Roboto Mono", monospace;
@@ -90,16 +107,16 @@ p {
 }
 
 a {
-  text-decoration: none;
-  font-style: italic;
+  text-decoration: underline;
+  font-size: inherit;
   color: rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.247);
   cursor: var(--cursor-plane);
+  text-underline-offset: 3px;
 }
 
 a:hover {
   font-style: normal;
-  background-color: rgba(235, 236, 230, 0.624);
+  text-decoration: overline;
 }
 
 a:visited {
@@ -142,7 +159,7 @@ a:visited {
 }
 
 hr {
-  border: 1px dashed rgba(148, 148, 148, 0.543);
+  border: 1px rgba(148, 148, 148, 0.543);
 }
 
 /*------------------------------------------- */
@@ -232,8 +249,23 @@ hr {
   grid-template-columns: repeat(6, 1fr);
   align-items: start;
   column-gap: 20px;
-  row-gap: 48px;
+  row-gap: 80px;
   width: 100%;
+}
+
+.gridSectionBlock {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.gridRow {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  column-gap: 40px;
 }
 
 .gridItem {
@@ -266,6 +298,15 @@ hr {
   max-width: none;
 }
 
+.gridBody a {
+  color: inherit;
+  font-size: inherit;
+}
+
+.gridBody a:hover {
+  color: var(--title-color);
+}
+
 .mediaCaption {
   font-family: "Roboto Mono", monospace;
   font-size: 0.75rem;
@@ -274,17 +315,19 @@ hr {
 
 .gridSection {
   font-family: "Roboto Mono", monospace;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   padding-top: 16px;
-  border-top: 1px dashed rgba(148, 148, 148, 0.5);
+  color: var(--title-color);
 }
 
 .gridSubheader {
-  font-family: "Roboto Mono", monospace;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #00000090;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+
+  color: var(--title-color);
 }
 
 .hidden {
@@ -363,6 +406,7 @@ hr {
 @media (max-width: 800px) {
   body {
     overflow: visible;
+    font-size: 100%;
   }
 
   #shuffleBtn {
@@ -430,12 +474,46 @@ hr {
     grid-column: 1 / -1;
   }
 
+  .gridSectionBlock {
+    grid-template-columns: 1fr 2fr;
+    column-gap: 16px;
+  }
+
+  .gridSection {
+    grid-column: 1 !important;
+    align-self: start;
+  }
+
+  .gridSectionBlock > :not(.gridSection) {
+    grid-column: 2 !important;
+  }
+  .gridRow {
+    display: flex;
+    flex-direction: column;
+  }
+
   #introImg {
     max-width: 40vw;
   }
 
   #navMenu {
     position: fixed;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridSectionBlock {
+    grid-template-columns: 1fr;
+  }
+
+  .gridSection,
+  .gridSectionBlock > :not(.gridSection) {
+    grid-column: 1 !important;
+  }
+
+  .gridRow {
+    display: flex;
+    flex-direction: column;
   }
 }
 

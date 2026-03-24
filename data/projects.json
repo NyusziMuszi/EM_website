@@ -24,8 +24,7 @@
             {
               "type": "image",
               "src": "insula_2.jpg",
-              "cols": 6,
-              "caption": "Caption text"
+              "cols": 6
             },
             { "type": "image", "src": "insula_1.jpg", "cols": 2 }
           ]
@@ -66,26 +65,22 @@
             }
           ]
         },
+
         {
-          "type": "row",
-          "content": [
-            {
-              "type": "image",
-              "src": "Uniform-plexopolis-15.jpg",
-              "cols": 6
-            },
-            {
-              "type": "image",
-              "src": "Uniform-plexopolis-0.jpg",
-              "cols": 4,
-              "caption": "Caption text"
-            },
-            {
-              "type": "image",
-              "src": "Uniform-plexopolis-4.jpg",
-              "cols": 2
-            }
-          ]
+          "type": "image",
+          "src": "Uniform-plexopolis-15.jpg",
+          "cols": 6
+        },
+        {
+          "type": "image",
+          "src": "Uniform-plexopolis-0.jpg",
+          "cols": 4,
+          "caption": "Caption text"
+        },
+        {
+          "type": "image",
+          "src": "Uniform-plexopolis-4.jpg",
+          "cols": 2
         }
       ]
     },
@@ -97,7 +92,7 @@
       "category": ["Spatial"],
 
       "client": "Donumenta",
-      "blurb": "2020 Artist in residence, in Regensburg. On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
+      "blurb": "On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
       "shape": "hex",
       "titleColor": "#7C8D33",
       "backgroundColor": "#D8E6D1",
@@ -206,25 +201,275 @@
 
       "blurb": "StayingWell XR is an online tool helping people living with bipolar, depression and psychosis avoid relapse. It allows users to map their past episodes, identify early warning signs, and develop tailored coping strategies and apply these in the critical moment.",
       "shape": "circle2",
-      "titleColor": "#565245",
+      "titleColor": "#1A784A",
       "backgroundColor": "#FFEFAE",
 
       "content": [
+        {
+          "type": "image",
+          "src": "example_stayingwell_original.png",
+          "cols": 6
+        },
+
         {
           "type": "section",
           "title": "Origin",
           "content": [
             {
               "type": "text",
-              "text": "We were approached by Dr. Fergus Kane from South London & Maudsley NHS hospital to develop a digital version of the Early Warning Signs (EWS) card sort. We applied to InnovateUK and won two rounds of Mindset XR funding (totalling £200k), making the project possible.",
-              "cols": 6
+              "text": "We were approached by <a href='https://ferguskane.com/blogs/en/digitalews/' target='blank'>Dr. Fergus Kane</a> from South London & Maudsley NHS hospital to develop a digital version of the Early Warning Signs (EWS) card sort. We applied to InnovateUK and won two rounds of <a href='https://gtr.ukri.org/organisation/E4B7E415-D4B5-4ED3-881A-BE9B34FCE3A2' target='blank'>Mindset XR funding</a> (totalling £200k), making the project possible.",
+              "cols": 4
             },
-            { "type": "image", "src": "img/insula/insula_1.jpg", "cols": 2 }
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "subheader": "What is Early Warning Signs (EWS) card sort?",
+                  "text": "The EWS card sort is a paper-based therapy tool. The deck contains three categories of cards: thoughts, behaviours, and feelings. The service user sorts through the deck, selecting cards that apply to them and mapping them onto the timeline of their last mental health episode, with the support of a therapist.",
+                  "cols": 3
+                },
+                {
+                  "type": "text",
+                  "subheader": "What is a Staying Well Plan?",
+                  "text": "Based on the timeline and conversation with the service user, the therapist writes a Staying Well Plan outlining coping techniques to prevent early symptoms from progressing to more severe ones. Staying Well Plans can be shared with loved ones and employers.",
+                  "cols": 3
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "image",
+                  "src": "backtothesaddle_step1.png",
+                  "cols": 2,
+                  "caption": "The therapist and service user review the events leading up to a relapse and establish a timeline."
+                },
+                {
+                  "type": "image",
+                  "src": "backtothesaddle_step2.png",
+                  "cols": 2,
+                  "caption": "The service user selects cards that reflect their thoughts, feelings, and behaviours."
+                },
+                {
+                  "type": "image",
+                  "src": "backtothesaddle_step3.png",
+                  "cols": 2,
+                  "caption": "Together, the therapist and service user map the selected cards onto the timeline."
+                }
+              ]
+            }
           ]
         },
         {
           "type": "section",
-          "title": "Details"
+          "title": "Problem",
+          "content": [
+            {
+              "type": "text",
+              "text": "Within five years of a bipolar diagnosis, 25% of people experience relapse, often with devastating consequences for individuals and their loved ones. While Early Warning Signs (EWS) card sorts and Staying Well Plans are effective in preventing relapse, the physical card sort has limitations that reduce its impact.",
+              "cols": 4
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Solution",
+          "content": [
+            {
+              "type": "text",
+              "text": "StayingWell XR keeps what is powerful about the EWS card sort (intuitive, affirming, normalising), addresses the pitfalls (often gets lost, not transportable, not editable, lack of ownership over the plan), and enhances it via XR to make it easier to recall.",
+              "cols": 4
+            },
+            {
+              "type": "text",
+              "subheader": "Clinicians: Pain points and Solutions",
+              "cols": 6
+            },
+            {
+              "type": "row",
+
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Online Access",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 The EWS card sort can not be carried out remotely. </br> 🟩 StayingWell XR allows remote collaboration. ",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Workload",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 Writing a Staying Well Plan is time consuming. </br> 🟩 StayingWell XR automatically generates an editable Staying Well Plan.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "subheader": "Service users: Pain points and Solutions",
+              "cols": 6
+            },
+            {
+              "type": "row",
+
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Staying up to date ",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 The EWS timeline is not updatable, or transportable. </br> 🟩 StayingWell XR timelines can be saved and updated at any time.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Ownership ",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 The Staying Well Plan is written by the therapist, with limited direct input from the service user. </br> 🟩 StayingWell XR allows the user the write their own coping strategies, as well as browse a bank of techniques, sourced by NHS therapists.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Longevity",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 The Staying Well Plan is easy to lose. </br> 🟩 StayingWell XR files are stored by both the therapist and the patient, and can be accessed online any time.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Customisation",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 Physical cards are not editable. </br> 🟩 The wording of cards to be amended, or custom cards created.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Duration ",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 Physical cards are fixed in size. </br> 🟩 StayingWell XR allows cards to be stretched to show the length of experiences.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Expression",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 Physical cards are uniform and indistinct. </br> 🟩 StayingWell XR allows cards to be customised in appearance to reflect their meaning.",
+                  "cols": 4
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Recall ",
+                  "cols": 1
+                },
+                {
+                  "type": "text",
+                  "text": "🔴 Insights from previous cardsorts might not be remembered when truly needed. </br> 🟩 The XR component creates a vivid memory of the Staying Well Timeline.",
+                  "cols": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Process",
+          "content": [
+            {
+              "type": "text",
+              "subheader": "Phase I",
+
+              "text": "Initial <b>user interviews</b> and <b>user journey mapping</b> with service providers and service users was carried out by Outlandish. Their research confirmed some of our initial assumptions around memorableness, while highlighting the importance of “physicality” of card sort, and the potential difficulty with XR adoption. We carried out <b>market research</b>, which illuminated some of the challenges around <b>medical device classification, patient data handling</b>, and <b>route to market</b>. Phase I wrapped up with a round of <b>usability testing</b>. ",
+              "cols": 4
+            },
+            {
+              "type": "text",
+              "subheader": "Phase II",
+
+              "text": "We carried out <b>four co-design workshops</b> with our group of experts by experience, Paula MoClaire – art therapist, Dr. Kane – clinical psychologist, and a representative from Bipolar UK. Each workshop focused on a different aspect of the experience (Sort, Timeline, Cope, XR). The workshops allowed us to gather feedback, iterate over and validate designs, as well as prototype live with the stakeholders.  ",
+              "cols": 4
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Outcome",
+          "content": [
+            {
+              "type": "text",
+              "subheader": "Phase I",
+
+              "text": "XR symptom-shaping prototype delivered. Feasibility report and market research with positive results. You can read more about Phase I <a href='https://www.animorph.coop/work/stayingwell-xr/' target='_blank'>here</a>. ",
+              "cols": 4
+            },
+            {
+              "type": "text",
+              "subheader": "Phase II",
+
+              "text": "We pivoted our approach in Phase II, and focused heavily on the card sort and timeline aspects of the tool. A minimal viable product has been developed, which can be tried <a href='https://staying-well.hub.animorph.coop' target='_blank'>here</a>. Extensive user testing with an overwhelmingly positive result has taken place with a group of 13 people with a diagnosis of bipolar and 6 clinical psychologists.",
+              "cols": 4
+            }
+          ]
         }
       ]
     }
