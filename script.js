@@ -230,6 +230,7 @@ class Shape {
 
     div.innerHTML = header + gridHTML;
     contentSection.appendChild(div);
+    initCarousels(div);
     document.documentElement.style.setProperty(
       "--scrollbar-color",
       project.titleColor,
@@ -255,7 +256,10 @@ function getRandomNumber(min, max) {
 
 function removeContent() {
   const element = document.getElementById("content");
-  if (element) element.remove();
+  if (element) {
+    destroyCarousels(element);
+    element.remove();
+  }
 }
 
 function showLoadError() {
@@ -274,6 +278,9 @@ function showLoadError() {
 function renderContentBlock(block, projectTitle, projectSlug) {
   if (block.type === "image" || block.type === "video") {
     return renderMediaItem(block, projectTitle, projectSlug);
+  }
+  if (block.type === "gallery") {
+    return renderGalleryItem(block, projectTitle, projectSlug);
   }
 
   if (block.type === "row") {
@@ -313,6 +320,9 @@ function renderSectionItem(item, projectTitle, projectSlug) {
   if (item.type === "subtitle") {
     const style = item.cols ? ` style="grid-column: span ${item.cols}"` : "";
     return `<h4 class="gridSubtitle"${style}>${item.text}</h4>`;
+  }
+  if (item.type === "gallery") {
+    return renderGalleryItem(item, projectTitle, projectSlug);
   }
   return renderMediaItem(item, projectTitle, projectSlug);
 }
@@ -359,6 +369,118 @@ function renderMediaItem(item, projectTitle, projectSlug) {
   }
 
   return "";
+}
+
+function renderGalleryItem(item, projectTitle, projectSlug) {
+  const cols = item.cols || 6;
+  const autoplay = item.autoplay ? "true" : "false";
+  const interval = item.autoplayInterval || 4000;
+  const captionSide = item.captionSide || "bottom";
+  const captionHTML = item.caption
+    ? `<figcaption class="mediaCaption">${item.caption}</figcaption>`
+    : "";
+
+  const images = Array.isArray(item.images) ? item.images : [];
+  const slidesHTML = images
+    .map((src, i) => {
+      const resolvedSrc = src.startsWith("img/") ? src : `img/${projectSlug}/${src}`;
+      return `<div class="carousel-slide${i === 0 ? " active" : ""}">
+        <img class="projectMedia" src="${resolvedSrc}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+      </div>`;
+    })
+    .join("");
+
+  const dotsHTML = images
+    .map(
+      (_, i) =>
+        `<button class="carousel-dot${i === 0 ? " carousel-dot--active" : ""}" aria-label="Slide ${i + 1}"></button>`,
+    )
+    .join("");
+
+  const carouselHTML = `<div class="carousel" data-autoplay="${autoplay}" data-interval="${interval}">
+    <div class="carousel-track">${slidesHTML}</div>
+    ${images.length > 1 ? `<div class="carousel-dots">${dotsHTML}</div>` : ""}
+  </div>`;
+
+  if (captionSide === "left" && item.caption) {
+    return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
+      ${captionHTML}
+      ${carouselHTML}
+    </figure>`;
+  }
+  return `<figure class="gridItem" style="--cols: ${cols}">
+    ${carouselHTML}
+    ${captionHTML}
+  </figure>`;
+}
+
+function makeEmojiCursor(emoji) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 32;
+  canvas.height = 32;
+  const ctx = canvas.getContext("2d");
+  ctx.font = "24px serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(emoji, 16, 16);
+  return `url(${canvas.toDataURL()}) 16 16, auto`;
+}
+
+const cursorRight = makeEmojiCursor("👉");
+const cursorLeft = makeEmojiCursor("👈");
+
+function initCarousels(container) {
+  container.querySelectorAll(".carousel").forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+    const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+    if (slides.length < 2) return;
+
+    carousel._currentIndex = 0;
+
+    function goToSlide(index) {
+      slides[carousel._currentIndex].classList.remove("active");
+      dots[carousel._currentIndex]?.classList.remove("carousel-dot--active");
+      carousel._currentIndex = (index + slides.length) % slides.length;
+      slides[carousel._currentIndex].classList.add("active");
+      dots[carousel._currentIndex]?.classList.add("carousel-dot--active");
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener("click", () => goToSlide(i)));
+
+    carousel.addEventListener("mousemove", (e) => {
+      const half = carousel.getBoundingClientRect().width / 2;
+      carousel.style.cursor = e.offsetX > half ? cursorRight : cursorLeft;
+    });
+    carousel.addEventListener("mouseleave", () => {
+      carousel.style.cursor = "";
+    });
+    carousel.addEventListener("click", (e) => {
+      const half = carousel.getBoundingClientRect().width / 2;
+      if (e.offsetX > half) goToSlide(carousel._currentIndex + 1);
+      else goToSlide(carousel._currentIndex - 1);
+    });
+
+    if (carousel.dataset.autoplay === "true") {
+      const interval = parseInt(carousel.dataset.interval, 10) || 4000;
+      carousel._autoplayId = setInterval(() => goToSlide(carousel._currentIndex + 1), interval);
+      carousel.addEventListener("mouseenter", () => {
+        clearInterval(carousel._autoplayId);
+        carousel._autoplayId = null;
+      });
+      carousel.addEventListener("mouseleave", () => {
+        carousel._autoplayId = setInterval(() => goToSlide(carousel._currentIndex + 1), interval);
+      });
+    }
+  });
+}
+
+function destroyCarousels(container) {
+  container.querySelectorAll(".carousel").forEach((carousel) => {
+    if (carousel._autoplayId) {
+      clearInterval(carousel._autoplayId);
+      carousel._autoplayId = null;
+    }
+  });
 }
 
 async function loadProjects() {

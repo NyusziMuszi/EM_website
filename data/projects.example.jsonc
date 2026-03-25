@@ -80,6 +80,25 @@
           "captionSide": "left"          // Default is "bottom"
         },
 
+        // ── GALLERY (carousel) ───────────────────
+        // Renders as an interactive slideshow with prev/next arrows and dot indicators.
+        // Use "autoplay": true to advance slides automatically (default interval: 4000ms).
+        // Autoplay pauses when the user hovers over the carousel.
+        // "images" uses the same path resolution as "src" on an image block.
+        {
+          "type": "gallery",
+          "images": [
+            "slide-1.jpg",
+            "slide-2.jpg",
+            "slide-3.jpg"
+          ],
+          "cols": 6,
+          "autoplay": true,
+          "autoplayInterval": 4000,  // Optional, default 4000ms
+          "caption": "Optional caption below the gallery",
+          "captionSide": "bottom"    // "bottom" (default) or "left"
+        },
+
         // ── VIDEO ────────────────────────────────
         {
           "type": "video",

@@ -133,6 +133,43 @@ a:visited {
   display: block;
 }
 
+/* ── Carousel ────────────────────────────── */
+.carousel {
+  position: relative;
+}
+
+.carousel-slide {
+  display: none;
+}
+.carousel-slide.active {
+  display: block;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.carousel-dot--active {
+  background: rgba(255, 255, 255, 1);
+}
+/* ─────────────────────────────────────────── */
+
 .highlight {
   animation: fade-in 5s ease-in-out 3;
 }

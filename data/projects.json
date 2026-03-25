@@ -190,7 +190,6 @@
     },
 
     {
-      "hidden": true,
       "title": "StayingWell",
       "slug": "stayingwell",
       "date": "2021-now",
@@ -205,6 +204,17 @@
       "backgroundColor": "#FFEFAE",
 
       "content": [
+        {
+          "type": "gallery",
+          "images": [
+            "example_stayingwell_original.png",
+            "backtothesaddle_step2.png",
+            "backtothesaddle_step1.png"
+          ],
+          "cols": 6,
+          "autoplay": true,
+          "autoplayInterval": 1000
+        },
         {
           "type": "image",
           "src": "example_stayingwell_original.png",
