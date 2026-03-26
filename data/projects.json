@@ -39,7 +39,7 @@
       "category": ["Print"],
 
       "client": "University College London",
-      "blurb": "Plexopolis is a flatpack, affordable board game, designed for high school. Each game teaches students about different principles of urban planning.",
+      "blurb": "Plexopolis is a flatpack, affordable set of six board games, designed for use in secondary schools. Each game teaches students about a principle of urban planning.",
       "shape": "circle",
       "titleColor": "#FF6155",
       "backgroundColor": "#dcc4c4",
@@ -190,7 +190,8 @@
     },
 
     {
-      "title": "StayingWell",
+      "hidden": true,
+      "title": "StayingWell XR",
       "slug": "stayingwell",
       "date": "2021-now",
       "engagement": "Designer at Animorph",
