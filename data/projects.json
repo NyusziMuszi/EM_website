@@ -39,48 +39,73 @@
       "category": ["Print"],
 
       "client": "University College London",
-      "blurb": "Plexopolis is a flatpack, affordable set of six board games, designed for use in secondary schools. Each game teaches students about a principle of urban planning.",
+      "blurb": "Plexopolis is a flatpack, affordable set of six board games, designed for use in secondary schools. Each game teaches students about an aspect of urban planning.",
       "shape": "circle",
       "titleColor": "#FF6155",
-      "backgroundColor": "#dcc4c4",
+      "backgroundColor": "#BBABA8",
 
       "content": [
         {
           "type": "image",
-          "src": "Uniform_plexopolis_H2OH_gif-crop-rotate.gif",
+          "src": "eszter-muray-uniform-plexopolis-07.jpg",
           "cols": 6
         },
+
         {
           "type": "row",
           "content": [
             {
               "type": "image",
-              "src": "Uniform-plexopolis-13.jpg",
-              "cols": 2
+              "src": "eszter-muray-uniform-plexopolis-04.jpg",
+              "cols": 4
             },
             {
               "type": "image",
-              "src": "Uniform-plexopolis-5.jpg",
-              "cols": 3
+              "src": "eszter-muray-uniform-plexopolis-09.jpg",
+              "cols": 2
             }
           ]
         },
-
         {
           "type": "image",
-          "src": "Uniform-plexopolis-15.jpg",
+          "src": "eszter-muray-uniform-plexopolis-01.jpg",
           "cols": 6
         },
         {
           "type": "image",
-          "src": "Uniform-plexopolis-0.jpg",
-          "cols": 4,
-          "caption": "Caption text"
+          "src": "eszter-muray-uniform-plexopolis-11.gif",
+          "cols": 6
         },
         {
           "type": "image",
-          "src": "Uniform-plexopolis-4.jpg",
-          "cols": 2
+          "src": "eszter-muray-uniform-plexopolis-10.jpg",
+          "cols": 4
+        },
+
+        {
+          "type": "row",
+          "content": [
+            {
+              "type": "image",
+              "src": "eszter-muray-uniform-plexopolis-cleansweep.jpg",
+              "cols": 2
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-uniform-plexopolis-taxigrab.jpg",
+              "cols": 2
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-uniform-plexopolis-scaffold.jpg",
+              "cols": 2
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "eszter-muray-uniform-plexopolis-08.jpg",
+          "cols": 6
         }
       ]
     },
