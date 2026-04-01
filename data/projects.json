@@ -117,23 +117,135 @@
       "category": ["Spatial"],
 
       "client": "Donumenta",
-      "blurb": "On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.<br> The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. \"All my rivers\" is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant  northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
+      "blurb": "Site specific installation for Regensburg conceived over the course of a month long artist in residence program.",
       "shape": "hex",
-      "titleColor": "#7C8D33",
-      "backgroundColor": "#D8E6D1",
-      "images": [
-        "Eszter-Muray-All-my-rivers-1.jpg",
-        "Eszter-Muray-All-my-rivers-2.jpg",
-        "Eszter-Muray-All-my-rivers-3.jpg",
-        "Eszter-Muray-All-my-rivers-4.jpg",
-        "Eszter-Muray-All-my-rivers-5.jpg",
-        "Eszter-Muray-All-my-rivers-6.jpg",
-        "Eszter-Muray-All-my-rivers-7.jpg",
-        "Eszter-Muray-All-my-rivers-8.jpg",
-        "Eszter-Muray-All-my-rivers-9.jpg",
-        "Eszter-Muray-All-my-rivers-10.jpg",
-        "Eszter-Muray-All-my-rivers-11.jpg",
-        "Eszter-Muray-All-my-rivers-12.jpg"
+      "titleColor": "#707436",
+      "backgroundColor": "#B5C2D3",
+      "content": [
+        {
+          "type": "image",
+          "src": "eszter-muray-all-my-rivers-1.jpg",
+          "cols": 6
+        },
+        {
+          "type": "section",
+          "title": "Location",
+          "content": [
+            {
+              "type": "image",
+              "src": "eszter-muray-all-my-rivers-location-1.jpg",
+              "cols": 2,
+              "caption": "I was invited to spend a month in Regensburg by Donumenta, an arts organisation that brings together artists from the Danube region. The residency’s aim was the creation of a site specific installation for Regensburg."
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-all-my-rivers-location-2.jpg",
+              "cols": 2,
+              "caption": "After much research I choose the 13m wide island of the Am Beschlächt as my site, and the Danube as my subject, as I grow up with it myself in Budapest, although its size and scale is very different there."
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-all-my-rivers-location-3.jpg",
+              "cols": 2,
+              "caption": "The island is unique as the bridge sits across it in near perfect symmetry. The island can be reach from 2 sides but not from the bridge itself."
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Planning",
+          "content": [
+            {
+              "type": "text",
+              "text": "I used low-fi experiments to start imagining how the artwork might exist. I then moved on to Unity and Cinema4D, to understand in detail how the reflections will behave. Detailed production plans were drawn up once the project was approved by the city. ",
+              "cols": 4
+            },
+            {
+              "type": "row",
+              "content": [
+                {
+                  "type": "image",
+                  "src": "eszter-muray-all-my-rivers-planning-4.jpg",
+                  "cols": 1
+                },
+
+                {
+                  "type": "gallery",
+                  "images": [
+                    "eszter-muray-all-my-rivers-planning-1.jpg",
+                    "eszter-muray-all-my-rivers-planning-2.jpg"
+                  ],
+                  "cols": 3,
+                  "autoplay": true,
+                  "autoplayInterval": 4000
+                },
+                {
+                  "type": "image",
+                  "src": "eszter-muray-all-my-rivers-planning-3.jpg",
+                  "cols": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "The artwork",
+          "content": [
+            {
+              "type": "text",
+              "text": "On its 2,850km journey the Danube evolves in its shape, size and flow, growing from insignificant to dramatic, oscillating between a slow meander and a harsh rapid. The river behaves like a mobile sculpture, ever changing with the day, season and the weather. It is in fact a mirror in itself, reflecting the shores and the sky above it. It connects several countries, landscapes, and people all with different histories. These multitudes of rivers and connections are hard to observe unless one has the privilege of traveling along its length.",
+              "cols": 3
+            },
+            {
+              "type": "text",
+              "text": "The river between Regensburg splits into several streams. The 13m wide island of the Am Beschlächt provides a unique opportunity to observe two very different Danubes simultaneusly. All my rivers is interested in highlighting the beauty of the ever evolving river, and contrasting the stagnant northern stream with the rapid southern, and projecting these two visions of the city and its river into each other.",
+              "cols": 3
+            },
+            {
+              "type": "video",
+              "src": "eszter-muray-all-my-rivers-9.mp4",
+              "cols": 6,
+              "poster": "eszter-muray-all-my-rivers-9.jpg"
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-all-my-rivers-4.jpg",
+              "cols": 3
+            },
+
+            {
+              "type": "video",
+              "src": "eszter-muray-all-my-rivers-7.mp4",
+              "cols": 3,
+              "poster": "eszter-muray-all-my-rivers-7.jpg"
+            },
+
+            {
+              "type": "gallery",
+              "images": [
+                "eszter-muray-all-my-rivers-5.jpg",
+                "eszter-muray-all-my-rivers-3.jpg",
+                "eszter-muray-all-my-rivers-6.jpg"
+              ],
+              "cols": 6,
+              "autoplay": true,
+              "autoplayInterval": 4000
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-all-my-rivers-2.jpg",
+              "cols": 3
+            },
+
+            {
+              "type": "video",
+              "src": "eszter-muray-all-my-rivers-8.mp4",
+              "cols": 3,
+              "poster": "eszter-muray-all-my-rivers-8.jpg"
+            }
+          ]
+        }
       ]
     },
     {
