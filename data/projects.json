@@ -164,20 +164,21 @@
               "type": "row",
               "content": [
                 {
-                  "type": "image",
-                  "src": "eszter-muray-all-my-rivers-planning-4.jpg",
+                  "type": "gallery",
+                  "images": [
+                    "eszter-muray-all-my-rivers-planning-4.jpg",
+                    "eszter-muray-all-my-rivers-planning-5.jpg"
+                  ],
                   "cols": 1
                 },
 
                 {
                   "type": "gallery",
                   "images": [
-                    "eszter-muray-all-my-rivers-planning-1.jpg",
-                    "eszter-muray-all-my-rivers-planning-2.jpg"
+                    "eszter-muray-all-my-rivers-planning-2.jpg",
+                    "eszter-muray-all-my-rivers-planning-1.jpg"
                   ],
-                  "cols": 3,
-                  "autoplay": true,
-                  "autoplayInterval": 4000
+                  "cols": 3
                 },
                 {
                   "type": "image",
