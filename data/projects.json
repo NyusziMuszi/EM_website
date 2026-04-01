@@ -236,18 +236,23 @@
               "cols": 6
             },
             {
-              "type": "image",
-              "src": "eszter-muray-all-my-rivers-2.jpg",
-              "cols": 3
-            },
+              "type": "row",
+              "content": [
+                {
+                  "type": "image",
+                  "src": "eszter-muray-all-my-rivers-2.jpg",
+                  "cols": 3
+                },
 
-            {
-              "type": "video",
-              "src": "eszter-muray-all-my-rivers-8.mp4",
-              "cols": 3,
-              "poster": "eszter-muray-all-my-rivers-8.jpg",
-              "autoplayOnScroll": true,
-              "loop": true
+                {
+                  "type": "video",
+                  "src": "eszter-muray-all-my-rivers-8.mp4",
+                  "cols": 3,
+                  "poster": "eszter-muray-all-my-rivers-8.jpg",
+                  "autoplayOnScroll": true,
+                  "loop": true
+                }
+              ]
             }
           ]
         }
@@ -260,9 +265,9 @@
       "engagement": "Freelance",
       "category": ["Spatial"],
 
-      "client": "Potzner Ádám (architech)",
+      "client": "KÖZTI Zrt.",
 
-      "blurb": "Concept and design for the Petofi theatre's refurbishment.",
+      "blurb": "Concept and design for the Petőfi theatre's refurbishment.",
       "shape": "flower",
       "titleColor": "#B52FA5",
       "backgroundColor": "#E3DBA1",

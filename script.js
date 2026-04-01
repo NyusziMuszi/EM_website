@@ -394,8 +394,9 @@ function renderGalleryItem(item, projectTitle, projectSlug) {
   const slidesHTML = images
     .map((src, i) => {
       const resolvedSrc = src.startsWith("img/") ? src : `img/${projectSlug}/${src}`;
+      const loadingAttr = i === 0 ? "" : ' loading="lazy"';
       return `<div class="carousel-slide${i === 0 ? " active" : ""}">
-        <img class="projectMedia" src="${resolvedSrc}" loading="lazy" decoding="async" alt="Eszter Muray ${projectTitle}" />
+        <img class="projectMedia" src="${resolvedSrc}"${loadingAttr} decoding="async" alt="Eszter Muray ${projectTitle}" />
       </div>`;
     })
     .join("");
@@ -446,6 +447,15 @@ function initCarousels(container) {
     const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
     const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
     if (slides.length < 2) return;
+
+    const firstImg = slides[0].querySelector("img");
+    if (firstImg && !firstImg.complete) {
+      const w = carousel.getBoundingClientRect().width;
+      if (w > 0) carousel.style.minHeight = `${Math.round(w * 0.65)}px`;
+      firstImg.addEventListener("load", () => {
+        carousel.style.minHeight = "";
+      }, { once: true });
+    }
 
     carousel._currentIndex = 0;
 
@@ -617,6 +627,10 @@ function openProjectBySlug(slug) {
     (s) => s.shapeName === project.shape,
   );
   if (shapeInstance) {
+    if (!contentExpanded) {
+      contentExpanded = true;
+      table.classList.add("content-expanded");
+    }
     shapeInstance.beenViewed = true;
     shapeInstance.matchColor();
     shapeInstance.loadContent();

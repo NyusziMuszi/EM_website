@@ -90,7 +90,6 @@ p {
 }
 
 .head {
-  mix-blend-mode: multiply;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-size: 1.6rem;
@@ -193,7 +192,12 @@ a:visited {
   border: none;
   width: 12px;
   height: 14px;
-  background: linear-gradient(to right, #fff 0 4px, transparent 4px 8px, #fff 8px 12px);
+  background: linear-gradient(
+    to right,
+    #fff 0 4px,
+    transparent 4px 8px,
+    #fff 8px 12px
+  );
   margin-left: 0;
 }
 
@@ -349,7 +353,7 @@ hr {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: start;
-  column-gap: 20px;
+  column-gap: 40px;
   row-gap: 80px;
   width: 100%;
 }
@@ -358,7 +362,6 @@ hr {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: subgrid;
-  column-gap: 40px;
   row-gap: 40px;
 }
 
@@ -366,7 +369,6 @@ hr {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: subgrid;
-  column-gap: 40px;
 }
 
 .gridItem {
@@ -502,11 +504,17 @@ hr {
     flex-direction: column;
     gap: 5px;
   }
+  .gridSectionBlock,
+  .gridRow {
+    column-gap: 20px;
+  }
 }
 
 @media (max-width: 800px) {
   body {
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: auto;
     font-size: 100%;
   }
 
@@ -520,7 +528,12 @@ hr {
     height: fit-content;
   }
 
-  #foodSection,
+  #foodSection {
+    container-type: inline-size;
+    width: 100%;
+    transition: none;
+  }
+
   #contentSection {
     container-type: normal;
     width: 100%;
@@ -545,16 +558,6 @@ hr {
     display: none;
   }
 
-  #plate {
-    width: 85vw;
-    height: 85vw;
-  }
-
-  .shape {
-    width: 30vw;
-    height: 30vw;
-  }
-
   .xx {
     width: 100%;
     box-sizing: border-box;
@@ -565,8 +568,18 @@ hr {
   }
 
   .projectGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .gridRow {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
+  .gridItem[style*="--cols: 3"] {
+    grid-column: span 1;
   }
 
   .gridItem[style*="--cols: 4"],
@@ -576,21 +589,12 @@ hr {
   }
 
   .gridSectionBlock {
-    grid-template-columns: 1fr 2fr;
-    column-gap: 16px;
+    grid-template-columns: 1fr;
   }
 
-  .gridSection {
-    grid-column: 1 !important;
-    align-self: start;
-  }
-
+  .gridSection,
   .gridSectionBlock > :not(.gridSection) {
-    grid-column: 2 !important;
-  }
-  .gridRow {
-    display: flex;
-    flex-direction: column;
+    grid-column: 1 !important;
   }
 
   #introImg {
@@ -603,18 +607,13 @@ hr {
 }
 
 @media (max-width: 480px) {
-  .gridSectionBlock {
-    grid-template-columns: 1fr;
-  }
-
-  .gridSection,
-  .gridSectionBlock > :not(.gridSection) {
-    grid-column: 1 !important;
-  }
-
   .gridRow {
     display: flex;
     flex-direction: column;
+  }
+
+  .xx {
+    padding: 10px;
   }
 }
 
