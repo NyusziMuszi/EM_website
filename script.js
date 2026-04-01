@@ -231,6 +231,7 @@ class Shape {
     div.innerHTML = header + gridHTML;
     contentSection.appendChild(div);
     initCarousels(div);
+    initVideos(div);
     document.documentElement.style.setProperty(
       "--scrollbar-color",
       project.titleColor,
@@ -352,18 +353,27 @@ function renderMediaItem(item, projectTitle, projectSlug) {
     const poster = item.poster
       ? `poster="${item.poster.startsWith("img/") ? item.poster : `img/${projectSlug}/${item.poster}`}"`
       : "";
+    const autoScroll = item.autoplayOnScroll ? `data-autoplay-scroll` : "";
+    const autoAttrs = item.autoplayOnScroll ? `muted playsinline` : "";
+    const loop = item.loop ? `loop` : "";
     if (captionSide === "left" && item.caption) {
       return `<figure class="gridItem gridItem--caption-left" style="--cols: ${cols}">
         ${captionHTML}
-        <video class="projectMedia" ${poster} controls preload="none">
-          <source src="${src}" />
-        </video>
+        <div class="videoWrapper" ${autoScroll}>
+          <video class="projectMedia" ${poster} ${autoAttrs} ${loop} preload="none">
+            <source src="${src}" />
+          </video>
+          <button class="videoPlayBtn" aria-label="Play/Pause"></button>
+        </div>
       </figure>`;
     }
     return `<figure class="gridItem" style="--cols: ${cols}">
-      <video class="projectMedia" ${poster} controls preload="none">
-        <source src="${src}" />
-      </video>
+      <div class="videoWrapper" ${autoScroll}>
+        <video class="projectMedia" ${poster} ${autoAttrs} ${loop} preload="none">
+          <source src="${src}" />
+        </video>
+        <button class="videoPlayBtn" aria-label="Play/Pause"></button>
+      </div>
       ${captionHTML}
     </figure>`;
   }
@@ -428,6 +438,8 @@ function makeEmojiCursor(emoji) {
 
 const cursorRight = makeEmojiCursor("👉");
 const cursorLeft = makeEmojiCursor("👈");
+const cursorVideoPlay = makeEmojiCursor("🎥");
+const cursorVideoPause = makeEmojiCursor("⏸️");
 
 function initCarousels(container) {
   container.querySelectorAll(".carousel").forEach((carousel) => {
@@ -470,6 +482,49 @@ function initCarousels(container) {
       carousel.addEventListener("mouseleave", () => {
         carousel._autoplayId = setInterval(() => goToSlide(carousel._currentIndex + 1), interval);
       });
+    }
+  });
+}
+
+function initVideos(container) {
+  const isPointer = window.matchMedia("(hover: hover)");
+
+  container.querySelectorAll(".videoWrapper").forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const btn = wrapper.querySelector(".videoPlayBtn");
+
+    function toggle() {
+      if (video.paused) video.play();
+      else video.pause();
+    }
+
+    function updateBtn() {
+      btn.classList.toggle("videoPlayBtn--playing", !video.paused);
+    }
+
+    function updateCursor() {
+      wrapper.style.cursor = video.paused ? cursorVideoPlay : cursorVideoPause;
+    }
+
+    if (isPointer.matches) {
+      wrapper.addEventListener("click", toggle);
+      updateCursor();
+      video.addEventListener("play", updateCursor);
+      video.addEventListener("pause", updateCursor);
+      video.addEventListener("ended", updateCursor);
+    } else {
+      btn.addEventListener("click", toggle);
+      video.addEventListener("play", updateBtn);
+      video.addEventListener("pause", updateBtn);
+      video.addEventListener("ended", updateBtn);
+    }
+
+    if ("autoplayScroll" in wrapper.dataset) {
+      const observer = new IntersectionObserver(
+        ([entry]) => { entry.isIntersecting ? video.play() : video.pause(); },
+        { threshold: 1.0 }
+      );
+      observer.observe(wrapper);
     }
   });
 }

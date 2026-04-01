@@ -206,7 +206,9 @@
               "type": "video",
               "src": "eszter-muray-all-my-rivers-9.mp4",
               "cols": 6,
-              "poster": "eszter-muray-all-my-rivers-9.jpg"
+              "poster": "eszter-muray-all-my-rivers-9.jpg",
+              "autoplayOnScroll": true,
+              "loop": true
             },
             {
               "type": "image",
@@ -218,7 +220,9 @@
               "type": "video",
               "src": "eszter-muray-all-my-rivers-7.mp4",
               "cols": 3,
-              "poster": "eszter-muray-all-my-rivers-7.jpg"
+              "poster": "eszter-muray-all-my-rivers-7.jpg",
+              "autoplayOnScroll": true,
+              "loop": true
             },
 
             {
@@ -228,9 +232,7 @@
                 "eszter-muray-all-my-rivers-3.jpg",
                 "eszter-muray-all-my-rivers-6.jpg"
               ],
-              "cols": 6,
-              "autoplay": true,
-              "autoplayInterval": 4000
+              "cols": 6
             },
             {
               "type": "image",
@@ -242,7 +244,9 @@
               "type": "video",
               "src": "eszter-muray-all-my-rivers-8.mp4",
               "cols": 3,
-              "poster": "eszter-muray-all-my-rivers-8.jpg"
+              "poster": "eszter-muray-all-my-rivers-8.jpg",
+              "autoplayOnScroll": true,
+              "loop": true
             }
           ]
         }

@@ -133,6 +133,70 @@ a:visited {
   display: block;
 }
 
+/* ── Video player ────────────────────────── */
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.videoPlayBtn {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.videoPlayBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+@media (hover: hover) {
+  .videoPlayBtn {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .videoPlayBtn {
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* play icon (triangle) */
+.videoPlayBtn::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 7px 13px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 3px;
+}
+
+/* pause icon (two bars) */
+.videoPlayBtn--playing::after {
+  border: none;
+  width: 12px;
+  height: 14px;
+  background: linear-gradient(to right, #fff 0 4px, transparent 4px 8px, #fff 8px 12px);
+  margin-left: 0;
+}
+
 /* ── Carousel ────────────────────────────── */
 .carousel {
   position: relative;

@@ -106,7 +106,9 @@
           "cols": 6,
           "poster": "demo-poster.jpg",   // Optional thumbnail shown before play
           "caption": "Optional caption",
-          "captionSide": "bottom"
+          "captionSide": "bottom",
+          "autoplayOnScroll": true,       // Optional: play when fully in view, pause when out (video will be muted)
+          "loop": true                    // Optional: loop the video when it ends
         },
 
         // ── TEXT ─────────────────────────────────
