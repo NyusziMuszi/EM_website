@@ -456,15 +456,6 @@ function initCarousels(container) {
     const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
     if (slides.length < 2) return;
 
-    const firstImg = slides[0].querySelector("img");
-    if (firstImg && !firstImg.complete) {
-      const w = carousel.getBoundingClientRect().width;
-      if (w > 0) carousel.style.minHeight = `${Math.round(w * 0.65)}px`;
-      firstImg.addEventListener("load", () => {
-        carousel.style.minHeight = "";
-      }, { once: true });
-    }
-
     carousel._currentIndex = 0;
 
     function goToSlide(index) {
