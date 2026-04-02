@@ -457,7 +457,9 @@ hr {
 }
 
 .shape {
-  transition: transform var(--t-slow) ease-in-out;
+  transition:
+    transform var(--t-slow) ease-in-out,
+    scale var(--t-slow) ease-in-out;
   mix-blend-mode: soft-light;
   z-index: 1;
   height: var(--shape-size);
@@ -555,6 +557,11 @@ body::-webkit-scrollbar-thumb {
     display: none;
   }
 
+  #scallop {
+    height: 35cqw;
+    width: 35cqw;
+  }
+
   #table {
     flex-direction: column;
     overflow: visible;
@@ -645,6 +652,9 @@ body::-webkit-scrollbar-thumb {
   #navLogo {
     display: block;
     width: 50px;
+  }
+  #navMenu {
+    padding: 10;
   }
 }
 

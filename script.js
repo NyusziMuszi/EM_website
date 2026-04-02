@@ -152,8 +152,15 @@ class Shape {
   }
 
   randomScale() {
-    const scale = `${getRandomNumber(70, 100)}%`;
-    this.shapeSelect.style.scale = scale;
+    this.targetScale = `${getRandomNumber(70, 100)}%`;
+    this.shapeSelect.style.scale = this.targetScale;
+  }
+
+  animateIn(delay) {
+    this.shapeSelect.style.scale = "0%";
+    setTimeout(() => {
+      this.shapeSelect.style.scale = this.targetScale;
+    }, delay);
   }
 
   randomPosition() {
@@ -566,6 +573,7 @@ function createShapes() {
   shapeInstances = shapeConfig.map(
     (shapeSetting) => new Shape(shapeSetting.id, shapeSetting.hue),
   );
+  shapeInstances.forEach((shape, i) => shape.animateIn(i * 120));
 }
 
 //////////////////////////////////////////////////
@@ -648,7 +656,9 @@ function addEventListeners() {
 
   reloadBtn.addEventListener("click", function () {
     history.pushState(null, "", "/");
-    location.reload();
+    table.classList.remove("content-expanded");
+    body.style.backgroundColor = "";
+    setTimeout(() => location.reload(), 600);
   });
 
   shuffleBtn.addEventListener("click", function () {
