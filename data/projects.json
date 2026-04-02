@@ -273,18 +273,152 @@
       "backgroundColor": "#E3DBA1",
 
       "content": [
-        { "type": "image", "src": "petofi_10.jpeg", "cols": 4 },
-        { "type": "image", "src": "petofi_7.jpeg", "cols": 2 },
-        { "type": "image", "src": "petofi_8.jpeg", "cols": 2 },
-        { "type": "image", "src": "petofi_5.jpg", "cols": 2 },
-        { "type": "image", "src": "petofi_1.png", "cols": 2 },
-        { "type": "image", "src": "petofi_2.jpg", "cols": 3 },
-        { "type": "image", "src": "petofi_4.jpg", "cols": 3 },
-        { "type": "image", "src": "petofi_3.jpg", "cols": 6 },
-        { "type": "image", "src": "petofi_9.jpeg", "cols": 3 },
-        { "type": "image", "src": "petofi_11.jpeg", "cols": 3 },
-        { "type": "image", "src": "petofi_12.png", "cols": 3 },
-        { "type": "image", "src": "petofi_6.jpg", "cols": 3 }
+        {
+          "type": "gallery",
+          "images": [
+            "eszter-muray-veszpremi-petofi-szinhaz-entry-01.jpg",
+            "eszter-muray-veszpremi-petofi-szinhaz-entry-02.jpg",
+            "eszter-muray-veszpremi-petofi-szinhaz-entry-03.jpg"
+          ],
+          "cols": 6,
+          "autoplay": true,
+          "autoplayInterval": 4000
+        },
+
+        {
+          "type": "section",
+          "content": [
+            {
+              "type": "text",
+              "subheader": "Background",
+
+              "text": "I worked with KÖZTI and Ádám Potzner on the refurbishment of the secondary building of the Veszprémi Petőfi Theatre. Located opposite the main theatre—both designed by Imre Makovecz—the building accommodates a mix of public- and internal-facing functions, including a ticket office, studio stage, rehearsal spaces, workshops, and administrative offices.",
+              "cols": 3
+            },
+            {
+              "type": "text",
+              "subheader": "My role",
+
+              "text": "I collaborated with the architectural team to develop an overarching concept for wayfinding, signage, and transitional spaces, and produced detailed, production-ready plans. The aim was to achieve maximum impact within a constrained budget. The design draws on the illusory nature of theatre, exploring how dramatic spatial effects can be created through lighting and two-dimensional devices. Influences included dioramas, anamorphic illusions, and concrete poetry. Interventions in internal-facing areas were intentionally restrained—introducing movement and visual interest without disrupting the daily work of staff and performers.",
+              "cols": 3
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-overview-01.jpg",
+              "cols": 4,
+              "caption": "Source: https://magyarepitok.hu"
+            },
+            {
+              "type": "gallery",
+              "images": [
+                "eszter-muray-veszpremi-petofi-szinhaz-state-01.jpg",
+                "eszter-muray-veszpremi-petofi-szinhaz-state-02.jpg",
+                "eszter-muray-veszpremi-petofi-szinhaz-state-03.jpg"
+              ],
+              "cols": 2,
+
+              "caption": "The building was in a very poor condition at the start of the project. Source: KÖZTI Zrt."
+            }
+          ]
+        },
+
+        {
+          "type": "section",
+          "title": "Street front",
+          "content": [
+            {
+              "type": "text",
+
+              "text": "Signage is discreet but visible when pedestrians approach the building from either direction. The “Eye” is created using two types of dichroic foil, and creates a dramatic effect, that instantly catches passer-by's eye.",
+              "cols": 4
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-street-01.jpg",
+              "cols": 4
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-street-02.jpg",
+              "cols": 2,
+              "caption": "Source: https://magyarepitok.hu"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Entrance",
+          "content": [
+            {
+              "type": "video",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-eye-01.mp4",
+              "cols": 6,
+
+              "autoplayOnScroll": true,
+              "loop": true
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-eye-02.jpg",
+              "cols": 6
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Signage",
+          "content": [
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-signage-01.jpg",
+              "cols": 1
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-signage-02.jpg",
+              "cols": 2
+            },
+            {
+              "type": "gallery",
+              "images": [
+                "eszter-muray-veszpremi-petofi-szinhaz-signage-03.jpg",
+                "eszter-muray-veszpremi-petofi-szinhaz-signage-04.jpg"
+              ],
+              "cols": 3,
+              "autoplay": true,
+              "autoplayInterval": 4000
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "title": "Transitional spaces",
+          "content": [
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-stairs-01.jpg",
+              "cols": 3,
+              "caption": "Source: https://magyarepitok.hu"
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-stairs-02.jpg",
+              "cols": 3
+            },
+            {
+              "type": "image",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-stairs-03.jpg",
+              "cols": 3
+            },
+            {
+              "type": "video",
+              "src": "eszter-muray-veszpremi-petofi-szinhaz-stairs-04.mp4",
+              "cols": 3,
+              "autoplayOnScroll": true,
+              "loop": true
+            }
+          ]
+        }
       ]
     },
     {
