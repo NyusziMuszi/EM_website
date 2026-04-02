@@ -496,6 +496,27 @@ hr {
   scrollbar-color: var(--scrollbar-color, #ffffff) #ffffff00;
 }
 
+#contentSection,
+body {
+  scrollbar-color: var(--scrollbar-color, #ffffff) #ffffff00;
+}
+
+#contentSection::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+#contentSection::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#contentSection::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color, #ffffff);
+  border-radius: 4px;
+}
+
 /*  -----------------------------------------*/
 /* RESPONSIVE */
 
