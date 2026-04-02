@@ -22,11 +22,14 @@ const tooltip = document.getElementById("tooltip");
 const reloadBtn = document.getElementById("reloadBtn");
 const shuffleBtn = document.getElementById("shuffleBtn");
 const chefBtn = document.getElementById("chefBtn");
+const backBtn = document.getElementById("backBtn");
+const navLogo = document.getElementById("navLogo");
 
 let projects = [];
 let shapeInstances = [];
 let selectedCategories = new Set();
 let contentExpanded = false;
+let prevChefState = null;
 let categoryBtns;
 
 const ALL_CATEGORIES = [
@@ -114,7 +117,7 @@ class Shape {
     });
   }
 
-  handleClick(event) {
+  handleClick() {
     if (!contentExpanded) {
       contentExpanded = true;
       table.classList.add("content-expanded");
@@ -142,7 +145,7 @@ class Shape {
     );
     const numberViewed = visibleShapes.filter((s) => s.beenViewed).length;
     if (numberViewed === visibleShapes.length) {
-      shuffleBtn.classList.add("hidden");
+      shuffleBtn.style.visibility = "hidden";
       reloadBtn.classList.remove("hidden");
       reloadBtn.classList.add("highlight");
     }
@@ -154,12 +157,11 @@ class Shape {
   }
 
   randomPosition() {
-    const position = [
-      `${getRandomNumber(0, 100)}px`,
-      `${getRandomNumber(0, 200)}px`,
-    ];
-    this.shapeSelect.style.left = position[0];
-    this.shapeSelect.style.top = position[1];
+    const cqw = document.getElementById("foodSection").offsetWidth / 100;
+    const containerH = 80 * cqw + 60; // plate (80cqw) + plate margin 30px × 2
+    const maxTop = Math.max(0, containerH - 60 * cqw); // container − shape height (60cqw)
+    this.shapeSelect.style.left = `${getRandomNumber(0, 100)}px`;
+    this.shapeSelect.style.top = `${getRandomNumber(0, maxTop)}px`;
   }
 
   randomColor() {
@@ -671,11 +673,31 @@ function addEventListeners() {
     });
   });
 
-  chefBtn.addEventListener("click", function () {
+  function openAbout() {
+    const slug = window.location.pathname.replace(/^\/|\/$/g, "");
+    prevChefState = { slug, wasExpanded: contentExpanded };
     about.classList.remove("hidden");
+    table.classList.add("chef-active");
     removeContent();
     intro.classList.add("hidden");
-  });
+    contentExpanded = false;
+    table.classList.remove("content-expanded");
+  }
+
+  function closeAbout() {
+    about.classList.add("hidden");
+    table.classList.remove("chef-active");
+    if (prevChefState && prevChefState.slug) {
+      openProjectBySlug(prevChefState.slug);
+    } else {
+      intro.classList.remove("hidden");
+    }
+    prevChefState = null;
+  }
+
+  chefBtn.addEventListener("click", openAbout);
+  navLogo.addEventListener("click", openAbout);
+  backBtn.addEventListener("click", closeAbout);
 
   window.addEventListener("popstate", function () {
     const slug = window.location.pathname.replace(/^\/|\/$/g, "");

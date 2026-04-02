@@ -67,6 +67,8 @@ button {
   cursor: help;
   transition: var(--t-default);
   width: 200px;
+  outline: none;
+  user-select: none;
 }
 
 button:hover {
@@ -259,6 +261,11 @@ a:visited {
   max-width: 50px;
 }
 
+#navLogo {
+  display: none;
+  cursor: var(--cursor-chef);
+}
+
 #introImg {
   max-width: 40cqw;
 }
@@ -422,6 +429,7 @@ hr {
   font-weight: 400;
   padding-top: 16px;
   color: var(--title-color);
+  margin-bottom: -20px;
 }
 
 .gridSubheader {
@@ -543,6 +551,10 @@ body::-webkit-scrollbar-thumb {
     display: none;
   }
 
+  #logo {
+    display: none;
+  }
+
   #table {
     flex-direction: column;
     overflow: visible;
@@ -625,6 +637,15 @@ body::-webkit-scrollbar-thumb {
   #navMenu {
     position: fixed;
   }
+
+  #chefBtn {
+    display: none;
+  }
+
+  #navLogo {
+    display: block;
+    width: 50px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -661,6 +682,19 @@ body::-webkit-scrollbar-thumb {
 
 #chefBtn {
   cursor: var(--cursor-chef);
+}
+
+#backBtn {
+  display: none;
+}
+
+#table.chef-active #chefBtn,
+#table.chef-active #navLogo {
+  display: none;
+}
+
+#table.chef-active #backBtn {
+  display: block;
 }
 
 /*  -----------------------------------------*/
