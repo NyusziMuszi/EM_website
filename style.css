@@ -213,6 +213,12 @@ a:visited {
 }
 .carousel-slide.active {
   display: block;
+  animation: carousel-fadein 0.15s ease-out;
+}
+
+@keyframes carousel-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .carousel-dots {

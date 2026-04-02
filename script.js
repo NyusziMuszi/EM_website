@@ -403,9 +403,8 @@ function renderGalleryItem(item, projectTitle, projectSlug) {
   const slidesHTML = images
     .map((src, i) => {
       const resolvedSrc = src.startsWith("img/") ? src : `img/${projectSlug}/${src}`;
-      const loadingAttr = i === 0 ? "" : ' loading="lazy"';
       return `<div class="carousel-slide${i === 0 ? " active" : ""}">
-        <img class="projectMedia" src="${resolvedSrc}"${loadingAttr} decoding="async" alt="Eszter Muray ${projectTitle}" />
+        <img class="projectMedia" src="${resolvedSrc}" decoding="async" alt="Eszter Muray ${projectTitle}" />
       </div>`;
     })
     .join("");
@@ -469,11 +468,24 @@ function initCarousels(container) {
     carousel._currentIndex = 0;
 
     function goToSlide(index) {
-      slides[carousel._currentIndex].classList.remove("active");
-      dots[carousel._currentIndex]?.classList.remove("carousel-dot--active");
-      carousel._currentIndex = (index + slides.length) % slides.length;
-      slides[carousel._currentIndex].classList.add("active");
-      dots[carousel._currentIndex]?.classList.add("carousel-dot--active");
+      const nextIndex = (index + slides.length) % slides.length;
+      if (nextIndex === carousel._currentIndex) return;
+      const nextSlide = slides[nextIndex];
+      const nextImg = nextSlide.querySelector("img");
+
+      function doTransition() {
+        slides[carousel._currentIndex].classList.remove("active");
+        dots[carousel._currentIndex]?.classList.remove("carousel-dot--active");
+        carousel._currentIndex = nextIndex;
+        nextSlide.classList.add("active");
+        dots[nextIndex]?.classList.add("carousel-dot--active");
+      }
+
+      if (nextImg && !nextImg.complete) {
+        nextImg.addEventListener("load", doTransition, { once: true });
+      } else {
+        doTransition();
+      }
     }
 
     dots.forEach((dot, i) => dot.addEventListener("click", () => goToSlide(i)));
