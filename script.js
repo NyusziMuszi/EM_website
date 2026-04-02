@@ -269,6 +269,7 @@ function removeContent() {
   if (element) {
     destroyCarousels(element);
     element.remove();
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
 }
 
